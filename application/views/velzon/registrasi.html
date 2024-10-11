@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  data-layout="vertical"
+  data-topbar="light"
+  data-sidebar="dark"
+  data-sidebar-size="lg"
+  data-sidebar-image="none"
+  data-preloader="disable"
+  data-theme="default"
+  data-theme-colors="default"
+>
+  <!-- Mirrored from themesbrand.com/velzon/html/master/job-landing.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Aug 2024 07:47:11 GMT -->
+
+  <head>
+    <meta charset="utf-8" />
+    <title>Pendaftaran Kandidat</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta content="Form Pendaftaran Kandidat Onecorp" name="description" />
+    <meta content="Onecorp" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico" />
+
+    <!--Swiper slider css-->
+    <link
+      href="assets/libs/swiper/swiper-bundle.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+
+    <!-- Layout config Js -->
+    <script src="assets/js/layout.js"></script>
+    <!-- Bootstrap Css -->
+    <link
+      href="assets/css/bootstrap.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <!-- Icons Css -->
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <!-- custom Css-->
+    <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body data-bs-spy="scroll" data-bs-target="#navbar-example">
+    <!-- Begin page -->
+    <div class="layout-wrapper">
+      <!-- start header -->
+      <section class="py-5 bg-primary position-relative">
+        <div class="bg-overlay bg-overlay-pattern opacity-50"></div>
+        <div class="container">
+          <div class="row align-items-center gy-4">
+            <div class="col-sm">
+              <div>
+                <h4 class="text-white fw-semibold">
+                  Form Pendaftaran Kandidat
+                </h4>
+                <p class="text-white text-opacity-75 mb-0">PT. Onecorp</p>
+              </div>
+            </div>
+            <!-- end col -->
+            <div class="col-sm-auto">
+              <button class="btn btn-danger" type="button">
+                Open Website <i class="ri-arrow-right-line align-bottom"></i>
+              </button>
+            </div>
+            <!-- end col -->
+          </div>
+          <!-- end row -->
+        </div>
+        <!-- end container -->
+      </section>
+      <!-- end header -->
+
+      <!-- ============================================================== -->
+      <!-- Start Form Pendaftaran -->
+      <!-- ============================================================== -->
+      <div class="container-fluid mt-3">
+        <div class="row">
+          <div class="col-xl-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title mb-0">PT Siprama Cakrawala</h4>
+              </div>
+              <!-- end card header -->
+              <div class="card-body">
+                <form action="#" class="form-steps" autocomplete="off">
+                  <div
+                    class="text-center pt-3 pb-4 mb-1 d-flex justify-content-center"
+                  >
+                    <img
+                      src="assets/images/logo/logo_cakrawala_transparan.png"
+                      class="card-logo card-logo-dark"
+                      alt="logo dark"
+                      height="50"
+                    />
+                    <img
+                      src="assets/images/logo/logo_cakrawala_transparan.png"
+                      class="card-logo card-logo-light"
+                      alt="logo light"
+                      height="50"
+                    />
+                    <!-- <img src="assets/images/logo-dark.png" class="card-logo card-logo-dark" alt="logo dark" height="17"/>
+                    <img src="assets/images/logo-light.png" class="card-logo card-logo-light" alt="logo light" height="17"/> -->
+                  </div>
+                  <div class="step-arrow-nav mb-4">
+                    <ul
+                      class="nav nav-pills custom-nav nav-justified"
+                      role="tablist"
+                    >
+                      <li class="nav-item" role="presentation">
+                        <button
+                          class="nav-link active"
+                          id="nik-ktp-tab"
+                          data-bs-toggle="pill"
+                          data-bs-target="#nik-ktp"
+                          type="button"
+                          role="tab"
+                          aria-controls="nik-ktp"
+                          aria-selected="true"
+                        >
+                          NIK KTP
+                        </button>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <button
+                          class="nav-link"
+                          id="perusahaan-tab"
+                          data-bs-toggle="pill"
+                          data-bs-target="#perusahaan"
+                          type="button"
+                          role="tab"
+                          aria-controls="perusahaan"
+                          aria-selected="true"
+                        >
+                          PERUSAHAAN
+                        </button>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <button
+                          class="nav-link"
+                          id="steparrow-gen-info-tab"
+                          data-bs-toggle="pill"
+                          data-bs-target="#steparrow-gen-info"
+                          type="button"
+                          role="tab"
+                          aria-controls="steparrow-gen-info"
+                          aria-selected="true"
+                        >
+                          DATA DIRI
+                        </button>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <button
+                          class="nav-link"
+                          id="steparrow-description-info-tab"
+                          data-bs-toggle="pill"
+                          data-bs-target="#steparrow-description-info"
+                          type="button"
+                          role="tab"
+                          aria-controls="steparrow-description-info"
+                          aria-selected="false"
+                        >
+                          PENGALAMAN KERJA
+                        </button>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <button
+                          class="nav-link"
+                          id="steparrow-description-info-tab"
+                          data-bs-toggle="pill"
+                          data-bs-target="#steparrow-description-info"
+                          type="button"
+                          role="tab"
+                          aria-controls="steparrow-description-info"
+                          aria-selected="false"
+                        >
+                          DOKUMEN
+                        </button>
+                      </li>
+                      <li class="nav-item" role="presentation">
+                        <button
+                          class="nav-link"
+                          id="pills-experience-tab"
+                          data-bs-toggle="pill"
+                          data-bs-target="#pills-experience"
+                          type="button"
+                          role="tab"
+                          aria-controls="pills-experience"
+                          aria-selected="false"
+                        >
+                          SELESAI
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="tab-content">
+                    <!-- TAB NIK KTP -->
+                    <div
+                      class="tab-pane fade show active"
+                      id="nik-ktp"
+                      role="tabpanel"
+                      aria-labelledby="nik-ktp-tab"
+                    >
+                      <div>
+                        <div class="row">
+                          <div class="col-lg-12">
+                            <div class="mb-3">
+                              <label
+                                class="form-label"
+                                for="nik-ktp-nomor-input"
+                              >
+                                NIK KTP
+                              </label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                id="nik-ktp-nomor-input"
+                                placeholder="Enter NIK KTP"
+                                min="1000000000000000"
+                                max="9999999999999999"
+                                required
+                              />
+                              <div class="invalid-feedback">
+                                Silahkan masukkan NIK KTP berupa angka 16 digit
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="d-flex align-items-start gap-3 mt-4">
+                        <button
+                          type="button"
+                          class="btn btn-success btn-label right ms-auto nexttab nexttab"
+                          data-nexttab="perusahaan-tab"
+                        >
+                          <i
+                            class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"
+                          ></i
+                          >Go to more info
+                        </button>
+                      </div>
+                    </div>
+                    <!-- end tab NIK KTP -->
+
+                    <!-- TAB Perusahaan -->
+                    <div
+                      class="tab-pane fade"
+                      id="perusahaan"
+                      role="tabpanel"
+                      aria-labelledby="perusahaan-tab"
+                    >
+                      <div>
+                        <div class="row">
+                          <div class="mb-3">
+                            <label
+                              class="form-label"
+                              for="steparrow-gen-info-password-input"
+                              >Perusahaan</label
+                            >
+                            <input
+                              type="password"
+                              class="form-control"
+                              id="steparrow-gen-info-password-input"
+                              placeholder="Enter password"
+                              required
+                            />
+                            <div class="invalid-feedback">
+                              Please enter a password
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <div class="mb-3">
+                              <label
+                                class="form-label"
+                                for="steparrow-gen-info-email-input"
+                              >
+                                Project
+                              </label>
+                              <input
+                                type="email"
+                                class="form-control"
+                                id="steparrow-gen-info-email-input"
+                                placeholder="Enter email"
+                                required
+                              />
+                              <div class="invalid-feedback">
+                                Please enter an email address
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <div class="mb-3">
+                              <label
+                                class="form-label"
+                                for="steparrow-gen-info-username-input"
+                                >Posisi/Jabatan</label
+                              >
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="steparrow-gen-info-username-input"
+                                placeholder="Enter user name"
+                                required
+                              />
+                              <div class="invalid-feedback">
+                                Please enter a user name
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                          <label
+                            class="form-label"
+                            for="steparrow-gen-info-confirm-password-input"
+                            >Sumber Info</label
+                          >
+                          <input
+                            type="password"
+                            class="form-control"
+                            id="steparrow-gen-info-confirm-password-input"
+                            placeholder="Enter confirm password"
+                            required
+                          />
+                          <div class="invalid-feedback">
+                            Please enter a confirm password
+                          </div>
+                        </div>
+                        <div class="mb-3">
+                          <label
+                            class="form-label"
+                            for="steparrow-gen-info-confirm-password-input"
+                            >Bertemu Dengan</label
+                          >
+                          <input
+                            type="password"
+                            class="form-control"
+                            id="steparrow-gen-info-confirm-password-input"
+                            placeholder="Enter confirm password"
+                            required
+                          />
+                          <div class="invalid-feedback">
+                            Please enter a confirm password
+                          </div>
+                        </div>
+                      </div>
+                      <div class="d-flex align-items-start gap-3 mt-4">
+                        <button
+                          type="button"
+                          class="btn btn-success btn-label right ms-auto nexttab nexttab"
+                          data-nexttab="steparrow-description-info-tab"
+                        >
+                          <i
+                            class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"
+                          ></i
+                          >Go to more info
+                        </button>
+                      </div>
+                    </div>
+                    <!-- end tab pane -->
+
+                    <div
+                      class="tab-pane fade"
+                      id="steparrow-description-info"
+                      role="tabpanel"
+                      aria-labelledby="steparrow-description-info-tab"
+                    >
+                      <div>
+                        <div class="mb-3">
+                          <label for="formFile" class="form-label"
+                            >Upload Image</label
+                          >
+                          <input
+                            class="form-control"
+                            type="file"
+                            id="formFile"
+                            required
+                          />
+                          <div class="invalid-feedback">
+                            Please Upload a file
+                          </div>
+                        </div>
+                        <div>
+                          <label
+                            class="form-label"
+                            for="des-info-description-input"
+                            >Description</label
+                          >
+                          <textarea
+                            class="form-control"
+                            placeholder="Enter Description"
+                            id="des-info-description-input"
+                            rows="3"
+                            required
+                          ></textarea>
+                          <div class="invalid-feedback">
+                            Please enter a description
+                          </div>
+                        </div>
+                      </div>
+                      <div class="d-flex align-items-start gap-3 mt-4">
+                        <button
+                          type="button"
+                          class="btn btn-light btn-label previestab"
+                          data-previous="steparrow-gen-info-tab"
+                        >
+                          <i
+                            class="ri-arrow-left-line label-icon align-middle fs-16 me-2"
+                          ></i>
+                          Back to General
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-success btn-label right ms-auto nexttab nexttab"
+                          data-nexttab="pills-experience-tab"
+                        >
+                          <i
+                            class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"
+                          ></i
+                          >Submit
+                        </button>
+                      </div>
+                    </div>
+                    <!-- end tab pane -->
+
+                    <div
+                      class="tab-pane fade"
+                      id="pills-experience"
+                      role="tabpanel"
+                    >
+                      <div class="text-center">
+                        <div class="avatar-md mt-5 mb-4 mx-auto">
+                          <div
+                            class="avatar-title bg-light text-success display-4 rounded-circle"
+                          >
+                            <i class="ri-checkbox-circle-fill"></i>
+                          </div>
+                        </div>
+                        <h5>Well Done !</h5>
+                        <p class="text-muted">
+                          You have Successfully Signed Up
+                        </p>
+                      </div>
+                    </div>
+                    <!-- end tab pane -->
+                  </div>
+                  <!-- end tab content -->
+                </form>
+              </div>
+              <!-- end card body -->
+            </div>
+            <!-- end card -->
+          </div>
+          <!-- end col -->
+        </div>
+        <!-- end row -->
+      </div>
+      <!-- container-fluid -->
+
+      <!-- Start footer -->
+      <footer class="custom-footer bg-dark py-5 position-relative">
+        <div class="container">
+          <!-- <div class="row">
+            <div class="col-lg-4 mt-4">
+              <div>
+                <div>
+                  <img
+                    src="assets/images/logo/logo_cakrawala_transparan.png"
+                    alt="logo light"
+                    height="50"
+                  />
+                </div>
+                <div class="mt-4 fs-13">
+                  <p>Premium Multipurpose Admin & Dashboard Template</p>
+                  <p>
+                    You can build any type of web application like eCommerce,
+                    CRM, CMS, Project management apps, Admin Panels, etc using
+                    Velzon.
+                  </p>
+                  <ul class="list-inline mb-0 footer-social-link">
+                    <li class="list-inline-item">
+                      <a href="javascript: void(0);" class="avatar-xs d-block">
+                        <div class="avatar-title rounded-circle">
+                          <i class="ri-facebook-fill"></i>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="javascript: void(0);" class="avatar-xs d-block">
+                        <div class="avatar-title rounded-circle">
+                          <i class="ri-github-fill"></i>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="javascript: void(0);" class="avatar-xs d-block">
+                        <div class="avatar-title rounded-circle">
+                          <i class="ri-linkedin-fill"></i>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="javascript: void(0);" class="avatar-xs d-block">
+                        <div class="avatar-title rounded-circle">
+                          <i class="ri-google-fill"></i>
+                        </div>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="javascript: void(0);" class="avatar-xs d-block">
+                        <div class="avatar-title rounded-circle">
+                          <i class="ri-dribbble-line"></i>
+                        </div>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-lg-7 ms-lg-auto">
+              <div class="row">
+                <div class="col-sm-4 mt-4">
+                  <h5 class="text-white mb-0">Company</h5>
+                  <div class="text-muted mt-3">
+                    <ul class="list-unstyled ff-secondary footer-list">
+                      <li><a href="pages-profile.html">About Us</a></li>
+                      <li><a href="pages-gallery.html">Gallery</a></li>
+                      <li><a href="pages-team.html">Team</a></li>
+                      <li><a href="pages-pricing.html">Pricing</a></li>
+                      <li><a href="pages-timeline.html">Timeline</a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-sm-4 mt-4">
+                  <h5 class="text-white mb-0">For Jobs</h5>
+                  <div class="text-muted mt-3">
+                    <ul class="list-unstyled ff-secondary footer-list">
+                      <li><a href="apps-job-lists.html">Job List</a></li>
+                      <li>
+                        <a href="apps-job-application.html">application</a>
+                      </li>
+                      <li><a href="apps-job-new.html">New Job</a></li>
+                      <li>
+                        <a href="apps-job-companies-lists.html">Company List</a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="col-sm-4 mt-4">
+                  <h5 class="text-white mb-0">Support</h5>
+                  <div class="text-muted mt-3">
+                    <ul class="list-unstyled ff-secondary footer-list">
+                      <li><a href="pages-faqs.html">FAQ</a></li>
+                      <li><a href="pages-faqs.html">Contact</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+
+          <div class="row text-center text-sm-start align-items-center mt-1">
+            <div class="col-sm-6">
+              <div>
+                <p class="copy-rights mb-0">
+                  <script>
+                    document.write(new Date().getFullYear());
+                  </script>
+                  © PT. Onecorp
+                </p>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="text-sm-end mt-3 mt-sm-0">
+                <ul class="list-inline mb-0 footer-list gap-4 fs-13">
+                  <li class="list-inline-item">
+                    <a href="pages-privacy-policy.html">Privacy Policy</a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="pages-term-conditions.html">Terms & Conditions</a>
+                  </li>
+                  <li class="list-inline-item">
+                    <a href="pages-privacy-policy.html">Security</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- end footer -->
+
+      <!--start back-to-top-->
+      <button
+        onclick="topFunction()"
+        class="btn btn-info btn-icon landing-back-top"
+        id="back-to-top"
+      >
+        <i class="ri-arrow-up-line"></i>
+      </button>
+      <!--end back-to-top-->
+    </div>
+    <!-- end layout wrapper -->
+
+    <!-- JAVASCRIPT -->
+    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="assets/libs/node-waves/waves.min.js"></script>
+    <script src="assets/libs/feather-icons/feather.min.js"></script>
+    <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+    <script src="assets/js/plugins.js"></script>
+
+    <!--Swiper slider js-->
+    <script src="assets/libs/swiper/swiper-bundle.min.js"></script>
+
+    <!--job landing init -->
+    <script src="assets/js/pages/job-lading.init.js"></script>
+
+    <!-- App js -->
+    <script src="assets/js/pages/form-wizard.init.js"></script>
+  </body>
+
+  <!-- Mirrored from themesbrand.com/velzon/html/master/job-landing.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Aug 2024 07:47:12 GMT -->
+</html>
