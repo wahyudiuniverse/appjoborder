@@ -47,6 +47,7 @@
 
   <!-- Filepond css -->
   <link rel="stylesheet" href="assets/libs/filepond/filepond.min.css" type="text/css" />
+  <!-- <link href="assets/libs/filepond-plugin-image-edit/filepond-plugin-image-edit.css" rel="stylesheet" /> -->
   <link rel="stylesheet" href="assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.css">
 
 
@@ -142,12 +143,11 @@
     <div id="scrollbar">
       <div class="container-fluid">
 
-
         <div id="two-column-menu">
         </div>
         <ul class="navbar-nav" id="navbar-nav">
-          <li class="menu-title"><span data-key="t-menu">Menu</span></li>
-          <li class="nav-item">
+          <!-- <li class="menu-title"><span data-key="t-menu">Menu</span></li> -->
+          <!-- <li class="nav-item">
             <a class="nav-link menu-link" href="#sidebarDashboards" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
               <i class="ri-dashboard-2-line"></i> <span data-key="t-dashboards">Dashboards</span>
             </a>
@@ -176,8 +176,8 @@
                 </li>
               </ul>
             </div>
-          </li> <!-- end Dashboard Menu -->
-          <li class="nav-item">
+          </li> end Dashboard Menu -->
+          <!-- <li class="nav-item">
             <a class="nav-link menu-link" href="#sidebarApps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarApps">
               <i class="ri-apps-2-line"></i> <span data-key="t-apps">Apps</span>
             </a>
@@ -501,9 +501,9 @@
                 </li>
               </ul>
             </div>
-          </li>
+          </li> -->
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link menu-link" href="#sidebarLayouts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLayouts">
               <i class="ri-layout-3-line"></i> <span data-key="t-layouts">Layouts</span> <span class="badge badge-pill bg-danger" data-key="t-hot">Hot</span>
             </a>
@@ -523,11 +523,11 @@
                 </li>
               </ul>
             </div>
-          </li> <!-- end Dashboard Menu -->
+          </li> end Dashboard Menu -->
 
-          <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-pages">Pages</span></li>
+          <!-- <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-pages">Pages</span></li> -->
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link menu-link" href="#sidebarAuth" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAuth">
               <i class="ri-account-circle-line"></i> <span data-key="t-authentication">Authentication</span>
             </a>
@@ -696,9 +696,9 @@
                 </li>
               </ul>
             </div>
-          </li>
+          </li> -->
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link menu-link" href="#sidebarPages" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarPages">
               <i class="ri-pages-line"></i> <span data-key="t-pages">Pages</span>
             </a>
@@ -759,9 +759,9 @@
                 </li>
               </ul>
             </div>
-          </li>
+          </li> -->
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link menu-link" href="#sidebarLanding" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarLanding">
               <i class="ri-rocket-line"></i> <span data-key="t-landing">Landing</span>
             </a>
@@ -778,11 +778,11 @@
                 </li>
               </ul>
             </div>
-          </li>
+          </li> -->
 
-          <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-components">Components</span></li>
+          <!-- <li class="menu-title"><i class="ri-more-fill"></i> <span data-key="t-components">Components</span></li> -->
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link menu-link" href="#sidebarUI" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarUI">
               <i class="ri-pencil-ruler-2-line"></i> <span data-key="t-base-ui">Base UI</span>
             </a>
@@ -876,9 +876,9 @@
                 </div>
               </div>
             </div>
-          </li>
+          </li> -->
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link menu-link" href="#sidebarAdvanceUI" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarAdvanceUI">
               <i class="ri-stack-line"></i> <span data-key="t-advance-ui">Advance UI</span>
             </a>
@@ -916,15 +916,15 @@
                 </li>
               </ul>
             </div>
-          </li>
+          </li> -->
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link menu-link" href="widgets.html">
               <i class="ri-honour-line"></i> <span data-key="t-widgets">Widgets</span>
             </a>
-          </li>
+          </li> -->
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link menu-link" href="#sidebarForms" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarForms">
               <i class="ri-file-list-3-line"></i> <span data-key="t-forms">Forms</span>
             </a>
@@ -974,9 +974,9 @@
                 </li>
               </ul>
             </div>
-          </li>
+          </li> -->
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link menu-link" href="#sidebarTables" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
               <i class="ri-layout-grid-line"></i> <span data-key="t-tables">Tables</span>
             </a>
@@ -996,9 +996,9 @@
                 </li>
               </ul>
             </div>
-          </li>
+          </li> -->
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link menu-link" href="#sidebarCharts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCharts">
               <i class="ri-pie-chart-line"></i> <span data-key="t-charts">Charts</span>
             </a>
@@ -1087,9 +1087,9 @@
                 </li>
               </ul>
             </div>
-          </li>
+          </li> -->
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link menu-link" href="#sidebarIcons" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarIcons">
               <i class="ri-compasses-2-line"></i> <span data-key="t-icons">Icons</span>
             </a>
@@ -1115,9 +1115,9 @@
                 </li>
               </ul>
             </div>
-          </li>
+          </li> -->
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link menu-link" href="#sidebarMaps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarMaps">
               <i class="ri-map-pin-line"></i> <span data-key="t-maps">Maps</span>
             </a>
@@ -1140,9 +1140,9 @@
                 </li>
               </ul>
             </div>
-          </li>
+          </li> -->
 
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link menu-link" href="#sidebarMultilevel" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarMultilevel">
               <i class="ri-share-line"></i> <span data-key="t-multi-level">Multi Level</span>
             </a>
@@ -1181,7 +1181,7 @@
                 </li>
               </ul>
             </div>
-          </li>
+          </li> -->
 
         </ul>
       </div>
@@ -1672,7 +1672,7 @@
 
                               <div class="card-body">
                                 <small class="text-muted">File bertipe jpg, jpeg, png atau pdf. Ukuran maksimal 5 MB</small>
-                                <input type="file" class="filepond filepond-input-multiple" multiple id="pas_foto" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1">
+                                <input type="file" name="pasfoto_input" class="filepond filepond-input-multiple" multiple id="pas_foto" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1" accept="image/png, image/jpeg, image/gif, application/pdf">
                               </div>
                               <!-- end card body -->
                             </div>
@@ -1966,8 +1966,11 @@
   <script src="assets/libs/filepond-plugin-file-validate-size/filepond-plugin-file-validate-size.min.js"></script>
   <script src="assets/libs/filepond-plugin-image-exif-orientation/filepond-plugin-image-exif-orientation.min.js"></script>
   <script src="assets/libs/filepond-plugin-file-encode/filepond-plugin-file-encode.min.js"></script>
+  <script src="assets/libs/filepond-plugin-file-validate-type/filepond-plugin-file-validate-type.js"></script>
+  <script src="assets/libs/filepond-plugin-file-rename/filepond-plugin-file-rename.js"></script>
+  <!-- <script src="assets/libs/filepond-plugin-image-edit/filepond-plugin-image-edit.js"></script> -->
 
-  <script src="assets/js/pages/form-file-upload.init.js"></script>
+  <!-- <script src="assets/js/pages/form-file-upload.init.js"></script> -->
 
   <!-- Modern colorpicker bundle -->
   <script src="assets/libs/%40simonwep/pickr/pickr.min.js"></script>
@@ -1975,20 +1978,57 @@
 
   <script src="assets/js/app.js"></script>
 
-  <!-- <script>
+  <script>
     FilePond.registerPlugin(
       FilePondPluginFileEncode,
-			FilePondPluginFileValidateSize,
-			FilePondPluginImageExifOrientation,
-			FilePondPluginImagePreview
+      FilePondPluginFileValidateType,
+      FilePondPluginFileValidateSize,
+      FilePondPluginFileRename,
+      // FilePondPluginImageEdit,
+      FilePondPluginImageExifOrientation,
+      FilePondPluginImagePreview
     );
 
-    // Select the file input and use 
-    // create() to turn it into a pond
-    FilePond.create(
-      document.querySelector('input.filepond-input-multiple')
-    );
-  </script> -->
+    // Set default FilePond options
+    //FilePond.setOptions({
+    //labelIdle: 'Drag & Drop your picture or <span class="filepond--label-action">Browse</span>',
+    // imagePreviewHeight: 170,
+    // imageCropAspectRatio: "1:1",
+    // imageResizeTargetWidth: 200,
+    // imageResizeTargetHeight: 200,
+    // stylePanelLayout: "compact circle",
+    // styleLoadIndicatorPosition: "center bottom",
+    // styleProgressIndicatorPosition: "right bottom",
+    // styleButtonRemoveItemPosition: "left bottom",
+    // styleButtonProcessItemPosition: "right bottom",
+    // maximum allowed file size
+    // maxFileSize: '50MB',
+    // upload to this server end point
+    // server: {
+    //     url: '<?php //echo base_url() 
+                  ?>Admin/uploadApi',
+    // }        
+    //});
+
+    var pond = FilePond.create(document.querySelector('input[name="pasfoto_input"]'), {
+      labelIdle: 'Drag & Drop pas foto anda atau <span class="filepond--label-action">Browse</span>',
+      imagePreviewHeight: 170,
+      maxFileSize: "5MB",
+      acceptedFileTypes: ['image/png', 'image/jpeg', 'application/pdf'],
+      imageCropAspectRatio: "1:1",
+      imageResizeTargetWidth: 200,
+      imageResizeTargetHeight: 200,
+      fileRenameFunction: (file) => {
+        return `my_new_name${file.extension}`;
+      },
+      server: {
+        process: {
+          url: '<?php echo base_url() ?>Registrasi/uploadApi',
+          method: 'POST',
+        }
+      }
+    });
+  </script>
 
   <!-- define dropdown dengan search -->
   <script type='text/javascript'>
@@ -2265,12 +2305,12 @@
       // });
 
       $('#dokumen-tab').removeClass('active');
-          $('#dokumen-tab').addClass('done');
-          $('#finish-tab').addClass('active');
-          $('#dokumen').removeClass('active');
-          $('#dokumen').removeClass('show');
-          $('#finish').addClass('active');
-          $('#finish').addClass('show');
+      $('#dokumen-tab').addClass('done');
+      $('#finish-tab').addClass('active');
+      $('#dokumen').removeClass('active');
+      $('#dokumen').removeClass('show');
+      $('#finish').addClass('active');
+      $('#finish').addClass('show');
 
     }
   </script>

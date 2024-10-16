@@ -89,4 +89,37 @@ class Registrasi extends CI_Controller
 		// save data diri
 		$data = $this->Registrasi_model->save_pengalaman($datarequest, $nik);
 	}
+
+	function uploadApi() {
+		// $postData = $this->input->post();
+		$image = $_FILES;
+		foreach ($image as $key => $img) {
+			if (!is_dir('./Uploads/')) {
+				mkdir('./Uploads/', 0777, TRUE);
+			}
+			if (!empty($img['name'])) {
+				$config['upload_path'] = './Uploads/';
+				$config['allowed_types'] = '*';
+				// $config['max_size'] = '100'; 
+				// $config['max_width'] = '1024';
+				// $config['max_height'] = '768';
+				$config['overwrite'] = TRUE;
+				$config['file_name'] = date('U') . '_' . $img['name'];
+				$this->load->library('upload', $config);
+				$this->upload->initialize($config);
+				if (!$this->upload->do_upload($key)) {
+					$error = array('error' => $this->upload->display_errors());
+					print_r($error);
+					die;
+				} else {
+					if ($this->upload->do_upload($key)) {
+						$image_data = $this->upload->data();
+						$update["userfile"] = $config['file_name'];
+						// $res = $this->m->update_post($update);
+					}
+				}
+			}
+		}
+		// $this->load->view('imgtest');
+	}
 }
