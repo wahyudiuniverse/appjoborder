@@ -13,10 +13,10 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>Pendaftaran Kandidat | PT. Onecorp</title>
+  <title>Pendaftaran Kandidat | Cakrawala Group</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta content="Form Pendaftaran Kandidat PT. Onecorp" name="description" />
-  <meta content="PT. Onecorp" name="author" />
+  <meta content="Form Pendaftaran Kandidat Cakrawala Group" name="description" />
+  <meta content="Cakrawala Group" name="author" />
   <!-- App favicon -->
   <link rel="shortcut icon" href="<?php echo base_url('assets/images/favicon.ico'); ?>" />
 
@@ -1203,7 +1203,7 @@
               <h4 class="text-white fw-semibold">
                 Form Pendaftaran Kandidat
               </h4>
-              <p class="text-white text-opacity-75 mb-0">PT. Onecorp</p>
+              <p class="text-white text-opacity-75 mb-0">Cakrawala Group</p>
             </div>
           </div>
           <!-- end col -->
@@ -1233,28 +1233,22 @@
       <div class="row">
         <div class="col-xl-12">
           <div class="card">
-            <div hidden class="card-header">
-              <h4 id="header_navigasi" class="card-title mb-0">PT Siprama Cakrawala</h4>
+            <div class="card-header">
+              <h4 id="header_navigasi" class="card-title mb-0">Cakrawala Group</h4>
             </div>
             <!-- end card header -->
             <div class="card-body">
               <form action="#" class="form-steps" autocomplete="off">
                 <div
-                  hidden
                   id="logo_navigasi"
                   class="text-center pt-3 pb-4 mb-1 d-flex justify-content-center">
-                  <!-- <img
-                    src="<?php //echo base_url('assets/images/logo/logo_cakrawala_transparan.png'); 
-                          ?>"
-                    class="card-logo"
-                    alt="logo dark"
-                    height="50" /> -->
-                  <!-- <img src="assets/images/logo-dark.png" class="card-logo card-logo-dark" alt="logo dark" height="17"/>
-                    <img src="assets/images/logo-light.png" class="card-logo card-logo-light" alt="logo light" height="17"/> -->
+                  <img src="<?php echo base_url('assets/images/logo/logo_cakrawala.png'); ?>" class="card-logo mx-1" alt="logo dark" height="50" />
+                  <img src="<?php echo base_url('assets/images/logo/logo_kac.png'); ?>" class="card-logo mx-1" alt="logo dark" height="50" />
+                  <img src="<?php echo base_url('assets/images/logo/logo_mata.png'); ?>" class="card-logo mx-1" alt="logo dark" height="50" />
                 </div>
                 <div class="step-arrow-nav mb-4">
                   <ul
-                    hidden
+
                     id="navigasi_section"
                     class="nav nav-pills custom-nav nav-justified"
                     role="tablist">
@@ -1273,7 +1267,8 @@
                     </li>
                     <li class="nav-item" role="presentation">
                       <button
-                        class="nav-link"
+
+                        class="nav-link active"
                         id="project-tab"
                         data-bs-toggle="pill"
                         data-bs-target="#project"
@@ -1284,9 +1279,9 @@
                         PROJECT
                       </button>
                     </li>
-                    <li class="nav-item done" role="presentation">
+                    <li disabled id="data_diri_nav_tab" class="nav-item" role="presentation">
                       <button
-
+                        disabled
                         class="nav-link"
                         id="data-diri-tab"
                         data-bs-toggle="pill"
@@ -1298,9 +1293,9 @@
                         DATA DIRI
                       </button>
                     </li>
-                    <li class="nav-item" role="presentation">
+                    <li disabled id="pengalaman_nav_tab" class="nav-item" role="presentation">
                       <button
-
+                        disabled
                         class="nav-link"
                         id="pengalaman-tab"
                         data-bs-toggle="pill"
@@ -1312,9 +1307,9 @@
                         PENGALAMAN KERJA
                       </button>
                     </li>
-                    <li class="nav-item" role="presentation">
+                    <li disabled id="dokumen_nav_tab" class="nav-item" role="presentation">
                       <button
-
+                        disabled
                         class="nav-link"
                         id="dokumen-tab"
                         data-bs-toggle="pill"
@@ -1326,9 +1321,9 @@
                         DOKUMEN
                       </button>
                     </li>
-                    <li class="nav-item" role="presentation">
+                    <li disabled id="finish_nav_tab" class="nav-item" role="presentation">
                       <button
-
+                        disabled
                         class="nav-link"
                         id="finish-tab"
                         data-bs-toggle="pill"
@@ -1346,7 +1341,7 @@
                 <div class="tab-content">
                   <!-- TAB Perusahaan -->
                   <div
-                    class="tab-pane fade show active"
+                    class="tab-pane fade"
                     id="perusahaan"
                     role="tabpanel"
                     aria-labelledby="nik-ktp-tab">
@@ -1361,6 +1356,7 @@
                           <span id="button_cakrawala"><button onclick="next_perusahaan(1)" type='button' class='btn btn-outline-light m-2'><img src="<?php echo base_url('assets/images/logo/logo_cakrawala.png'); ?>" alt="" height="100px"></button></span>
                           <span id="button_kac"><button onclick="next_perusahaan(2)" type='button' class='btn btn-outline-light m-2'><img src="<?php echo base_url('assets/images/logo/logo_kac.png'); ?>" alt="" height="100px"></button></span>
                           <span id="button_mata"><button onclick="next_perusahaan(3)" type='button' class='btn btn-outline-light m-2'><img src="<?php echo base_url('assets/images/logo/logo_mata.png'); ?>" alt="" height="100px"></button></span>
+                          <input hidden id="id_kandidat" type="text">
                         </div>
                       </div>
                     </div>
@@ -1372,13 +1368,13 @@
 
                   <!-- TAB Project -->
                   <div
-                    class="tab-pane fade"
+                    class="tab-pane fade show active"
                     id="project"
                     role="tabpanel"
                     aria-labelledby="project-tab">
                     <div>
                       <div class="row">
-                        <div class="mb-3">
+                        <div hidden class="mb-3">
                           <label
                             class="form-label"
                             for="perusahaan_input">Perusahaan</label>
@@ -1404,7 +1400,7 @@
                               <option value="">Pilih Project</option>
                               <?php foreach ($all_project as $project) : ?>
                                 <option value="<?= $project['project_id']; ?>" style="text-wrap: wrap;">
-                                  <?php echo $project['project_name']; ?>
+                                  <?php echo "[" . $project['priority'] . "] " . $project['title']; ?>
                                 </option>
                               <?php endforeach; ?>
                             </select>
@@ -1417,17 +1413,43 @@
                               for="jabatan_input">Posisi/Jabatan</label>
                             <select name="jabatan_input" id="jabatan_input" class="form-control dropdown-dengan-search">
                               <option value="" style="text-wrap: wrap;">Pilih Jabatan</option>
+                              <?php foreach ($all_jabatan as $jabatan) : ?>
+                                <option value="<?= $jabatan['designation_id']; ?>" style="text-wrap: wrap;">
+                                  <?php echo $jabatan['designation_name']; ?>
+                                </option>
+                              <?php endforeach; ?>
                             </select>
                           </div>
                         </div>
                       </div>
-                      <div class="mb-3">
-                        <label
-                          class="form-label"
-                          for="area">Area</label>
-                        <select name="area" id="area" class="form-control dropdown-dengan-search">
-                          <option value="" style="text-wrap: wrap;">Pilih Area</option>
-                        </select>
+                      <div class="row">
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            <label
+                              class="form-label"
+                              for="provinsi_input">
+                              Provinsi
+                            </label>
+                            <select name="provinsi_input" id="provinsi_input" class="form-control dropdown-dengan-search">
+                              <option value="">Pilih Provinsi</option>
+                              <?php foreach ($all_provinsi as $provinsi) : ?>
+                                <option value="<?= $provinsi['id_bps']; ?>" style="text-wrap: wrap;">
+                                  <?php echo $provinsi['nama']; ?>
+                                </option>
+                              <?php endforeach; ?>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="mb-3">
+                            <label
+                              class="form-label"
+                              for="kota_input">Area</label>
+                            <select name="kota_input" id="kota_input" class="form-control dropdown-dengan-search">
+                              <option value="" style="text-wrap: wrap;">Pilih Area</option>
+                            </select>
+                          </div>
+                        </div>
                       </div>
                       <div class="mb-3">
                         <label
@@ -1541,7 +1563,15 @@
                         <div class="col-lg-4">
                           <div class="mb-3">
                             <label for="hubungan_kondar" class="form-label">HUBUNGAN KONTAK DARURAT</label>
-                            <select name="hubungan_kondar" id="hubungan_kondar" class="form-control dropdown-dengan-search" required>
+                            <select name="hubungan_kondar" id="hubungan_kondar" class="form-control dropdown-dengan-search">
+                              <option value="" style="text-wrap: wrap;">Pilih Hubungan Kontak Darurat</option>
+                              <?php foreach ($all_family_relation as $family_relation) : ?>
+                                <option value="<?= $family_relation['secid']; ?>" style="text-wrap: wrap;">
+                                  <?php echo $family_relation['name']; ?>
+                                </option>
+                              <?php endforeach; ?>
+                            </select>
+                            <!-- <select name="hubungan_kondar" id="hubungan_kondar" class="form-control dropdown-dengan-search" required>
                               <option value="" style="text-wrap: wrap;">Pilih Hubungan Kontak Darurat</option>
                               <option value="1" style="text-wrap: wrap;">Orang Tua</option>
                               <option value="2" style="text-wrap: wrap;">Kakak</option>
@@ -1551,7 +1581,7 @@
                               <option value="6" style="text-wrap: wrap;">Sepupu</option>
                               <option value="7" style="text-wrap: wrap;">Keponakan</option>
                               <option value="8" style="text-wrap: wrap;">Lainnya</option>
-                            </select>
+                            </select> -->
                           </div>
                         </div>
                         <div class="col-lg-4">
@@ -1580,14 +1610,14 @@
                       </div>
                       <div class="row">
                         <div class="d-flex align-items-start gap-3 mt-4">
-                          <!-- <button
+                          <button
                             type="button"
                             onclick="previous_data_diri()"
                             class="btn btn-light btn-label">
                             <i
                               class="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i>
                             Back to Project
-                          </button> -->
+                          </button>
                           <button
                             type="button"
                             onclick="next_data_diri()"
@@ -1629,14 +1659,14 @@
                       </div>
                       <div class="row">
                         <div class="d-flex align-items-start gap-3 mt-4">
-                          <!-- <button
+                          <button
                             type="button"
                             onclick="previous_pengalaman()"
                             class="btn btn-light btn-label">
                             <i
                               class="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i>
                             Back to Data Diri
-                          </button> -->
+                          </button>
                           <button
                             type="button"
                             onclick="next_pengalaman()"
@@ -1648,7 +1678,7 @@
                       </div>
                     </form>
                   </div>
-                  <!-- end data diri tab pane -->
+                  <!-- end pengalaman tab pane -->
 
                   <!-- TAB Dokumen -->
                   <div
@@ -1672,7 +1702,8 @@
 
                               <div class="card-body">
                                 <small class="text-muted">File bertipe jpg, jpeg, png atau pdf. Ukuran maksimal 5 MB</small>
-                                <input type="file" name="pasfoto_input" class="filepond filepond-input-multiple" multiple id="pas_foto" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1" accept="image/png, image/jpeg, image/gif, application/pdf">
+                                <input type="file" class="filepond filepond-input-multiple" multiple id="pas_foto" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1" accept="image/png, image/jpeg, application/pdf">
+                                <input hidden type="text" id="status_file_pasfoto" value="0">
                               </div>
                               <!-- end card body -->
                             </div>
@@ -1688,7 +1719,8 @@
 
                               <div class="card-body">
                                 <small class="text-muted">File bertipe jpg, jpeg, png atau pdf. Ukuran maksimal 5 MB</small>
-                                <input type="file" class="filepond filepond-input-multiple" multiple id="file_ktp" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1" accept="image/png, image/jpeg, image/gif">
+                                <input type="file" class="filepond filepond-input-multiple" multiple id="file_ktp" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1" accept="image/png, image/jpeg, application/pdf">
+                                <input hidden type="text" id="status_file_ktp" value="0">
                               </div>
                               <!-- end card body -->
                             </div>
@@ -1703,8 +1735,9 @@
                               </div><!-- end card header -->
 
                               <div class="card-body">
-                                <small class="text-muted">File bertipe jpg, jpeg, png atau pdf. Ukuran maksimal 5 MB</small>
-                                <input type="file" class="filepond filepond-input-multiple" multiple id="file_cv" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1" accept="image/png, image/jpeg, image/gif">
+                                <small class="text-muted">File bertipe jpg, jpeg, png atau pdf. Ukuran maksimal 10 MB</small>
+                                <input type="file" class="filepond filepond-input-multiple" multiple id="file_cv" data-allow-reorder="true" data-max-file-size="10MB" data-max-files="1" accept="image/png, image/jpeg, application/pdf">
+                                <input hidden type="text" id="status_file_cv" value="0">
                               </div>
                               <!-- end card body -->
                             </div>
@@ -1720,7 +1753,7 @@
 
                               <div class="card-body">
                                 <small class="text-muted">File bertipe jpg, jpeg, png atau pdf. Ukuran maksimal 5 MB</small>
-                                <input type="file" class="filepond filepond-input-multiple" multiple id="file_kk" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1" accept="image/png, image/jpeg, image/gif">
+                                <input type="file" class="filepond filepond-input-multiple" multiple id="file_kk" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1" accept="image/png, image/jpeg, application/pdf">
                               </div>
                               <!-- end card body -->
                             </div>
@@ -1740,7 +1773,7 @@
 
                               <div class="card-body">
                                 <small class="text-muted">File bertipe jpg, jpeg, png atau pdf. Ukuran maksimal 5 MB</small>
-                                <input type="file" class="filepond filepond-input-multiple" multiple id="file_npwp" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1">
+                                <input type="file" class="filepond filepond-input-multiple" multiple id="file_npwp" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1" accept="image/png, image/jpeg, application/pdf">
                               </div>
                               <!-- end card body -->
                             </div>
@@ -1756,7 +1789,7 @@
 
                               <div class="card-body">
                                 <small class="text-muted">File bertipe jpg, jpeg, png atau pdf. Ukuran maksimal 5 MB</small>
-                                <input type="file" class="filepond filepond-input-multiple" multiple id="file_skck" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1" accept="image/png, image/jpeg, image/gif">
+                                <input type="file" class="filepond filepond-input-multiple" multiple id="file_skck" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1" accept="image/png, image/jpeg, application/pdf">
                               </div>
                               <!-- end card body -->
                             </div>
@@ -1772,7 +1805,8 @@
 
                               <div class="card-body">
                                 <small class="text-muted">File bertipe jpg, jpeg, png atau pdf. Ukuran maksimal 5 MB</small>
-                                <input type="file" class="filepond filepond-input-multiple" multiple id="file_ijazah" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1" accept="image/png, image/jpeg, image/gif">
+                                <input type="file" class="filepond filepond-input-multiple" multiple id="file_ijazah" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1" accept="image/png, image/jpeg, application/pdf">
+                                <input hidden type="text" id="status_file_ijazah" value="0">
                               </div>
                               <!-- end card body -->
                             </div>
@@ -1788,7 +1822,7 @@
 
                               <div class="card-body">
                                 <small class="text-muted">File bertipe jpg, jpeg, png atau pdf. Ukuran maksimal 5 MB</small>
-                                <input type="file" class="filepond filepond-input-multiple" multiple id="file_sim" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1" accept="image/png, image/jpeg, image/gif">
+                                <input type="file" class="filepond filepond-input-multiple" multiple id="file_sim" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1" accept="image/png, image/jpeg, application/pdf">
                               </div>
                               <!-- end card body -->
                             </div>
@@ -1808,7 +1842,7 @@
 
                               <div class="card-body">
                                 <small class="text-muted">File bertipe jpg, jpeg, png atau pdf. Ukuran maksimal 5 MB</small>
-                                <input type="file" class="filepond filepond-input-multiple" multiple id="file_paklaring" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1">
+                                <input type="file" class="filepond filepond-input-multiple" multiple id="file_paklaring" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1" accept="image/png, image/jpeg, application/pdf">
                               </div>
                               <!-- end card body -->
                             </div>
@@ -1824,7 +1858,7 @@
 
                               <div class="card-body">
                                 <small class="text-muted">File bertipe jpg, jpeg, png atau pdf. Ukuran maksimal 5 MB</small>
-                                <input type="file" class="filepond filepond-input-multiple" multiple id="file_dokumen_pendukung" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1" accept="image/png, image/jpeg, image/gif">
+                                <input type="file" class="filepond filepond-input-multiple" multiple id="file_dokumen_pendukung" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1" accept="image/png, image/jpeg, application/pdf">
                               </div>
                               <!-- end card body -->
                             </div>
@@ -1840,16 +1874,18 @@
                     <!-- end row -->
 
                     <div class="d-flex align-items-start gap-3 mt-4">
-                      <!-- <button
+                      <button
                         type="button"
-                        class="btn btn-light btn-label previestab"
+                        onclick="previous_dokumen()"
+                        class="btn btn-light btn-label"
                         data-previous="data-diri-tab">
                         <i
                           class="ri-arrow-left-line label-icon align-middle fs-16 me-2"></i>
                         Back to Pengalaman Kerja
-                      </button> -->
+                      </button>
                       <button
                         type="button"
+                        id="button_next_dokumen"
                         onclick="next_dokumen()"
                         class="btn btn-success btn-label right ms-auto">
                         <i
@@ -1874,6 +1910,8 @@
                       <p class="text-muted">
                         Anda berhasil melakukan registrasi pelamar
                       </p>
+                      <h5>Nomor Registrasi Anda: <span id="nomor_registrasi"></h5>
+                      <h5>Waktu Registrasi Anda: <span id="waktu_registrasi"></h5>
                     </div>
                   </div>
                   <!-- end tab pane -->
@@ -1901,7 +1939,7 @@
                 <script>
                   document.write(new Date().getFullYear());
                 </script>
-                © PT. Onecorp
+                © Cakrawala Group
               </p>
             </div>
           </div>
@@ -1909,13 +1947,13 @@
             <div class="text-sm-end mt-3 mt-sm-0">
               <ul class="list-inline mb-0 footer-list gap-4 fs-13">
                 <li class="list-inline-item">
-                  <a href="pages-privacy-policy.html">Privacy Policy</a>
+                  <a href="#">Privacy Policy</a>
                 </li>
                 <li class="list-inline-item">
-                  <a href="pages-term-conditions.html">Terms & Conditions</a>
+                  <a href="#">Terms & Conditions</a>
                 </li>
                 <li class="list-inline-item">
-                  <a href="pages-privacy-policy.html">Security</a>
+                  <a href="#">Security</a>
                 </li>
               </ul>
             </div>
@@ -1948,7 +1986,7 @@
   <script src="<?= base_url() ?>assets/libs/swiper/swiper-bundle.min.js"></script>
 
   <!--job landing init -->
-  <script src="<?= base_url() ?>assets/js/pages/job-lading.init.js"></script>
+  <!-- <script src="<?= base_url() ?>assets/js/pages/job-lading.init.js"></script> -->
 
   <!-- App js -->
   <script src="<?= base_url() ?>assets/js/pages/form-wizard.init.js"></script>
@@ -1956,10 +1994,10 @@
   <!-- prismjs plugin -->
   <script src="<?= base_url() ?>assets/libs/prismjs/prism.js"></script>
 
-  <script src="<?= base_url() ?>assets/js/pages/form-validation.init.js"></script>
+  <!-- <script src="<?= base_url() ?>assets/js/pages/form-validation.init.js"></script> -->
 
   <!-- dropzone min -->
-  <script src="assets/libs/dropzone/dropzone-min.js"></script>
+  <!-- <script src="assets/libs/dropzone/dropzone-min.js"></script> -->
   <!-- filepond js -->
   <script src="assets/libs/filepond/filepond.min.js"></script>
   <script src="assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js"></script>
@@ -1979,6 +2017,9 @@
   <script src="assets/js/app.js"></script>
 
   <script>
+    var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
+      csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
+
     FilePond.registerPlugin(
       FilePondPluginFileEncode,
       FilePondPluginFileValidateType,
@@ -1989,28 +2030,8 @@
       FilePondPluginImagePreview
     );
 
-    // Set default FilePond options
-    //FilePond.setOptions({
-    //labelIdle: 'Drag & Drop your picture or <span class="filepond--label-action">Browse</span>',
-    // imagePreviewHeight: 170,
-    // imageCropAspectRatio: "1:1",
-    // imageResizeTargetWidth: 200,
-    // imageResizeTargetHeight: 200,
-    // stylePanelLayout: "compact circle",
-    // styleLoadIndicatorPosition: "center bottom",
-    // styleProgressIndicatorPosition: "right bottom",
-    // styleButtonRemoveItemPosition: "left bottom",
-    // styleButtonProcessItemPosition: "right bottom",
-    // maximum allowed file size
-    // maxFileSize: '50MB',
-    // upload to this server end point
-    // server: {
-    //     url: '<?php //echo base_url() 
-                  ?>Admin/uploadApi',
-    // }        
-    //});
-
-    var pond = FilePond.create(document.querySelector('input[name="pasfoto_input"]'), {
+    //create object filepond untuk pasfoto
+    var pond_pasfoto = FilePond.create(document.querySelector('input[id="pas_foto"]'), {
       labelIdle: 'Drag & Drop pas foto anda atau <span class="filepond--label-action">Browse</span>',
       imagePreviewHeight: 170,
       maxFileSize: "5MB",
@@ -2019,72 +2040,169 @@
       imageResizeTargetWidth: 200,
       imageResizeTargetHeight: 200,
       fileRenameFunction: (file) => {
-        return `my_new_name${file.extension}`;
-      },
-      server: {
-        process: {
-          url: '<?php echo base_url() ?>Registrasi/uploadApi',
-          method: 'POST',
-        }
+        return `pasfoto${file.extension}`;
+      }
+    });
+
+    //create object filepond untuk ktp
+    var pond_ktp = FilePond.create(document.querySelector('input[id="file_ktp"]'), {
+      labelIdle: 'Drag & Drop file ktp anda atau <span class="filepond--label-action">Browse</span>',
+      imagePreviewHeight: 170,
+      maxFileSize: "5MB",
+      acceptedFileTypes: ['image/png', 'image/jpeg', 'application/pdf'],
+      imageCropAspectRatio: "1:1",
+      imageResizeTargetWidth: 200,
+      imageResizeTargetHeight: 200,
+      fileRenameFunction: (file) => {
+        return `ktp${file.extension}`;
+      }
+    });
+
+    //create object filepond untuk cv
+    var pond_cv = FilePond.create(document.querySelector('input[id="file_cv"]'), {
+      labelIdle: 'Drag & Drop file CV anda atau <span class="filepond--label-action">Browse</span>',
+      imagePreviewHeight: 170,
+      maxFileSize: "10MB",
+      acceptedFileTypes: ['image/png', 'image/jpeg', 'application/pdf'],
+      imageCropAspectRatio: "1:1",
+      imageResizeTargetWidth: 200,
+      imageResizeTargetHeight: 200,
+      fileRenameFunction: (file) => {
+        return `cv${file.extension}`;
+      }
+    });
+
+    //create object filepond untuk kk
+    var pond_kk = FilePond.create(document.querySelector('input[id="file_kk"]'), {
+      labelIdle: 'Drag & Drop file Kartu Keluarga anda atau <span class="filepond--label-action">Browse</span>',
+      imagePreviewHeight: 170,
+      maxFileSize: "5MB",
+      acceptedFileTypes: ['image/png', 'image/jpeg', 'application/pdf'],
+      imageCropAspectRatio: "1:1",
+      imageResizeTargetWidth: 200,
+      imageResizeTargetHeight: 200,
+      fileRenameFunction: (file) => {
+        return `kk${file.extension}`;
+      }
+    });
+
+    //create object filepond untuk npwp
+    var pond_npwp = FilePond.create(document.querySelector('input[id="file_npwp"]'), {
+      labelIdle: 'Drag & Drop file NPWP anda atau <span class="filepond--label-action">Browse</span>',
+      imagePreviewHeight: 170,
+      maxFileSize: "5MB",
+      acceptedFileTypes: ['image/png', 'image/jpeg', 'application/pdf'],
+      imageCropAspectRatio: "1:1",
+      imageResizeTargetWidth: 200,
+      imageResizeTargetHeight: 200,
+      fileRenameFunction: (file) => {
+        return `npwp${file.extension}`;
+      }
+    });
+
+    //create object filepond untuk skck
+    var pond_skck = FilePond.create(document.querySelector('input[id="file_skck"]'), {
+      labelIdle: 'Drag & Drop file SKCK anda atau <span class="filepond--label-action">Browse</span>',
+      imagePreviewHeight: 170,
+      maxFileSize: "5MB",
+      acceptedFileTypes: ['image/png', 'image/jpeg', 'application/pdf'],
+      imageCropAspectRatio: "1:1",
+      imageResizeTargetWidth: 200,
+      imageResizeTargetHeight: 200,
+      fileRenameFunction: (file) => {
+        return `skck${file.extension}`;
+      }
+    });
+
+    //create object filepond untuk ijazah
+    var pond_ijazah = FilePond.create(document.querySelector('input[id="file_ijazah"]'), {
+      labelIdle: 'Drag & Drop file Ijazah anda atau <span class="filepond--label-action">Browse</span>',
+      imagePreviewHeight: 170,
+      maxFileSize: "5MB",
+      acceptedFileTypes: ['image/png', 'image/jpeg', 'application/pdf'],
+      imageCropAspectRatio: "1:1",
+      imageResizeTargetWidth: 200,
+      imageResizeTargetHeight: 200,
+      fileRenameFunction: (file) => {
+        return `ijazah${file.extension}`;
+      }
+    });
+
+    //create object filepond untuk sim
+    var pond_sim = FilePond.create(document.querySelector('input[id="file_sim"]'), {
+      labelIdle: 'Drag & Drop file SIM anda atau <span class="filepond--label-action">Browse</span>',
+      imagePreviewHeight: 170,
+      maxFileSize: "5MB",
+      acceptedFileTypes: ['image/png', 'image/jpeg', 'application/pdf'],
+      imageCropAspectRatio: "1:1",
+      imageResizeTargetWidth: 200,
+      imageResizeTargetHeight: 200,
+      fileRenameFunction: (file) => {
+        return `sim${file.extension}`;
+      }
+    });
+
+    //create object filepond untuk paklaring
+    var pond_paklaring = FilePond.create(document.querySelector('input[id="file_paklaring"]'), {
+      labelIdle: 'Drag & Drop file Paklaring anda atau <span class="filepond--label-action">Browse</span>',
+      imagePreviewHeight: 170,
+      maxFileSize: "5MB",
+      acceptedFileTypes: ['image/png', 'image/jpeg', 'application/pdf'],
+      imageCropAspectRatio: "1:1",
+      imageResizeTargetWidth: 200,
+      imageResizeTargetHeight: 200,
+      fileRenameFunction: (file) => {
+        return `paklaring${file.extension}`;
+      }
+    });
+
+    //create object filepond untuk dokumen_pendukung
+    var pond_dokumen_pendukung = FilePond.create(document.querySelector('input[id="file_dokumen_pendukung"]'), {
+      labelIdle: 'Drag & Drop file Dokumen Pendukung anda atau <span class="filepond--label-action">Browse</span>',
+      imagePreviewHeight: 170,
+      maxFileSize: "5MB",
+      acceptedFileTypes: ['image/png', 'image/jpeg', 'application/pdf'],
+      imageCropAspectRatio: "1:1",
+      imageResizeTargetWidth: 200,
+      imageResizeTargetHeight: 200,
+      fileRenameFunction: (file) => {
+        return `dokumen_pendukung${file.extension}`;
       }
     });
   </script>
 
   <!-- define dropdown dengan search -->
   <script type='text/javascript'>
+    var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
+      csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
+
     $(document).ready(function() {
       $('.dropdown-dengan-search').select2({
         width: '100%'
       });
     });
 
-    // Project Change - Jabatan
-    $('#project_input').change(function() {
-      var project = $(this).val();
+    // Provinsi Change - Kota
+    $('#provinsi_input').change(function() {
+      var provinsi = $(this).val();
 
-      // AJAX request Jabatan
+      // AJAX request Kota
       $.ajax({
-        url: '<?= base_url() ?>registrasi/getJabatanByProject/',
+        url: '<?= base_url() ?>registrasi/getKotaByProv/',
         method: 'post',
         data: {
-          project: project
+          [csrfName]: csrfHash,
+          provinsi: provinsi,
         },
         dataType: 'json',
         success: function(response) {
 
           // Remove options
-          $('#jabatan_input').find('option').not(':first').remove();
+          $('#kota_input').find('option').not(':first').remove();
 
           // Add options
           $.each(response, function(index, data) {
-            $('#jabatan_input').append('<option value="' + data['jabatan_id'] + '" style="text-wrap: wrap;">' + data['jabatan_name'] + '</option>');
-          });
-        }
-      });
-    });
-
-    // Jabatan Change - Area
-    $('#jabatan_input').change(function() {
-      var jabatan = $(this).val();
-      var project = $('#project_input').val();
-
-      // AJAX request Area
-      $.ajax({
-        url: '<?= base_url() ?>registrasi/getAreaByJabatan/',
-        method: 'post',
-        data: {
-          jabatan: jabatan,
-          project: project,
-        },
-        dataType: 'json',
-        success: function(response) {
-
-          // Remove options
-          $('#area').find('option').not(':first').remove();
-
-          // Add options
-          $.each(response, function(index, data) {
-            $('#area').append('<option value="' + data['area'] + '" style="text-wrap: wrap;">' + data['area'] + '</option>');
+            $('#kota_input').append('<option value="' + data['id'] + '" style="text-wrap: wrap;">' + data['nama'] + '</option>');
           });
         }
       });
@@ -2094,50 +2212,385 @@
   <!-- button next perusahaan -->
   <script>
     function next_perusahaan(id) {
-      // alert(id);
-      if (id == 1) {
-        nama_perusahaan = 'PT. Siprama Cakrawala';
-        card_logo = '<img src="<?php echo base_url('assets/images/logo/logo_cakrawala.png'); ?>" class="card-logo" alt="logo dark" height="50" />';
-      } else if (id == 2) {
-        nama_perusahaan = 'PT. Krista Aulia Cakrawala';
-        card_logo = '<img src="<?php echo base_url('assets/images/logo/logo_kac.png'); ?>" class="card-logo" alt="logo dark" height="50" />';
-      } else if (id == 3) {
-        nama_perusahaan = 'PT. Mata Cakrawala';
-        card_logo = '<img src="<?php echo base_url('assets/images/logo/logo_mata.png'); ?>" class="card-logo" alt="logo dark" height="50" />';
-      }
-      $("#perusahaan_input").val(id).change();
-      $('#perusahaan_input').prop('disabled', 'disabled');
-      $("#perusahaan_id_selected").val(id);
-      var nama_perusahaan_option = $("#perusahaan_input option:selected").text();
-      $("#perusahaan_name_selected").val(nama_perusahaan_option);
+      // AJAX untuk save data perusahaan
+      $.ajax({
+        url: '<?= base_url() ?>registrasi/save_perusahaan/',
+        method: 'post',
+        data: {
+          [csrfName]: csrfHash,
+          perusahaan_id: id,
+        },
+        beforeSend: function() {},
+        success: function(response) {
+          var res = jQuery.parseJSON(response);
 
-      $('#logo_navigasi').html(card_logo);
-      $('#header_navigasi').html(nama_perusahaan);
-      $('#navigasi_section').attr("hidden", false);
-      $('#logo_navigasi').attr("hidden", false);
-      $('#header_navigasi').attr("hidden", false);
-      $('.card-header').attr("hidden", false);
-      $('#perusahaan-tab').removeClass('active');
-      $('#perusahaan-tab').addClass('done');
-      $('#project-tab').addClass('active');
-      $('#perusahaan').removeClass('active');
-      $('#perusahaan').removeClass('show');
-      $('#project').addClass('active');
-      $('#project').addClass('show');
+          //append id_kandidat ke objek filepond
+          pond_pasfoto.setOptions({
+            server: {
+              process: {
+                url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+                method: 'POST',
+                ondata: (formData) => {
+                  formData.append('id_kandidat', res);
+                  formData.append([csrfName], csrfHash);
+                  return formData;
+                }
+              }
+            }
+          });
+          pond_ktp.setOptions({
+            server: {
+              process: {
+                url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+                method: 'POST',
+                ondata: (formData) => {
+                  formData.append('id_kandidat', res);
+                  formData.append([csrfName], csrfHash);
+                  return formData;
+                }
+              }
+            }
+          });
+          pond_cv.setOptions({
+            server: {
+              process: {
+                url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+                method: 'POST',
+                ondata: (formData) => {
+                  formData.append('id_kandidat', res);
+                  formData.append([csrfName], csrfHash);
+                  return formData;
+                }
+              }
+            }
+          });
+          pond_kk.setOptions({
+            server: {
+              process: {
+                url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+                method: 'POST',
+                ondata: (formData) => {
+                  formData.append('id_kandidat', res);
+                  formData.append([csrfName], csrfHash);
+                  return formData;
+                }
+              }
+            }
+          });
+          pond_npwp.setOptions({
+            server: {
+              process: {
+                url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+                method: 'POST',
+                ondata: (formData) => {
+                  formData.append('id_kandidat', res);
+                  formData.append([csrfName], csrfHash);
+                  return formData;
+                }
+              }
+            }
+          });
+          pond_skck.setOptions({
+            server: {
+              process: {
+                url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+                method: 'POST',
+                ondata: (formData) => {
+                  formData.append('id_kandidat', res);
+                  formData.append([csrfName], csrfHash);
+                  return formData;
+                }
+              }
+            }
+          });
+          pond_ijazah.setOptions({
+            server: {
+              process: {
+                url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+                method: 'POST',
+                ondata: (formData) => {
+                  formData.append('id_kandidat', res);
+                  formData.append([csrfName], csrfHash);
+                  return formData;
+                }
+              }
+            }
+          });
+          pond_sim.setOptions({
+            server: {
+              process: {
+                url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+                method: 'POST',
+                ondata: (formData) => {
+                  formData.append('id_kandidat', res);
+                  formData.append([csrfName], csrfHash);
+                  return formData;
+                }
+              }
+            }
+          });
+          pond_paklaring.setOptions({
+            server: {
+              process: {
+                url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+                method: 'POST',
+                ondata: (formData) => {
+                  formData.append('id_kandidat', res);
+                  formData.append([csrfName], csrfHash);
+                  return formData;
+                }
+              }
+            }
+          });
+          pond_dokumen_pendukung.setOptions({
+            server: {
+              process: {
+                url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+                method: 'POST',
+                ondata: (formData) => {
+                  formData.append('id_kandidat', res);
+                  formData.append([csrfName], csrfHash);
+                  return formData;
+                }
+              }
+            }
+          });
+
+          if (id == 1) {
+            nama_perusahaan = 'PT. Siprama Cakrawala';
+            card_logo = '<img src="<?php echo base_url('assets/images/logo/logo_cakrawala.png'); ?>" class="card-logo" alt="logo dark" height="50" />';
+          } else if (id == 2) {
+            nama_perusahaan = 'PT. Krista Aulia Cakrawala';
+            card_logo = '<img src="<?php echo base_url('assets/images/logo/logo_kac.png'); ?>" class="card-logo" alt="logo dark" height="50" />';
+          } else if (id == 3) {
+            nama_perusahaan = 'PT. Mata Cakrawala';
+            card_logo = '<img src="<?php echo base_url('assets/images/logo/logo_mata.png'); ?>" class="card-logo" alt="logo dark" height="50" />';
+          }
+          $("#perusahaan_input").val(id).change();
+          $('#perusahaan_input').prop('disabled', 'disabled');
+          $("#project-tab").removeAttr('disabled');
+          $("#id_kandidat").val(res);
+          $("#nomor_registrasi").html(res);
+          $("#perusahaan_id_selected").val(id);
+          var nama_perusahaan_option = $("#perusahaan_input option:selected").text();
+          $("#perusahaan_name_selected").val(nama_perusahaan_option);
+
+          $('#logo_navigasi').html(card_logo);
+          $('#header_navigasi').html(nama_perusahaan);
+          $('#navigasi_section').attr("hidden", false);
+          $('#logo_navigasi').attr("hidden", false);
+          $('#header_navigasi').attr("hidden", false);
+          $('.card-header').attr("hidden", false);
+          $('#perusahaan-tab').removeClass('active');
+          $('#perusahaan-tab').addClass('done');
+          $('#project-tab').addClass('active');
+          $('#perusahaan').removeClass('active');
+          $('#perusahaan').removeClass('show');
+          $('#project').addClass('active');
+          $('#project').addClass('show');
+        },
+        error: function(xhr, status, error) {
+          alert("error save perusahaan");
+        }
+      });
+
     }
   </script>
 
   <!-- button next project -->
   <script>
     function next_project() {
-      // alert(id);
-      $('#project-tab').removeClass('active');
-      $('#project-tab').addClass('done');
-      $('#data-diri-tab').addClass('active');
-      $('#project').removeClass('active');
-      $('#project').removeClass('show');
-      $('#data-diri').addClass('active');
-      $('#data-diri').addClass('show');
+      var project_id = $("#project_input").val();
+      var project_name = $("#project_input option:selected").text();
+      var jabatan_id = $("#jabatan_input").val();
+      var jabatan_name = $("#jabatan_input option:selected").text();
+      var area = $("#kota_input").val();
+      var sumber_info = $("#sumber_info_input").val();
+      var interviewer = $("#interviewer_input").val();
+
+      if (
+        area == "" || area == "0" || area == null ||
+        sumber_info == "" || sumber_info == "0" || sumber_info == null ||
+        interviewer == "" || interviewer == "0" || interviewer == null
+      ) {
+        alert("Area, Sumber Info dan Bertemu dengan harus diisi.");
+      } else {
+        if (project_id == "") {
+          project_name = "";
+        }
+        if (jabatan_id == "") {
+          jabatan_name = "";
+        }
+        // AJAX untuk save data diri
+        $.ajax({
+          url: '<?= base_url() ?>registrasi/save_project/',
+          method: 'post',
+          data: {
+            [csrfName]: csrfHash,
+            project_id: project_id,
+            project_name: project_name,
+            jabatan_id: jabatan_id,
+            jabatan_name: jabatan_name,
+            area: area,
+            sumber_info: sumber_info,
+            interviewer: interviewer,
+          },
+          beforeSend: function() {},
+          success: function(response) {
+            var res = jQuery.parseJSON(response);
+
+            //append id_kandidat ke objek filepond
+            pond_pasfoto.setOptions({
+              server: {
+                process: {
+                  url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+                  method: 'POST',
+                  ondata: (formData) => {
+                    formData.append('id_kandidat', res);
+                    formData.append([csrfName], csrfHash);
+                    return formData;
+                  }
+                }
+              }
+            });
+            pond_ktp.setOptions({
+              server: {
+                process: {
+                  url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+                  method: 'POST',
+                  ondata: (formData) => {
+                    formData.append('id_kandidat', res);
+                    formData.append([csrfName], csrfHash);
+                    return formData;
+                  }
+                }
+              }
+            });
+            pond_cv.setOptions({
+              server: {
+                process: {
+                  url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+                  method: 'POST',
+                  ondata: (formData) => {
+                    formData.append('id_kandidat', res);
+                    formData.append([csrfName], csrfHash);
+                    return formData;
+                  }
+                }
+              }
+            });
+            pond_kk.setOptions({
+              server: {
+                process: {
+                  url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+                  method: 'POST',
+                  ondata: (formData) => {
+                    formData.append('id_kandidat', res);
+                    formData.append([csrfName], csrfHash);
+                    return formData;
+                  }
+                }
+              }
+            });
+            pond_npwp.setOptions({
+              server: {
+                process: {
+                  url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+                  method: 'POST',
+                  ondata: (formData) => {
+                    formData.append('id_kandidat', res);
+                    formData.append([csrfName], csrfHash);
+                    return formData;
+                  }
+                }
+              }
+            });
+            pond_skck.setOptions({
+              server: {
+                process: {
+                  url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+                  method: 'POST',
+                  ondata: (formData) => {
+                    formData.append('id_kandidat', res);
+                    formData.append([csrfName], csrfHash);
+                    return formData;
+                  }
+                }
+              }
+            });
+            pond_ijazah.setOptions({
+              server: {
+                process: {
+                  url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+                  method: 'POST',
+                  ondata: (formData) => {
+                    formData.append('id_kandidat', res);
+                    formData.append([csrfName], csrfHash);
+                    return formData;
+                  }
+                }
+              }
+            });
+            pond_sim.setOptions({
+              server: {
+                process: {
+                  url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+                  method: 'POST',
+                  ondata: (formData) => {
+                    formData.append('id_kandidat', res);
+                    formData.append([csrfName], csrfHash);
+                    return formData;
+                  }
+                }
+              }
+            });
+            pond_paklaring.setOptions({
+              server: {
+                process: {
+                  url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+                  method: 'POST',
+                  ondata: (formData) => {
+                    formData.append('id_kandidat', res);
+                    formData.append([csrfName], csrfHash);
+                    return formData;
+                  }
+                }
+              }
+            });
+            pond_dokumen_pendukung.setOptions({
+              server: {
+                process: {
+                  url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+                  method: 'POST',
+                  ondata: (formData) => {
+                    formData.append('id_kandidat', res);
+                    formData.append([csrfName], csrfHash);
+                    return formData;
+                  }
+                }
+              }
+            });
+
+            $("#id_kandidat").val(res);
+            $("#nomor_registrasi").html(res);
+
+            // alert(id);
+            $('#project-tab').prop('disabled', 'disabled');
+            $("#data-diri-tab").removeAttr('disabled');
+            $('#project-tab').removeClass('active');
+            $('#project-tab').addClass('done');
+            $('#data-diri-tab').addClass('active');
+            $('#project').removeClass('active');
+            $('#project').removeClass('show');
+            $('#data-diri').addClass('active');
+            $('#data-diri').addClass('show');
+          },
+          error: function(xhr, status, error) {
+            alert("error save project");
+          }
+        });
+      }
+
     }
   </script>
 
@@ -2146,7 +2599,9 @@
     function previous_data_diri() {
       $('#data-diri-tab').removeClass('active');
       $('#data-diri-tab').removeClass('done');
+      $('#data-diri-tab').prop('disabled', 'disabled');
       $('#project-tab').addClass('active');
+      $("#project-tab").removeAttr('disabled');
       $('#data-diri').removeClass('active');
       $('#data-diri').removeClass('show');
       $('#project').addClass('active');
@@ -2157,15 +2612,7 @@
   <!-- button next data diri -->
   <script>
     function next_data_diri() {
-      var perusahaan_id = $("#perusahaan_id_selected").val();
-      var perusahaan_name = $("#perusahaan_name_selected").val();
-      var project_id = $("#project_input").val();
-      var project_name = $("#project_input option:selected").text();
-      var jabatan_id = $("#jabatan_input").val();
-      var jabatan_name = $("#jabatan_input option:selected").text();
-      var area = $("#area").val();
-      var sumber_info = $("#sumber_info_input").val();
-      var interviewer = $("#interviewer_input").val();
+      var id_kandidat = $("#id_kandidat").val();
 
       var nik = $("#nik_ktp").val();
       var nama = $("#nama_lengkap").val();
@@ -2180,48 +2627,61 @@
       var nomor_tlp_kontak_darurat = $("#nomor_kondar").val();
       var status_nikah = $("#status_nikah").val();
 
-      // AJAX untuk save data diri
-      $.ajax({
-        url: '<?= base_url() ?>registrasi/save_data_diri/',
-        method: 'post',
-        data: {
-          perusahaan_id: perusahaan_id,
-          perusahaan_name: perusahaan_name,
-          project_id: project_id,
-          project_name: project_name,
-          jabatan_id: jabatan_id,
-          jabatan_name: jabatan_name,
-          area: area,
-          sumber_info: sumber_info,
-          interviewer: interviewer,
+      if (
+        nik == "" || nik == "0" || nik == null ||
+        nama == "" || nama == "0" || nama == null ||
+        jenis_kelamin == "" || jenis_kelamin == "0" || jenis_kelamin == null ||
+        tempat_lahir == "" || tempat_lahir == "0" || tempat_lahir == null ||
+        tanggal_lahir == "" || tanggal_lahir == "0" || tanggal_lahir == null ||
+        asal_kota == "" || asal_kota == "0" || asal_kota == null ||
+        alamat_domisili == "" || alamat_domisili == "0" || alamat_domisili == null ||
+        nomor_tlp == "" || nomor_tlp == "0" || nomor_tlp == null ||
+        nama_kontak_darurat == "" || nama_kontak_darurat == "0" || nama_kontak_darurat == null ||
+        hubungan_kontak_darurat == "" || hubungan_kontak_darurat == "0" || hubungan_kontak_darurat == null ||
+        nomor_tlp_kontak_darurat == "" || nomor_tlp_kontak_darurat == "0" || nomor_tlp_kontak_darurat == null ||
+        status_nikah == "" || status_nikah == "0" || status_nikah == null
+      ) {
+        alert("Semua input data diri harus diisi.");
+      } else {
+        // AJAX untuk save data diri
+        $.ajax({
+          url: '<?= base_url() ?>registrasi/save_data_diri/',
+          method: 'post',
+          data: {
+            [csrfName]: csrfHash,
+            id_kandidat: id_kandidat,
 
-          nik: nik,
-          nama: nama,
-          jenis_kelamin: jenis_kelamin,
-          tempat_lahir: tempat_lahir,
-          tanggal_lahir: tanggal_lahir,
-          asal_kota: asal_kota,
-          alamat_domisili: alamat_domisili,
-          nomor_tlp: nomor_tlp,
-          nama_kontak_darurat: nama_kontak_darurat,
-          hubungan_kontak_darurat: hubungan_kontak_darurat,
-          nomor_tlp_kontak_darurat: nomor_tlp_kontak_darurat,
-          status_nikah: status_nikah,
-        },
-        beforeSend: function() {},
-        success: function(response) {
-          $('#data-diri-tab').removeClass('active');
-          $('#data-diri-tab').addClass('done');
-          $('#pengalaman-tab').addClass('active');
-          $('#data-diri').removeClass('active');
-          $('#data-diri').removeClass('show');
-          $('#pengalaman').addClass('active');
-          $('#pengalaman').addClass('show');
-        },
-        error: function(xhr, status, error) {
-          alert("error save data diri");
-        }
-      });
+            nik: nik,
+            nama: nama,
+            jenis_kelamin: jenis_kelamin,
+            tempat_lahir: tempat_lahir,
+            tanggal_lahir: tanggal_lahir,
+            asal_kota: asal_kota,
+            alamat_domisili: alamat_domisili,
+            nomor_tlp: nomor_tlp,
+            nama_kontak_darurat: nama_kontak_darurat,
+            hubungan_kontak_darurat: hubungan_kontak_darurat,
+            nomor_tlp_kontak_darurat: nomor_tlp_kontak_darurat,
+            status_nikah: status_nikah,
+          },
+          beforeSend: function() {},
+          success: function(response) {
+            $('#data-diri-tab').prop('disabled', 'disabled');
+            $("#pengalaman-tab").removeAttr('disabled');
+
+            $('#data-diri-tab').removeClass('active');
+            $('#data-diri-tab').addClass('done');
+            $('#pengalaman-tab').addClass('active');
+            $('#data-diri').removeClass('active');
+            $('#data-diri').removeClass('show');
+            $('#pengalaman').addClass('active');
+            $('#pengalaman').addClass('show');
+          },
+          error: function(xhr, status, error) {
+            alert("error save data diri");
+          }
+        });
+      }
 
     }
   </script>
@@ -2229,6 +2689,9 @@
   <!-- button previous pengalaman -->
   <script>
     function previous_pengalaman() {
+      $('#pengalaman-tab').prop('disabled', 'disabled');
+      $("#data-diri-tab").removeAttr('disabled');
+
       $('#pengalaman-tab').removeClass('active');
       $('#data-diri-tab').removeClass('done');
       $('#data-diri-tab').addClass('active');
@@ -2242,77 +2705,144 @@
   <!-- button next pengalaman -->
   <script>
     function next_pengalaman() {
-      var nik = $("#nik_ktp").val();
+      var id_kandidat = $("#id_kandidat").val();
       var pengalaman_kerja = $("#pengalaman_kerja").val();
       var kontak_person_sebelumnya = $("#kontak_person_sebelumnya").val();
 
-      // AJAX untuk save data diri
-      $.ajax({
-        url: '<?= base_url() ?>registrasi/save_pengalaman/',
-        method: 'post',
-        data: {
-          nik: nik,
-          pengalaman_kerja: pengalaman_kerja,
-          kontak_person_sebelumnya: kontak_person_sebelumnya,
-        },
-        beforeSend: function() {},
-        success: function(response) {
-          $('#pengalaman-tab').removeClass('active');
-          $('#pengalaman-tab').addClass('done');
-          $('#dokumen-tab').addClass('active');
-          $('#pengalaman').removeClass('active');
-          $('#pengalaman').removeClass('show');
-          $('#dokumen').addClass('active');
-          $('#dokumen').addClass('show');
-        },
-        error: function(xhr, status, error) {
-          alert("error save data diri");
-        }
-      });
+      if (pengalaman_kerja == "" || pengalaman_kerja == null) {
+        alert("Pengalaman kerja harus diisi");
+      } else {
+        // AJAX untuk save data diri
+        $.ajax({
+          url: '<?= base_url() ?>registrasi/save_pengalaman/',
+          method: 'post',
+          data: {
+            [csrfName]: csrfHash,
+            id_kandidat: id_kandidat,
+            pengalaman_kerja: pengalaman_kerja,
+            kontak_person_sebelumnya: kontak_person_sebelumnya,
+          },
+          beforeSend: function() {},
+          success: function(response) {
+            $('#pengalaman-tab').prop('disabled', 'disabled');
+            $("#dokumen-tab").removeAttr('disabled');
 
+            $('#pengalaman-tab').removeClass('active');
+            $('#pengalaman-tab').addClass('done');
+            $('#dokumen-tab').addClass('active');
+            $('#pengalaman').removeClass('active');
+            $('#pengalaman').removeClass('show');
+            $('#dokumen').addClass('active');
+            $('#dokumen').addClass('show');
+          },
+          error: function(xhr, status, error) {
+            alert("error save pengalaman");
+          }
+        });
+      }
+
+    }
+  </script>
+
+  <!-- button previous dokumen -->
+  <script>
+    function previous_dokumen() {
+      $('#dokumen-tab').prop('disabled', 'disabled');
+      $("#pengalaman-tab").removeAttr('disabled');
+
+      $('#dokumen-tab').removeClass('active');
+      $('#pengalaman-tab').removeClass('done');
+      $('#pengalaman-tab').addClass('active');
+      $('#dokumen').removeClass('active');
+      $('#dokumen').removeClass('show');
+      $('#pengalaman').addClass('active');
+      $('#pengalaman').addClass('show');
     }
   </script>
 
   <!-- button next dokumen -->
   <script>
     function next_dokumen() {
-      // var nik = $("#nik_ktp").val();
-      // var pengalaman_kerja = $("#pengalaman_kerja").val();
-      // var kontak_person_sebelumnya = $("#kontak_person_sebelumnya").val();
+      var id_kandidat = $("#id_kandidat").val();
+      var ktp = $("#status_file_ktp").val();
+      var cv = $("#status_file_cv").val();
+      var ijazah = $("#status_file_ijazah").val();
 
-      // // AJAX untuk save data diri
-      // $.ajax({
-      //   url: '<?= base_url() ?>registrasi/save_pengalaman/',
-      //   method: 'post',
-      //   data: {
-      //     nik: nik,
-      //     pengalaman_kerja: pengalaman_kerja,
-      //     kontak_person_sebelumnya: kontak_person_sebelumnya,
-      //   },
-      //   beforeSend: function() {},
-      //   success: function(response) {
-      //     $('#dokumen-tab').removeClass('active');
-      //     $('#dokumen-tab').addClass('done');
-      //     $('#finish-tab').addClass('active');
-      //     $('#dokumen').removeClass('active');
-      //     $('#dokumen').removeClass('show');
-      //     $('#finish').addClass('active');
-      //     $('#finish').addClass('show');
-      //   },
-      //   error: function(xhr, status, error) {
-      //     alert("error save data diri");
-      //   }
-      // });
+      if (ktp == "0" || cv == "0" || ijazah == "0") {
+        alert("KTP, CV dan Ijazah harus diisi");
+      } else {
+        // AJAX untuk Finish isi
+        $.ajax({
+          url: '<?= base_url() ?>registrasi/finish_register/',
+          method: 'post',
+          data: {
+            [csrfName]: csrfHash,
+            id_kandidat: id_kandidat,
+          },
+          beforeSend: function() {},
+          success: function(response) {
+            var res = jQuery.parseJSON(response);
 
-      $('#dokumen-tab').removeClass('active');
-      $('#dokumen-tab').addClass('done');
-      $('#finish-tab').addClass('active');
-      $('#dokumen').removeClass('active');
-      $('#dokumen').removeClass('show');
-      $('#finish').addClass('active');
-      $('#finish').addClass('show');
+            $('#waktu_registrasi').html(res);
+            $("#navigasi_section").attr("hidden", true);
+            $('#dokumen-tab').removeClass('active');
+            $('#dokumen-tab').addClass('done');
+            $('#finish-tab').addClass('active');
+            $('#dokumen').removeClass('active');
+            $('#dokumen').removeClass('show');
+            $('#finish').addClass('active');
+            $('#finish').addClass('show');
+          },
+          error: function(xhr, status, error) {
+            alert("error finish registrasi kandidat");
+          }
+        });
+      }
 
     }
+  </script>
+
+  <!-- Event filepond-->
+  <script>
+    document.addEventListener('FilePond:processfiles', (e) => {
+      // alert("selesai upload file");
+      $('#button_next_dokumen').attr("hidden", false);
+      // console.log('FilePond ready for use', e.detail);
+
+      // // get create method reference
+      // const { create } = e.detail;FilePond:processfilestart
+    });
+
+    document.addEventListener('FilePond:processfilestart', (e) => {
+      // alert("mulai upload file");
+      $('#button_next_dokumen').attr("hidden", true);
+      // console.log('FilePond ready for use', e.detail);
+
+      // // get create method reference
+      // const { create } = e.detail;FilePond:addfilestart
+    });
+
+    document.addEventListener('FilePond:addfilestart', (e) => {
+      // alert("mulai add file");
+      $('#button_next_dokumen').attr("hidden", true);
+      // console.log('FilePond ready for use', e.detail);
+
+      // // get create method reference
+      // const { create } = e.detail;FilePond:addfilestart 
+    });
+
+    pond_pasfoto.on('processfiles', (error, file) => {
+      $('#status_file_pasfoto').val("1");
+    });
+    pond_ktp.on('processfiles', (error, file) => {
+      $('#status_file_ktp').val("1");
+    });
+    pond_cv.on('processfiles', (error, file) => {
+      $('#status_file_cv').val("1");
+    });
+    pond_ijazah.on('processfiles', (error, file) => {
+      $('#status_file_ijazah').val("1");
+    });
   </script>
 </body>
 

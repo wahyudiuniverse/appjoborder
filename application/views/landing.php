@@ -1,54 +1,55 @@
 <!doctype html>
 <html lang="en" data-layout="vertical" data-topbar="light" data-sidebar="dark" data-sidebar-size="lg" data-sidebar-image="none" data-preloader="disable" data-theme="default" data-theme-colors="default">
 
-    
+
 <!-- Mirrored from themesbrand.com/velzon/html/master/job-landing.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Aug 2024 07:47:11 GMT -->
+
 <head>
 
-        <meta charset="utf-8" />
-        <title>Job Portal | PT. Onecorp</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta content="Job Portal PT. Onecorp" name="description" />
-        <meta content="PT. Onecorp" name="author" />
-        <!-- App favicon -->
-        <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <meta charset="utf-8" />
+    <title>Job Portal | PT. Onecorp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="Job Portal PT. Onecorp" name="description" />
+    <meta content="PT. Onecorp" name="author" />
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico">
 
-        <!--Swiper slider css-->
-        <link href="assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
+    <!--Swiper slider css-->
+    <link href="assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
 
-        <!-- Layout config Js -->
-        <script src="assets/js/layout.js"></script>
-        <!-- Bootstrap Css -->
-        <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-        <!-- Icons Css -->
-        <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
-        <!-- App Css-->
-        <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
-        <!-- custom Css-->
-        <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <!-- Layout config Js -->
+    <script src="assets/js/layout.js"></script>
+    <!-- Bootstrap Css -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <!-- Icons Css -->
+    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <!-- App Css-->
+    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <!-- custom Css-->
+    <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
 
-    </head>
+</head>
 
-    <body data-bs-spy="scroll" data-bs-target="#navbar-example">
+<body data-bs-spy="scroll" data-bs-target="#navbar-example">
 
-        <!-- Begin page -->
-        <div class="layout-wrapper landing">
-            <nav class="navbar navbar-expand-lg navbar-landing fixed-top job-navbar" id="navbar">
-                <div class="container-fluid custom-container">
-                    <a class="navbar-brand" href="index.html">
-                        <img src="assets/images/logo-dark.png" class="card-logo card-logo-dark" alt="logo dark" height="17">
-                        <img src="assets/images/logo-light.png" class="card-logo card-logo-light" alt="logo light" height="17">
-                    </a>
-                    <button class="navbar-toggler py-0 fs-20 text-body" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <i class="mdi mdi-menu"></i>
-                    </button>
+    <!-- Begin page -->
+    <div class="layout-wrapper landing">
+        <nav class="navbar navbar-expand-lg navbar-landing fixed-top job-navbar" id="navbar">
+            <div class="container-fluid custom-container">
+                <a class="navbar-brand" href="">
+                    <img src="assets/images/logo-dark.png" class="card-logo card-logo-dark" alt="logo dark" height="17">
+                    <img src="assets/images/logo-light.png" class="card-logo card-logo-light" alt="logo light" height="17">
+                </a>
+                <button class="navbar-toggler py-0 fs-20 text-body" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="mdi mdi-menu"></i>
+                </button>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mx-auto mt-2 mt-lg-0" id="navbar-example">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#hero">Home</a>
-                            </li>
-                            <li class="nav-item">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mx-auto mt-2 mt-lg-0" id="navbar-example">
+                        <!-- <li class="nav-item">
+                            <a class="nav-link active" href="#hero">Home</a>
+                        </li> -->
+                        <!-- <li class="nav-item">
                                 <a class="nav-link" href="#process">Process</a>
                             </li>
                             <li class="nav-item">
@@ -62,68 +63,70 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#blog">Blog</a>
-                            </li>
-                        </ul>
+                            </li> -->
+                    </ul>
 
-                        <div class="">
-                            <a href="registrasi" class="btn btn-soft-primary"><i class="ri-user-3-line align-bottom me-1"></i> Login & Register</a>
+                    <div class="">
+                        <a href="admin" class="btn btn-soft-primary"><i class="ri-user-3-line align-bottom me-1"></i> Login</a>
+                        <a href="registrasi" class="btn btn-soft-primary"><i class="ri-user-3-line align-bottom me-1"></i> Registrasi Kandidat</a>
+                    </div>
+                </div>
+
+            </div>
+        </nav>
+        <!-- end navbar -->
+
+        <!-- start hero section -->
+        <section class="section job-hero-section bg-light pb-0" id="hero">
+            <div class="container">
+                <div class="row justify-content-between align-items-center">
+                    <div class="col-lg-6">
+                        <div>
+                            <h1 class="display-6 fw-semibold text-capitalize mb-3 lh-base">Find your next job and build your dream here</h1>
+                            <p class="lead text-muted lh-base mb-4">Find jobs, create trackable resumes and enrich your applications. Carefully crafted after analyzing the needs of different industries.</p>
+                            <form action="registrasi" class="job-panel-filter">
+                                <div class="row g-md-0 g-2">
+                                    <!-- <div class="col-md-4">
+                                        <div>
+                                            <input type="search" id="job-title" class="form-control filter-input-box" placeholder="Job, Company name...">
+                                        </div>
+                                    </div> -->
+                                    <!--end col-->
+                                    <!-- <div class="col-md-4">
+                                        <div>
+                                            <select class="form-control" data-choices>
+                                                <option value="">Select job type</option>
+                                                <option value="Full Time">Full Time</option>
+                                                <option value="Part Time">Part Time</option>
+                                                <option value="Freelance">Freelance</option>
+                                                <option value="Internship">Internship</option>
+                                            </select>
+                                        </div>
+                                    </div> -->
+                                    <!--end col-->
+                                    <div class="col-md-12">
+                                        <div class="h-100">
+                                            <button class="btn btn-primary submit-btn w-100 h-100" type="submit"><i class="ri-search-2-line align-bottom me-1"></i> Lamar Sekarang</button>
+                                        </div>
+                                    </div>
+                                    <!--end col-->
+                                </div>
+                                <!--end row-->
+                            </form>
+
+                            <!-- <ul class="treding-keywords list-inline mb-0 mt-3 fs-13">
+                                <li class="list-inline-item text-danger fw-semibold"><i class="mdi mdi-tag-multiple-outline align-middle"></i> Trending Keywords:</li>
+                                <li class="list-inline-item"><a href="javascript:void(0)">Design,</a></li>
+                                <li class="list-inline-item"><a href="javascript:void(0)">Development,</a></li>
+                                <li class="list-inline-item"><a href="javascript:void(0)">Manager,</a></li>
+                                <li class="list-inline-item"><a href="javascript:void(0)">Senior</a></li>
+                            </ul> -->
                         </div>
                     </div>
-
-                </div>
-            </nav>
-            <!-- end navbar -->
-
-            <!-- start hero section -->
-            <section class="section job-hero-section bg-light pb-0" id="hero">
-                <div class="container">
-                    <div class="row justify-content-between align-items-center">
-                        <div class="col-lg-6">
-                            <div>
-                                <h1 class="display-6 fw-semibold text-capitalize mb-3 lh-base">Find your next job and build your dream here</h1>
-                                <p class="lead text-muted lh-base mb-4">Find jobs, create trackable resumes and enrich your applications. Carefully crafted after analyzing the needs of different industries.</p>
-                                <form action="#" class="job-panel-filter">
-                                    <div class="row g-md-0 g-2">
-                                        <div class="col-md-4">
-                                            <div>
-                                                <input type="search" id="job-title" class="form-control filter-input-box" placeholder="Job, Company name...">
-                                            </div>
-                                        </div>
-                                        <!--end col-->
-                                        <div class="col-md-4">
-                                            <div>
-                                                <select class="form-control" data-choices>
-                                                    <option value="">Select job type</option>
-                                                    <option value="Full Time">Full Time</option>
-                                                    <option value="Part Time">Part Time</option>
-                                                    <option value="Freelance">Freelance</option>
-                                                    <option value="Internship">Internship</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <!--end col-->
-                                        <div class="col-md-4">
-                                            <div class="h-100">
-                                                <button class="btn btn-primary submit-btn w-100 h-100" type="submit"><i class="ri-search-2-line align-bottom me-1"></i> Find Job</button>
-                                            </div>
-                                        </div>
-                                        <!--end col-->
-                                    </div>
-                                    <!--end row-->
-                                </form>
-
-                                <ul class="treding-keywords list-inline mb-0 mt-3 fs-13">
-                                    <li class="list-inline-item text-danger fw-semibold"><i class="mdi mdi-tag-multiple-outline align-middle"></i> Trending Keywords:</li>
-                                    <li class="list-inline-item"><a href="javascript:void(0)">Design,</a></li>
-                                    <li class="list-inline-item"><a href="javascript:void(0)">Development,</a></li>
-                                    <li class="list-inline-item"><a href="javascript:void(0)">Manager,</a></li>
-                                    <li class="list-inline-item"><a href="javascript:void(0)">Senior</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <!--end col-->
-                        <div class="col-lg-4">
-                            <div class="position-relative home-img text-center mt-5 mt-lg-0">
+                    <!--end col-->
+                    <div class="col-lg-4">
+                        <div class="position-relative home-img text-center mt-5 mt-lg-0">
+                            <a href="registrasi">
                                 <div class="card p-3 rounded shadow-lg inquiry-box">
                                     <div class="d-flex align-items-center">
                                         <div class="avatar-sm flex-shrink-0 me-3">
@@ -131,11 +134,12 @@
                                                 <i class="ri-mail-send-line"></i>
                                             </div>
                                         </div>
-                                        <h5 class="fs-15 lh-base mb-0">Work Inquiry from velzon</h5>
+                                        <h5 class="fs-15 lh-base mb-0">Registrasi Pelamar</h5>
                                     </div>
                                 </div>
+                            </a>
 
-                                <div class="card p-3 rounded shadow-lg application-box">
+                            <!-- <div class="card p-3 rounded shadow-lg application-box">
                                     <h5 class="fs-15 lh-base mb-3">Applications</h5>
                                     <div class="avatar-group">
                                         <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Brent Gonzalez">
@@ -175,25 +179,25 @@
                                             </div>
                                         </a>
                                     </div>
-                                </div>
-                                <img src="assets/images/job-profile2.png" alt="" class="user-img">
+                                </div> -->
+                            <img src="assets/images/job-profile2.png" alt="" class="user-img">
 
-                                <div class="circle-effect">
-                                    <div class="circle"></div>
-                                    <div class="circle2"></div>
-                                    <div class="circle3"></div>
-                                    <div class="circle4"></div>
-                                </div>
+                            <div class="circle-effect">
+                                <div class="circle"></div>
+                                <div class="circle2"></div>
+                                <div class="circle3"></div>
+                                <div class="circle4"></div>
                             </div>
                         </div>
                     </div>
-                    <!-- end row -->
                 </div>
-                <!-- end container -->
-            </section>
-            <!-- end hero section -->
+                <!-- end row -->
+            </div>
+            <!-- end container -->
+        </section>
+        <!-- end hero section -->
 
-            <section class="section" id="process">
+        <!-- <section class="section" id="process">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
@@ -202,9 +206,7 @@
                                 <p class="text-muted">A creative person has the ability to invent and develop original ideas, especially in the arts. Like so many creative people, he was never satisfied.</p>
                             </div>
                         </div>
-                        <!-- end col -->
                     </div>
-                    <!--end row-->
                     <div class="row">
                         <div class="col-lg-3 col-md-6">
                             <div class="card shadow-lg">
@@ -257,11 +259,10 @@
                         </div>
                     </div>
                 </div>
-                <!--end container-->
-            </section>
+            </section> -->
 
-            <!-- start features -->
-            <section class="section">
+        <!-- start features -->
+        <!-- <section class="section">
                 <div class="container">
                     <div class="row align-items-center justify-content-lg-between justify-content-center gy-4">
                         <div class="col-lg-5 col-sm-7">
@@ -349,16 +350,13 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- end col -->
                     </div>
-                    <!-- end row -->
                 </div>
-                <!-- end container -->
-            </section>
-            <!-- end features -->
+            </section> -->
+        <!-- end features -->
 
-            <!-- start services -->
-            <section class="section bg-light" id="categories">
+        <!-- start services -->
+        <!-- <section class="section bg-light" id="categories">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-7">
@@ -367,9 +365,7 @@
                                 <p class="text-muted">Post a job to tell us about your project. We'll quickly match you with the right freelancers.</p>
                             </div>
                         </div>
-                        <!-- end col -->
                     </div>
-                    <!-- end row -->
 
                     <div class="row justify-content-center">
                         <div class="col-lg-3 col-md-6">
@@ -485,14 +481,12 @@
                             </div>
                         </div>
                     </div>
-                    <!-- end row -->
                 </div>
-                <!-- end container -->
-            </section>
-            <!-- end services -->
+            </section> -->
+        <!-- end services -->
 
-            <!-- start cta -->
-            <section class="py-5 bg-primary position-relative">
+        <!-- start cta -->
+        <!-- <section class="py-5 bg-primary position-relative">
                 <div class="bg-overlay bg-overlay-pattern opacity-50"></div>
                 <div class="container">
                     <div class="row align-items-center gy-4">
@@ -502,21 +496,17 @@
                                 <p class="text-white-50 mb-0">Create new account and refer your friend</p>
                             </div>
                         </div>
-                        <!-- end col -->
                         <div class="col-sm-auto">
                             <div>
                                 <a href="#!" class="btn bg-gradient btn-danger">Create Free Account</a>
                             </div>
                         </div>
-                        <!-- end col -->
                     </div>
-                    <!-- end row -->
                 </div>
-                <!-- end container -->
-            </section>
-            <!-- end cta -->
+            </section> -->
+        <!-- end cta -->
 
-            <section class="section" id="findJob">
+        <!-- <section class="section" id="findJob">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-7">
@@ -525,9 +515,7 @@
                                 <p class="text-muted">Post a job to tell us about your project. We'll quickly match you with the right freelancers.</p>
                             </div>
                         </div>
-                        <!-- end col -->
                     </div>
-                    <!-- end row -->
 
                     <div class="row">
                         <div class="col-lg-6">
@@ -855,10 +843,10 @@
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> -->
 
-            <!-- start find jobs -->
-            <section class="section">
+        <!-- start find jobs -->
+        <!-- <section class="section">
                 <div class="container">
                     <div class="row align-items-center gy-4">
                         <div class="col-lg-6 order-2 order-lg-1">
@@ -873,7 +861,6 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- end col -->
                         <div class="col-lg-4 col-sm-7 col-10 ms-lg-auto mx-auto order-1 order-lg-2">
                             <div>
                                 <div class="card shadow-lg">
@@ -959,14 +946,12 @@
                             </div>
                         </div>
                     </div>
-                    <!-- end row -->
                 </div>
-                <!-- end container -->
-            </section>
-            <!-- end find jobs -->
+            </section> -->
+        <!-- end find jobs -->
 
-            <!-- start candidates -->
-            <section class="section bg-light" id="candidates">
+        <!-- start candidates -->
+        <!-- <section class="section bg-light" id="candidates">
                 <div class="bg-overlay bg-overlay-pattern"></div>
                 <div class="container">
                     <div class="row justify-content-center">
@@ -976,9 +961,7 @@
                                 <p class="text-muted mb-4">Hiring experts costs more per hour than hiring entry- or mid-level freelancers, but they can usually get the work done faster—and better.</p>
                             </div>
                         </div>
-                        <!-- end col -->
                     </div>
-                    <!-- end row -->
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="swiper candidate-swiper">
@@ -1063,12 +1046,11 @@
                         </div>
                     </div>
                 </div>
-                <!-- end container -->
-            </section>
-            <!-- end candidates -->
+            </section> -->
+        <!-- end candidates -->
 
-            <!-- start blog -->
-            <section class="section" id="blog">
+        <!-- start blog -->
+        <!-- <section class="section" id="blog">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
@@ -1078,7 +1060,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- end row -->
 
                     <div class="row">
                         <div class="col-lg-4 col-md-6">
@@ -1159,12 +1140,11 @@
 
                     </div>
                 </div>
-                <!-- end container -->
-            </section>
-            <!-- end blog -->
+            </section> -->
+        <!-- end blog -->
 
-            <!-- start cta -->
-            <section class="py-5 bg-primary position-relative">
+        <!-- start cta -->
+        <!-- <section class="py-5 bg-primary position-relative">
                 <div class="bg-overlay bg-overlay-pattern opacity-50"></div>
                 <div class="container">
                     <div class="row align-items-center gy-4">
@@ -1174,22 +1154,18 @@
                                 <p class="text-white text-opacity-75 mb-0">Subscribe & get all related jobs notification.</p>
                             </div>
                         </div>
-                        <!-- end col -->
                         <div class="col-sm-auto">
                             <button class="btn btn-danger" type="button">Subscribe Now <i class="ri-arrow-right-line align-bottom"></i></button>
                         </div>
-                        <!-- end col -->
                     </div>
-                    <!-- end row -->
                 </div>
-                <!-- end container -->
-            </section>
-            <!-- end cta -->
+            </section> -->
+        <!-- end cta -->
 
-            <!-- Start footer -->
-            <footer class="custom-footer bg-dark py-5 position-relative">
-                <div class="container">
-                    <div class="row">
+        <!-- Start footer -->
+        <footer class="custom-footer bg-dark py-5 position-relative">
+            <div class="container">
+                <!-- <div class="row">
                         <div class="col-lg-4 mt-4">
                             <div>
                                 <div>
@@ -1276,61 +1252,64 @@
                             </div>
                         </div>
 
-                    </div>
+                    </div> -->
 
-                    <div class="row text-center text-sm-start align-items-center mt-5">
-                        <div class="col-sm-6">
-                            <div>
-                                <p class="copy-rights mb-0">
-                                    <script> document.write(new Date().getFullYear()) </script> © Velzon - Themesbrand
-                                </p>
-                            </div>
+                <div class="row text-center text-sm-start align-items-center mt-5">
+                    <div class="col-sm-6">
+                        <div>
+                            <p class="copy-rights mb-0">
+                                <script>
+                                    document.write(new Date().getFullYear())
+                                </script> © Cakrawala Group
+                            </p>
                         </div>
-                        <div class="col-sm-6">
-                            <div class="text-sm-end mt-3 mt-sm-0">
-                                <ul class="list-inline mb-0 footer-list gap-4 fs-13">
-                                    <li class="list-inline-item">
-                                        <a href="pages-privacy-policy.html">Privacy Policy</a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="pages-term-conditions.html">Terms & Conditions</a>
-                                    </li>
-                                    <li class="list-inline-item">
-                                        <a href="pages-privacy-policy.html">Security</a>
-                                    </li>
-                                </ul>
-                            </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="text-sm-end mt-3 mt-sm-0">
+                            <ul class="list-inline mb-0 footer-list gap-4 fs-13">
+                                <li class="list-inline-item">
+                                    <a href="#">Privacy Policy</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">Terms & Conditions</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="#">Security</a>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-            </footer>
-            <!-- end footer -->
+            </div>
+        </footer>
+        <!-- end footer -->
 
-            <!--start back-to-top-->
-            <button onclick="topFunction()" class="btn btn-info btn-icon landing-back-top" id="back-to-top">
-                <i class="ri-arrow-up-line"></i>
-            </button>
-            <!--end back-to-top-->
+        <!--start back-to-top-->
+        <button onclick="topFunction()" class="btn btn-info btn-icon landing-back-top" id="back-to-top">
+            <i class="ri-arrow-up-line"></i>
+        </button>
+        <!--end back-to-top-->
 
-        </div>
-        <!-- end layout wrapper -->
+    </div>
+    <!-- end layout wrapper -->
 
 
-        <!-- JAVASCRIPT -->
-        <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-        <script src="assets/libs/simplebar/simplebar.min.js"></script>
-        <script src="assets/libs/node-waves/waves.min.js"></script>
-        <script src="assets/libs/feather-icons/feather.min.js"></script>
-        <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-        <script src="assets/js/plugins.js"></script>
+    <!-- JAVASCRIPT -->
+    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="assets/libs/node-waves/waves.min.js"></script>
+    <script src="assets/libs/feather-icons/feather.min.js"></script>
+    <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+    <script src="assets/js/plugins.js"></script>
 
-        <!--Swiper slider js-->
-        <script src="assets/libs/swiper/swiper-bundle.min.js"></script>
+    <!--Swiper slider js-->
+    <script src="assets/libs/swiper/swiper-bundle.min.js"></script>
 
-        <!--job landing init -->
-        <script src="assets/js/pages/job-lading.init.js"></script>
-    </body>
+    <!--job landing init -->
+    <script src="assets/js/pages/job-lading.init.js"></script>
+</body>
 
 
 <!-- Mirrored from themesbrand.com/velzon/html/master/job-landing.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Aug 2024 07:47:12 GMT -->
+
 </html>
