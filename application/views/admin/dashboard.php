@@ -1,8 +1,12 @@
+<!-- <pre>
+    <?php //print_r($this->session->userdata()); ?>
+    <?php //echo $this->session->userdata('employee_id'); ?>
+</pre> -->
 <!-- start page title -->
 <div class="row">
     <div class="col-12">
         <div class="page-title-box d-sm-flex align-items-center justify-content-between bg-galaxy-transparent">
-            <h4 class="mb-sm-0">Dashboard</h4>
+            <h4 class="mb-sm-0">Dashboard - <?php echo $this->session->userdata('status'); ?></h4>
 
             <div class="page-title-right">
                 <ol class="breadcrumb m-0">
@@ -112,7 +116,7 @@
                 </div>
             </div><!-- end card header -->
             <div class="card-body px-0">
-                <!-- <ul class="list-inline main-chart text-center mb-0">
+                <ul class="list-inline main-chart text-center mb-0">
                     <li class="list-inline-item chart-border-left me-0 border-0">
                         <h4 class="text-primary">$584k <span class="text-muted d-inline-block fs-13 align-middle ms-2">Revenue</span></h4>
                     </li>
@@ -123,7 +127,7 @@
                     <li class="list-inline-item chart-border-left me-0">
                         <h4><span data-plugin="counterup">3.6</span>%<span class="text-muted d-inline-block fs-13 align-middle ms-2">Profit Ratio</span></h4>
                     </li>
-                </ul> -->
+                </ul>
 
                 <div id="revenue-expenses-charts" data-colors='["--vz-success", "--vz-danger"]' data-colors-minimal='["--vz-primary", "--vz-info"]' data-colors-interactive='["--vz-info", "--vz-primary"]' data-colors-galaxy='["--vz-primary", "--vz-secondary"]' data-colors-classic='["--vz-primary", "--vz-secondary"]' class="apex-charts" dir="ltr"></div>
             </div>

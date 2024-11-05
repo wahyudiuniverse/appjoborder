@@ -1,3 +1,7 @@
+<!-- <pre>
+    <?php //print_r($_SESSION); ?>
+</pre> -->
+
 <!-- start page title -->
 <div class="row">
     <div class="col-12">

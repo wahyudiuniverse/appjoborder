@@ -22,4 +22,9 @@ class Landing extends CI_Controller {
 	{
 		$this->load->view('landing');
 	}
+
+	public function versi2()
+	{
+		$this->load->view('landing2');
+	}
 }

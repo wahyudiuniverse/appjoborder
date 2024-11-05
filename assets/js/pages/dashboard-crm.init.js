@@ -25,6 +25,7 @@ function getChartColorsArray(e) {
 var salesForecastChart = "",
 	dealTypeCharts = "",
 	revenueExpensesCharts = "";
+var kandidat_bulan_ini = "<?php echo $jumlah_kandidat_bulan_ini; ?>";
 function loadCharts() {
 	var e, t;
 	(t = getChartColorsArray("sales-forecast-chart")) &&
@@ -118,12 +119,12 @@ function loadCharts() {
 			series: [
 				{
 					name: "Kandidat",
-					data: [20, 25, 30, 35, 40, 55, 70, 110, 150, 180, 210, 250],
+					data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 321, kandidat_bulan_ini],
 				},
-				{
-					name: "Diterima",
-					data: [12, 17, 45, 42, 24, 35, 42, 75, 102, 108, 156, 199],
-				},
+				// {
+				// 	name: "Diterima",
+				// 	data: [12, 17, 45, 42, 24, 35, 42, 75, 102, 108, 156, 199],
+				// },
 			],
 			chart: { height: 290, type: "area", toolbar: "false" },
 			dataLabels: { enabled: !1 },
@@ -152,7 +153,7 @@ function loadCharts() {
 				},
 				tickAmount: 5,
 				min: 0,
-				max: 260,
+				max: 500,
 			},
 			colors: t,
 			fill: { opacity: 0.06, colors: t, type: "solid" },

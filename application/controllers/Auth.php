@@ -3,6 +3,23 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Auth extends CI_Controller
 {
+	const SESSION_KEY = 'employee_id';
+
+	public function __construct()
+	{
+		parent::__construct();
+		$this->load->helper('form');
+		$this->load->helper('url');
+		$this->load->helper('file');
+		$this->load->helper('url_helper');
+		$this->load->helper('html');
+		$this->load->database();
+		$this->load->helper('security');
+		$this->load->library('form_validation');
+		$this->load->library('session');
+		$this->load->model("Kandidat_model");
+		$this->load->model("Registrasi_model");
+	}
 
 	/**
 	 * Index Page for this controller.
@@ -27,17 +44,8 @@ class Auth extends CI_Controller
 	//Menampilkan Register tanpa parameter untuk proses POST variable
 	public function API_login_cis($nip, $pin)
 	{
-		// $data['nik'] = $nik;
-		//menampilkan view form pengisian data
-		// $this->load->view('frontend/templates/header');
-		// //$this->load->view('templates/sidebar', $data);
-		// $this->load->view('frontend/templates/topbar_register');
-		// $this->load->view('frontend/tes_api_bank', $data);
-		// $this->load->view('frontend/templates/footer');
-		//$bank_code = $this->Employees_model->get_id_bank($id_bank);
-
 		$curl = curl_init();
-		//$nik = '3201293010880006';
+
 		curl_setopt_array($curl, [
 			CURLOPT_URL => "https://apps-cakrawala.com/index.php/admin/auth/login_cis?nip=" . $nip . "&pin=" . $pin,
 			CURLOPT_RETURNTRANSFER => true,
@@ -62,7 +70,30 @@ class Auth extends CI_Controller
 		if ($err) {
 			echo json_encode($pesan);
 		} else {
-			echo $response;
+			$result = json_decode($response, true);
+			if ($result['status'] == "1") {
+				$this->session->set_userdata($result['data']);
+				echo json_encode($result);
+			} else {
+				// echo "ngga ada data";
+				echo json_encode($result);
+			}
 		}
+	}
+
+	public function check_login()
+	{
+		if (!$this->session->has_userdata("employee_id")) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	public function logout()
+	{
+		$this->session->sess_destroy();
+		redirect('auth');
+		//return !$this->session->has_userdata(self::SESSION_KEY);
 	}
 }

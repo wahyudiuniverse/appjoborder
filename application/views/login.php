@@ -12,20 +12,20 @@
     <meta content="Sign in Dashboard Job Portal Cakrawala Group" name="description" />
     <meta content="Cakrawala Group" name="author" />
     <!-- App favicon -->
-    <link rel="shortcut icon" href="assets/images/favicon.ico">
+    <link rel="shortcut icon" href="<?= base_url() ?>assets/images/favicon.ico">
 
     <script src="<?= base_url() ?>assets/libs/jquery/jquery-3.7.1.min.js"></script>
 
     <!-- Layout config Js -->
-    <script src="assets/js/layout.js"></script>
+    <script src="<?= base_url() ?>assets/js/layout.js"></script>
     <!-- Bootstrap Css -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url() ?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <!-- Icons Css -->
-    <link href="assets/css/icons.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url() ?>assets/css/icons.min.css" rel="stylesheet" type="text/css" />
     <!-- App Css-->
-    <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url() ?>assets/css/app.min.css" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
-    <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <link href="<?= base_url() ?>assets/css/custom.min.css" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -50,8 +50,8 @@
                     <div class="col-lg-12">
                         <div class="text-center mt-sm-5 mb-4 text-white-50">
                             <div>
-                                <a href="landing" class="d-inline-block auth-logo">
-                                    <img src="assets/images/logo-light.png" alt="" height="20">
+                                <a href="<?= base_url() ?>" class="d-inline-block auth-logo">
+                                    <img src="<?= base_url() ?>assets/images/logo-light.png" alt="" height="20">
                                 </a>
                             </div>
                             <p class="mt-3 fs-15 fw-medium">Dashboard Job Portal Cakrawala Group</p>
@@ -92,6 +92,10 @@
                                             <input class="form-check-input" type="checkbox" value="" id="auth-remember-check">
                                             <label class="form-check-label" for="auth-remember-check">Remember me</label>
                                         </div> -->
+
+                                        <div hidden class="mt-4 text-center" id="pesan_login">
+                                            <p style="color:red;" class="mb-0">Akun anda salah</p>
+                                        </div>
 
                                         <div class="mt-4">
                                             <button class="btn btn-success w-100" type="submit" id="button_sign_in">Sign In</button>
@@ -148,24 +152,36 @@
     <!-- end auth-page-wrapper -->
 
     <!-- JAVASCRIPT -->
-    <script src="assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/libs/simplebar/simplebar.min.js"></script>
-    <script src="assets/libs/node-waves/waves.min.js"></script>
-    <script src="assets/libs/feather-icons/feather.min.js"></script>
-    <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
-    <script src="assets/js/plugins.js"></script>
+    <script src="<?= base_url() ?>assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="<?= base_url() ?>assets/libs/simplebar/simplebar.min.js"></script>
+    <script src="<?= base_url() ?>assets/libs/node-waves/waves.min.js"></script>
+    <script src="<?= base_url() ?>assets/libs/feather-icons/feather.min.js"></script>
+    <script src="<?= base_url() ?>assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
+    <script src="<?= base_url() ?>assets/js/plugins.js"></script>
 
     <!-- particles js -->
-    <script src="assets/libs/particles.js/particles.js"></script>
+    <script src="<?= base_url() ?>assets/libs/particles.js/particles.js"></script>
     <!-- particles app js -->
-    <script src="assets/js/pages/particles.app.js"></script>
+    <script src="<?= base_url() ?>assets/js/pages/particles.app.js"></script>
     <!-- password-addon init -->
-    <script src="assets/js/pages/password-addon.init.js"></script>
+    <script src="<?= base_url() ?>assets/js/pages/password-addon.init.js"></script>
 
     <!-- Tombol Sign In -->
     <script type="text/javascript">
         document.getElementById("button_sign_in").onclick = function(e) {
             e.preventDefault();
+
+            var loading_image = "<?php echo base_url('assets/images/loading/loading_animation3.gif'); ?>";
+            var loading_html_text = '<div class="col-12 col-md-12 col-auto text-center align-self-center">';
+            loading_html_text = loading_html_text + '<img src="' + loading_image + '" alt="" width="50px">';
+            loading_html_text = loading_html_text + '<h2>Memproses data...</h2>';
+            loading_html_text = loading_html_text + '</div>';
+
+            var success_image = "<?php echo base_url('assets/images/loading/ceklis_hijau.png'); ?>";
+            var success_html_text = '<div class="col-12 col-md-12 col-auto text-center align-self-center">';
+            success_html_text = success_html_text + '<img src="' + success_image + '" alt="" width="50px">';
+            success_html_text = success_html_text + '<h2>Login Sukses</h2>';
+            success_html_text = success_html_text + '</div>';
 
             var nip = $("#nip").val();
             var pin = $("#pin").val();
@@ -184,18 +200,28 @@
                 url: '<?= base_url() ?>auth/API_login_cis/' + nip + "/" + pin + "/",
                 method: 'get',
                 beforeSend: function() {
-                    alert("loading");
+                    $('#nip').attr('disabled', true);
+                    $('#pin').attr('disabled', true);
+                    $('#pesan_login').html(loading_html_text);
+                    $('#pesan_login').attr("hidden", false);
                 },
                 success: function(response) {
                     // alert(response);
                     var res = jQuery.parseJSON(response);
                     if (res['status'] == "0") {
-                        alert(res['status']);
-                        alert(res['message']);
+                        // alert(res['status']);
+                        // alert(res['message']);
+                        $('#nip').attr('disabled', false);
+                        $('#pin').attr('disabled', false);
+                        $('#pesan_login').html("<p style='color:red;' class='mb-0'>" + "NIP / ID Registrasi atau PIN / NIK salah, Hubungi admin untuk informasi lengkapnya." + "</p>");
+                        $('#pesan_login').attr("hidden", false);
                     } else if (res['status'] == "1") {
-                        alert(res['status']);
-                        alert(res['message']);
-                        alert("NIP: " + res['data']['employee_id'] + "\nNama: " + res['data']['fullname'] + "\nStatus Karyawan: " + res['data']['status_emp']);
+                        // alert(res['status']);
+                        // alert(res['message']);
+                        $('#pesan_login').html(success_html_text);
+                        $('#pesan_login').attr("hidden", false);
+                        // alert("NIP: " + res['data']['employee_id'] + "\nNama: " + res['data']['fullname'] + "\nStatus Karyawan: " + res['data']['status_emp'] + "\nUser Role: " + res['data']['userrole'] + "\nApp Role: " + res['data']['approle']);
+                        window.open('<?php echo base_url(); ?>dashboard/', '_self');
                     } else {
                         alert("undefined error");
                         alert(res['status']);

@@ -36,7 +36,7 @@
     <div class="layout-wrapper landing">
         <nav class="navbar navbar-expand-lg navbar-landing fixed-top job-navbar" id="navbar">
             <div class="container-fluid custom-container">
-                <a class="navbar-brand" href="<?= base_url() ?>">
+                <a class="navbar-brand" href="">
                     <img src="<?= base_url() ?>assets/images/logo-dark.png" class="card-logo card-logo-dark" alt="logo dark" height="17">
                     <img src="<?= base_url() ?>assets/images/logo-light.png" class="card-logo card-logo-light" alt="logo light" height="17">
                 </a>
@@ -46,10 +46,10 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto mt-2 mt-lg-0" id="navbar-example">
-                        <!-- <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link active" href="#hero">Home</a>
-                        </li> -->
-                        <!-- <li class="nav-item">
+                        </li>
+                        <li class="nav-item">
                                 <a class="nav-link" href="#process">Process</a>
                             </li>
                             <li class="nav-item">
@@ -63,7 +63,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#blog">Blog</a>
-                            </li> -->
+                            </li>
                     </ul>
 
                     <div class="">
@@ -82,17 +82,17 @@
                 <div class="row justify-content-between align-items-center">
                     <div class="col-lg-6">
                         <div>
-                            <h1 class="display-6 fw-semibold text-capitalize mb-3 lh-base">Bangun karir dan masa depanmu dengan OneCorp Group</h1>
+                            <h1 class="display-6 fw-semibold text-capitalize mb-3 lh-base">Find your next job and build your dream here</h1>
                             <p class="lead text-muted lh-base mb-4">Find jobs, create trackable resumes and enrich your applications. Carefully crafted after analyzing the needs of different industries.</p>
                             <form action="registrasi" class="job-panel-filter">
                                 <div class="row g-md-0 g-2">
-                                    <!-- <div class="col-md-4">
+                                    <div class="col-md-4">
                                         <div>
                                             <input type="search" id="job-title" class="form-control filter-input-box" placeholder="Job, Company name...">
                                         </div>
-                                    </div> -->
+                                    </div>
                                     <!--end col-->
-                                    <!-- <div class="col-md-4">
+                                    <div class="col-md-4">
                                         <div>
                                             <select class="form-control" data-choices>
                                                 <option value="">Select job type</option>
@@ -102,7 +102,7 @@
                                                 <option value="Internship">Internship</option>
                                             </select>
                                         </div>
-                                    </div> -->
+                                    </div>
                                     <!--end col-->
                                     <div class="col-md-12">
                                         <div class="h-100">
@@ -114,13 +114,13 @@
                                 <!--end row-->
                             </form>
 
-                            <!-- <ul class="treding-keywords list-inline mb-0 mt-3 fs-13">
+                            <ul class="treding-keywords list-inline mb-0 mt-3 fs-13">
                                 <li class="list-inline-item text-danger fw-semibold"><i class="mdi mdi-tag-multiple-outline align-middle"></i> Trending Keywords:</li>
                                 <li class="list-inline-item"><a href="javascript:void(0)">Design,</a></li>
                                 <li class="list-inline-item"><a href="javascript:void(0)">Development,</a></li>
                                 <li class="list-inline-item"><a href="javascript:void(0)">Manager,</a></li>
                                 <li class="list-inline-item"><a href="javascript:void(0)">Senior</a></li>
-                            </ul> -->
+                            </ul>
                         </div>
                     </div>
                     <!--end col-->
@@ -139,12 +139,12 @@
                                 </div>
                             </a>
 
-                            <!-- <div class="card p-3 rounded shadow-lg application-box">
+                            <div class="card p-3 rounded shadow-lg application-box">
                                     <h5 class="fs-15 lh-base mb-3">Applications</h5>
                                     <div class="avatar-group">
                                         <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Brent Gonzalez">
                                             <div class="avatar-xs">
-                                                <img src="assets/images/users/avatar-3.jpg" alt="" class="rounded-circle img-fluid">
+                                                <img src="<?= base_url() ?>assets/images/users/avatar-3.jpg" alt="" class="rounded-circle img-fluid">
                                             </div>
                                         </a>
                                         <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Ellen Smith">
@@ -156,7 +156,7 @@
                                         </a>
                                         <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Ellen Smith">
                                             <div class="avatar-xs">
-                                                <img src="assets/images/users/avatar-10.jpg" alt="" class="rounded-circle img-fluid">
+                                                <img src="<?= base_url() ?>assets/images/users/avatar-10.jpg" alt="" class="rounded-circle img-fluid">
                                             </div>
                                         </a>
                                         <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top">
@@ -168,7 +168,7 @@
                                         </a>
                                         <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Brent Gonzalez">
                                             <div class="avatar-xs">
-                                                <img src="assets/images/users/avatar-9.jpg" alt="" class="rounded-circle img-fluid">
+                                                <img src="<?= base_url() ?>assets/images/users/avatar-9.jpg" alt="" class="rounded-circle img-fluid">
                                             </div>
                                         </a>
                                         <a href="javascript: void(0);" class="avatar-group-item" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="More Appliances">
@@ -179,7 +179,7 @@
                                             </div>
                                         </a>
                                     </div>
-                                </div> -->
+                                </div>
                             <img src="<?= base_url() ?>assets/images/job-profile2.png" alt="" class="user-img">
 
                             <div class="circle-effect">
@@ -197,7 +197,7 @@
         </section>
         <!-- end hero section -->
 
-        <!-- <section class="section" id="process">
+        <section class="section" id="process">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
@@ -259,10 +259,10 @@
                         </div>
                     </div>
                 </div>
-            </section> -->
+            </section>
 
         <!-- start features -->
-        <!-- <section class="section">
+        <section class="section">
                 <div class="container">
                     <div class="row align-items-center justify-content-lg-between justify-content-center gy-4">
                         <div class="col-lg-5 col-sm-7">
@@ -281,7 +281,7 @@
                                 <div class="card feedback-box">
                                     <div class="card-body d-flex shadow-lg">
                                         <div class="flex-shrink-0 me-3">
-                                            <img src="assets/images/users/avatar-10.jpg" alt="" class="avatar-sm rounded-circle">
+                                            <img src="<?= base_url() ?>assets/images/users/avatar-10.jpg" alt="" class="avatar-sm rounded-circle">
                                         </div>
                                         <div class="flex-grow-1">
                                             <h5 class="fs-14 lh-base mb-0">Tonya Noble</h5>
@@ -297,7 +297,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <img src="assets/images/about.jpg" alt="" class="img-fluid mx-auto rounded-3" />
+                                <img src="<?= base_url() ?>assets/images/about.jpg" alt="" class="img-fluid mx-auto rounded-3" />
                             </div>
                         </div>
                         <div class="col-lg-6">
@@ -352,11 +352,11 @@
                         </div>
                     </div>
                 </div>
-            </section> -->
+            </section>
         <!-- end features -->
 
         <!-- start services -->
-        <!-- <section class="section bg-light" id="categories">
+        <section class="section bg-light" id="categories">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-7">
@@ -482,11 +482,11 @@
                         </div>
                     </div>
                 </div>
-            </section> -->
+            </section>
         <!-- end services -->
 
         <!-- start cta -->
-        <!-- <section class="py-5 bg-primary position-relative">
+        <section class="py-5 bg-primary position-relative">
                 <div class="bg-overlay bg-overlay-pattern opacity-50"></div>
                 <div class="container">
                     <div class="row align-items-center gy-4">
@@ -503,10 +503,10 @@
                         </div>
                     </div>
                 </div>
-            </section> -->
+            </section>
         <!-- end cta -->
 
-        <!-- <section class="section" id="findJob">
+        <section class="section" id="findJob">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-7">
@@ -524,7 +524,7 @@
                                     <div class="d-flex">
                                         <div class="avatar-sm">
                                             <div class="avatar-title bg-warning-subtle rounded">
-                                                <img src="assets/images/companies/img-3.png" alt="" class="avatar-xxs">
+                                                <img src="<?= base_url() ?>assets/images/companies/img-3.png" alt="" class="avatar-xxs">
                                             </div>
                                         </div>
                                         <div class="ms-3 flex-grow-1">
@@ -564,7 +564,7 @@
                                     <div class="d-flex">
                                         <div class="avatar-sm">
                                             <div class="avatar-title bg-primary-subtle rounded">
-                                                <img src="assets/images/companies/img-2.png" alt="" class="avatar-xxs">
+                                                <img src="<?= base_url() ?>assets/images/companies/img-2.png" alt="" class="avatar-xxs">
                                             </div>
                                         </div>
                                         <div class="ms-3 flex-grow-1">
@@ -604,7 +604,7 @@
                                     <div class="d-flex">
                                         <div class="avatar-sm">
                                             <div class="avatar-title bg-danger-subtle rounded">
-                                                <img src="assets/images/companies/img-4.png" alt="" class="avatar-xxs">
+                                                <img src="<?= base_url() ?>assets/images/companies/img-4.png" alt="" class="avatar-xxs">
                                             </div>
                                         </div>
                                         <div class="ms-3 flex-grow-1">
@@ -643,7 +643,7 @@
                                     <div class="d-flex">
                                         <div class="avatar-sm">
                                             <div class="avatar-title bg-success-subtle rounded">
-                                                <img src="assets/images/companies/img-9.png" alt="" class="avatar-xxs">
+                                                <img src="<?= base_url() ?>assets/images/companies/img-9.png" alt="" class="avatar-xxs">
                                             </div>
                                         </div>
                                         <div class="ms-3 flex-grow-1">
@@ -683,7 +683,7 @@
                                     <div class="d-flex">
                                         <div class="avatar-sm">
                                             <div class="avatar-title bg-info-subtle rounded">
-                                                <img src="assets/images/companies/img-1.png" alt="" class="avatar-xxs">
+                                                <img src="<?= base_url() ?>assets/images/companies/img-1.png" alt="" class="avatar-xxs">
                                             </div>
                                         </div>
                                         <div class="ms-3 flex-grow-1">
@@ -722,7 +722,7 @@
                                     <div class="d-flex">
                                         <div class="avatar-sm">
                                             <div class="avatar-title bg-success-subtle rounded">
-                                                <img src="assets/images/companies/img-7.png" alt="" class="avatar-xxs">
+                                                <img src="<?= base_url() ?>assets/images/companies/img-7.png" alt="" class="avatar-xxs">
                                             </div>
                                         </div>
                                         <div class="ms-3 flex-grow-1">
@@ -762,7 +762,7 @@
                                     <div class="d-flex">
                                         <div class="avatar-sm">
                                             <div class="avatar-title bg-info-subtle rounded">
-                                                <img src="assets/images/companies/img-8.png" alt="" class="avatar-xxs">
+                                                <img src="<?= base_url() ?>assets/images/companies/img-8.png" alt="" class="avatar-xxs">
                                             </div>
                                         </div>
                                         <div class="ms-3 flex-grow-1">
@@ -802,7 +802,7 @@
                                     <div class="d-flex">
                                         <div class="avatar-sm">
                                             <div class="avatar-title bg-warning-subtle rounded">
-                                                <img src="assets/images/companies/img-5.png" alt="" class="avatar-xxs">
+                                                <img src="<?= base_url() ?>assets/images/companies/img-5.png" alt="" class="avatar-xxs">
                                             </div>
                                         </div>
                                         <div class="ms-3 flex-grow-1">
@@ -843,10 +843,10 @@
                         </div>
                     </div>
                 </div>
-            </section> -->
+            </section>
 
         <!-- start find jobs -->
-        <!-- <section class="section">
+        <section class="section">
                 <div class="container">
                     <div class="row align-items-center gy-4">
                         <div class="col-lg-6 order-2 order-lg-1">
@@ -868,7 +868,7 @@
                                         <button type="button" class="btn btn-icon btn-soft-primary float-end" data-bs-toggle="button" aria-pressed="true"><i class="mdi mdi-cards-heart fs-16"></i></button>
                                         <div class="avatar-sm mb-4">
                                             <div class="avatar-title bg-secondary-subtle rounded">
-                                                <img src="assets/images/companies/img-1.png" alt="" class="avatar-xxs">
+                                                <img src="<?= base_url() ?>assets/images/companies/img-1.png" alt="" class="avatar-xxs">
                                             </div>
                                         </div>
                                         <a href="#!">
@@ -908,28 +908,28 @@
                                             <a href="javascript: void(0);" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Brent Gonzalez">
                                                 <div class="avatar-xs">
                                                     <div class="avatar-title bg-light bg-opacity-25 rounded-circle">
-                                                        <img src="assets/images/companies/img-5.png" alt="" height="15">
+                                                        <img src="<?= base_url() ?>assets/images/companies/img-5.png" alt="" height="15">
                                                     </div>
                                                 </div>
                                             </a>
                                             <a href="javascript: void(0);" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Brent Gonzalez">
                                                 <div class="avatar-xs">
                                                     <div class="avatar-title bg-light bg-opacity-25 rounded-circle">
-                                                        <img src="assets/images/companies/img-2.png" alt="" height="15">
+                                                        <img src="<?= base_url() ?>assets/images/companies/img-2.png" alt="" height="15">
                                                     </div>
                                                 </div>
                                             </a>
                                             <a href="javascript: void(0);" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Brent Gonzalez">
                                                 <div class="avatar-xs">
                                                     <div class="avatar-title bg-light bg-opacity-25 rounded-circle">
-                                                        <img src="assets/images/companies/img-8.png" alt="" height="15">
+                                                        <img src="<?= base_url() ?>assets/images/companies/img-8.png" alt="" height="15">
                                                     </div>
                                                 </div>
                                             </a>
                                             <a href="javascript: void(0);" data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Brent Gonzalez">
                                                 <div class="avatar-xs">
                                                     <div class="avatar-title bg-light bg-opacity-25 rounded-circle">
-                                                        <img src="assets/images/companies/img-7.png" alt="" height="15">
+                                                        <img src="<?= base_url() ?>assets/images/companies/img-7.png" alt="" height="15">
                                                     </div>
                                                 </div>
                                             </a>
@@ -947,11 +947,11 @@
                         </div>
                     </div>
                 </div>
-            </section> -->
+            </section>
         <!-- end find jobs -->
 
         <!-- start candidates -->
-        <!-- <section class="section bg-light" id="candidates">
+        <section class="section bg-light" id="candidates">
                 <div class="bg-overlay bg-overlay-pattern"></div>
                 <div class="container">
                     <div class="row justify-content-center">
@@ -969,7 +969,7 @@
                                     <div class="swiper-slide">
                                         <div class="card text-center">
                                             <div class="card-body p-4">
-                                                <img src="assets/images/users/avatar-2.jpg" alt="" class="rounded-circle avatar-md mx-auto d-block">
+                                                <img src="<?= base_url() ?>assets/images/users/avatar-2.jpg" alt="" class="rounded-circle avatar-md mx-auto d-block">
                                                 <h5 class="fs-17 mt-3 mb-2">Nancy Martino</h5>
                                                 <p class="text-muted fs-13 mb-3">Creative Designer</p>
 
@@ -984,7 +984,7 @@
                                     <div class="swiper-slide">
                                         <div class="card text-center">
                                             <div class="card-body p-4">
-                                                <img src="assets/images/users/avatar-3.jpg" alt="" class="rounded-circle avatar-md mx-auto d-block">
+                                                <img src="<?= base_url() ?>assets/images/users/avatar-3.jpg" alt="" class="rounded-circle avatar-md mx-auto d-block">
                                                 <h5 class="fs-17 mt-3 mb-2">Glen Matney</h5>
                                                 <p class="text-muted fs-13 mb-3">Marketing Director</p>
                                         
@@ -999,7 +999,7 @@
                                     <div class="swiper-slide">
                                         <div class="card text-center">
                                             <div class="card-body p-4">
-                                                <img src="assets/images/users/avatar-10.jpg" alt="" class="rounded-circle avatar-md mx-auto d-block">
+                                                <img src="<?= base_url() ?>assets/images/users/avatar-10.jpg" alt="" class="rounded-circle avatar-md mx-auto d-block">
                                                 <h5 class="fs-17 mt-3 mb-2">Alexis Clarke</h5>
                                                 <p class="text-muted fs-13 mb-3">Product Manager</p>
                                         
@@ -1014,7 +1014,7 @@
                                     <div class="swiper-slide">
                                         <div class="card text-center">
                                             <div class="card-body p-4">
-                                                <img src="assets/images/users/avatar-8.jpg" alt="" class="rounded-circle avatar-md mx-auto d-block" />
+                                                <img src="<?= base_url() ?>assets/images/users/avatar-8.jpg" alt="" class="rounded-circle avatar-md mx-auto d-block" />
                                                 <h5 class="fs-17 mt-3 mb-2">James Price</h5>
                                                 <p class="text-muted fs-13 mb-3">Product Designer</p>
                                         
@@ -1029,7 +1029,7 @@
                                     <div class="swiper-slide">
                                         <div class="card text-center">
                                             <div class="card-body p-4">
-                                                <img src="assets/images/users/avatar-5.jpg" alt="" class="rounded-circle avatar-md mx-auto d-block" />
+                                                <img src="<?= base_url() ?>assets/images/users/avatar-5.jpg" alt="" class="rounded-circle avatar-md mx-auto d-block" />
                                                 <h5 class="fs-17 mt-3 mb-2">Michael Morris</h5>
                                                 <p class="text-muted fs-13 mb-3">Full Stack Developer</p>
                                         
@@ -1046,11 +1046,11 @@
                         </div>
                     </div>
                 </div>
-            </section> -->
+            </section>
         <!-- end candidates -->
 
         <!-- start blog -->
-        <!-- <section class="section" id="blog">
+        <section class="section" id="blog">
                 <div class="container">
                     <div class="row justify-content-center">
                         <div class="col-lg-8">
@@ -1065,7 +1065,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="card">
                                 <div class="card-body">
-                                    <img src="assets/images/small/img-8.jpg" alt="" class="img-fluid rounded" />
+                                    <img src="<?= base_url() ?>assets/images/small/img-8.jpg" alt="" class="img-fluid rounded" />
                                 </div>
                                 <div class="card-body">
                                     <ul class="list-inline fs-14 text-muted">
@@ -1090,7 +1090,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="card">
                                 <div class="card-body">
-                                    <img src="assets/images/small/img-6.jpg" alt="" class="img-fluid rounded" />
+                                    <img src="<?= base_url() ?>assets/images/small/img-6.jpg" alt="" class="img-fluid rounded" />
                                 </div>
                                 <div class="card-body">
                                     <ul class="list-inline fs-14 text-muted">
@@ -1115,7 +1115,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="card">
                                 <div class="card-body">
-                                    <img src="assets/images/small/img-9.jpg" alt="" class="img-fluid rounded" />
+                                    <img src="<?= base_url() ?>assets/images/small/img-9.jpg" alt="" class="img-fluid rounded" />
                                 </div>
                                 <div class="card-body">
                                     <ul class="list-inline fs-14 text-muted">
@@ -1140,11 +1140,11 @@
 
                     </div>
                 </div>
-            </section> -->
+            </section>
         <!-- end blog -->
 
         <!-- start cta -->
-        <!-- <section class="py-5 bg-primary position-relative">
+        <section class="py-5 bg-primary position-relative">
                 <div class="bg-overlay bg-overlay-pattern opacity-50"></div>
                 <div class="container">
                     <div class="row align-items-center gy-4">
@@ -1159,17 +1159,17 @@
                         </div>
                     </div>
                 </div>
-            </section> -->
+            </section>
         <!-- end cta -->
 
         <!-- Start footer -->
         <footer class="custom-footer bg-dark py-5 position-relative">
             <div class="container">
-                <!-- <div class="row">
+                <div class="row">
                         <div class="col-lg-4 mt-4">
                             <div>
                                 <div>
-                                    <img src="assets/images/logo-light.png" alt="logo light" height="17" />
+                                    <img src="<?= base_url() ?>assets/images/logo-light.png" alt="logo light" height="17" />
                                 </div>
                                 <div class="mt-4 fs-13">
                                     <p>Premium Multipurpose Admin & Dashboard Template</p>
@@ -1252,7 +1252,7 @@
                             </div>
                         </div>
 
-                    </div> -->
+                    </div>
 
                 <div class="row text-center text-sm-start align-items-center mt-5">
                     <div class="col-sm-6">

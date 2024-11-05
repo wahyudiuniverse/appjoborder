@@ -15,6 +15,12 @@ class Dashboard extends CI_Controller
 		$this->load->helper('security');
 		$this->load->library('form_validation');
 		$this->load->model("Kandidat_model");
+		$this->load->model("Auth_model");
+
+		//cek session login
+		if(!$this->Auth_model->check_login()){
+			redirect('auth');
+		}
 	}
 	
     public function index()
