@@ -14,6 +14,8 @@
     <!-- App favicon -->
     <link rel="shortcut icon" href="<?= base_url() ?>assets/images/favicon.ico">
 
+    <script src="<?= base_url() ?>assets/libs/jquery/jquery-3.7.1.min.js"></script>
+
     <!--Swiper slider css-->
     <link href="<?= base_url() ?>assets/libs/swiper/swiper-bundle.min.css" rel="stylesheet" type="text/css" />
 
@@ -31,7 +33,7 @@
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#navbar-example">
-
+<input type="hidden" id="base" value="<?php echo base_url(); ?>">
     <!-- Begin page -->
     <div class="layout-wrapper landing">
         <nav class="navbar navbar-expand-lg navbar-landing fixed-top job-navbar" id="navbar">

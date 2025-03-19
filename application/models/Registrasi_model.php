@@ -84,19 +84,72 @@ class Registrasi_model extends CI_model
     }
 
     //ambil data jabatan berdasarkan project untuk Json
-    public function getJabatanByProjectJson($postData)
+    public function getJabatanByProjectJson($project_id)
     {
         //$otherdb = $this->load->database('default', TRUE);
+        $company = $this->get_company_by_project($project_id);
 
         $this->db->select('a.*');
-        $this->db->from('vacant a');
-        $this->db->group_by('jabatan_id');
-        // $this->db->join('(select max(id) as maxid from vacant group by jabatan_id,jabatan_name where project_id = '.$postData['project'].') b', 'a.id = b.maxid', 'inner');
-        $this->db->where('project_id', $postData['project']);
+        $this->db->select('b.designation_id');
+        $this->db->select('b.designation_name');
+        $this->db->join('jabatan b', 'a.posisi = b.designation_id', 'left');
+        $this->db->from('mappring_project_jabatan a');
+        $this->db->where('project_id', $project_id);
 
         $query = $this->db->get()->result_array();
 
-        return $query;
+        $result = array(
+            "company" => $company,
+            "jabatan" => $query,
+        );
+
+        return $result;
+    }
+
+    //ambil data company berdasarkan project
+    public function get_company_by_project($project_id)
+    {
+        //$otherdb = $this->load->database('default', TRUE);
+        $result = array();
+
+        $this->db->select('company_id');
+        $this->db->select('title');
+        $this->db->where('project_id', $project_id);
+        $this->db->from('projects');
+
+        $query = $this->db->get()->result_array();
+
+        if (empty($query)) {
+            $result = array(
+                "company_id" => "",
+                "company_name" => "",
+            );
+
+            return $result;
+        } else {
+            $this->db->select('company_id');
+            $this->db->select('name');
+            $this->db->where('company_id', $query[0]['company_id']);
+            $this->db->from('companies');
+
+            $query2 = $this->db->get()->result_array();
+
+            if (empty($query2)) {
+                $result = array(
+                    "company_id" => "",
+                    "company_name" => "",
+                );
+    
+                return $result;
+            } else {
+                $result = array(
+                    "company_id" => $query2[0]['company_id'],
+                    "company_name" => $query2[0]['name'],
+                );
+    
+                return $result;
+            }
+        }
     }
 
     //ambil data area berdasarkan project untuk Json
@@ -129,8 +182,8 @@ class Registrasi_model extends CI_model
     {
         $this->db->select('*');
         $this->db->from('interviewer');
-        $this->db->where('status_aktif',"1");
-        $this->db->order_by('region','ASC');
+        $this->db->where('status_aktif', "1");
+        $this->db->order_by('region', 'ASC');
 
         $query = $this->db->get()->result_array();
 
@@ -307,36 +360,36 @@ class Registrasi_model extends CI_model
     }
 
     function tgl_indo($tanggal)
-	{
-		if (($tanggal == "") || ($tanggal == "0") || empty($tanggal)) {
-			return "";
-		} else {
-			// $input = '06/10/2011 19:00:02';
-			$timetodate = strtotime($tanggal);
-			$date = date('Y-m-d', $timetodate);
+    {
+        if (($tanggal == "") || ($tanggal == "0") || empty($tanggal)) {
+            return "";
+        } else {
+            // $input = '06/10/2011 19:00:02';
+            $timetodate = strtotime($tanggal);
+            $date = date('Y-m-d', $timetodate);
 
 
-			$bulan = array(
-				1 =>   'Januari',
-				'Februari',
-				'Maret',
-				'April',
-				'Mei',
-				'Juni',
-				'Juli',
-				'Agustus',
-				'September',
-				'Oktober',
-				'November',
-				'Desember'
-			);
-			$pecahkan = explode('-', $date);
+            $bulan = array(
+                1 =>   'Januari',
+                'Februari',
+                'Maret',
+                'April',
+                'Mei',
+                'Juni',
+                'Juli',
+                'Agustus',
+                'September',
+                'Oktober',
+                'November',
+                'Desember'
+            );
+            $pecahkan = explode('-', $date);
 
-			// variabel pecahkan 0 = tanggal
-			// variabel pecahkan 1 = bulan
-			// variabel pecahkan 2 = tahun
+            // variabel pecahkan 0 = tanggal
+            // variabel pecahkan 1 = bulan
+            // variabel pecahkan 2 = tahun
 
-			return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
-		}
-	}
+            return $pecahkan[2] . ' ' . $bulan[(int)$pecahkan[1]] . ' ' . $pecahkan[0];
+        }
+    }
 }

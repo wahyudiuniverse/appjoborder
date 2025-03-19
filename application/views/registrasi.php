@@ -65,6 +65,7 @@
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#navbar-example">
+<input type="hidden" id="base" value="<?php echo base_url(); ?>">
   <!-- removeNotificationModal -->
   <div id="removeNotificationModal" class="modal fade zoomIn" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -1248,7 +1249,6 @@
                 </div>
                 <div class="step-arrow-nav mb-4">
                   <ul
-
                     id="navigasi_section"
                     class="nav nav-pills custom-nav nav-justified"
                     role="tablist">
@@ -1267,7 +1267,6 @@
                     </li>
                     <li class="nav-item" role="presentation">
                       <button
-
                         class="nav-link active"
                         id="project-tab"
                         data-bs-toggle="pill"
@@ -2409,11 +2408,10 @@
       var interviewer = $("#interviewer_input").val();
 
       if (
-        area == "" || area == "0" || area == null ||
         sumber_info == "" || sumber_info == "0" || sumber_info == null ||
         interviewer == "" || interviewer == "0" || interviewer == null
       ) {
-        alert("Area, Sumber Info dan Bertemu dengan harus diisi.");
+        alert("Sumber Info dan Bertemu dengan harus diisi.");
       } else {
         if (project_id == "") {
           project_name = "";
@@ -2633,15 +2631,13 @@
         jenis_kelamin == "" || jenis_kelamin == "0" || jenis_kelamin == null ||
         tempat_lahir == "" || tempat_lahir == "0" || tempat_lahir == null ||
         tanggal_lahir == "" || tanggal_lahir == "0" || tanggal_lahir == null ||
-        asal_kota == "" || asal_kota == "0" || asal_kota == null ||
         alamat_domisili == "" || alamat_domisili == "0" || alamat_domisili == null ||
         nomor_tlp == "" || nomor_tlp == "0" || nomor_tlp == null ||
         nama_kontak_darurat == "" || nama_kontak_darurat == "0" || nama_kontak_darurat == null ||
         hubungan_kontak_darurat == "" || hubungan_kontak_darurat == "0" || hubungan_kontak_darurat == null ||
-        nomor_tlp_kontak_darurat == "" || nomor_tlp_kontak_darurat == "0" || nomor_tlp_kontak_darurat == null ||
-        status_nikah == "" || status_nikah == "0" || status_nikah == null
+        nomor_tlp_kontak_darurat == "" || nomor_tlp_kontak_darurat == "0" || nomor_tlp_kontak_darurat == null
       ) {
-        alert("Semua input data diri harus diisi.");
+        alert("NIK, Nama, Jenis Kelamin, Tempat Tanggal Lahir, Alamat, Nomor Telepon dan Data Kontak Darurat harus diisi.");
       } else {
         // AJAX untuk save data diri
         $.ajax({

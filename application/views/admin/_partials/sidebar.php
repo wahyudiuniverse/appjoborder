@@ -65,16 +65,42 @@
 
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarDashboards" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                        <i class="ri-team-fill"></i> <span data-key="t-dashboards">Kandidat</span>
+                        <i class="ri-briefcase-4-line"></i> <span data-key="t-dashboards">Master Table</span>
                     </a>
                     <div class="collapse menu-dropdown" id="sidebarDashboards">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="<?= base_url() ?>kandidat" class="nav-link" data-key="t-analytics"> Data Kandidat </a>
+                                <a href="<?= base_url() ?>admin/master_table/interviewer" class="nav-link" data-key="t-analytics"> Interviewer </a>
                             </li>
                         </ul>
                     </div>
-                </li> <!-- end Dashboard Menu -->
+                </li> <!-- end Master Table Menu -->
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarJobOrder" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarJobOrder">
+                        <i class="ri-briefcase-4-line"></i> <span data-key="t-job-order">Job Order (Under Construction)</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="sidebarJobOrder">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="#" class="nav-link" data-key="t-job-order"> Job Order (Under Construction) </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li> <!-- end Job Order Menu -->
+
+                <li class="nav-item">
+                    <a class="nav-link menu-link" href="#sidebarKandidat" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarKandidat">
+                        <i class="ri-team-fill"></i> <span data-key="t-kandidat">Kandidat</span>
+                    </a>
+                    <div class="collapse menu-dropdown" id="sidebarKandidat">
+                        <ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="<?= base_url() ?>kandidat" class="nav-link" data-key="t-data-kandidat"> Data Kandidat </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li> <!-- end Kandidat Menu -->
 
             </ul>
         </div>

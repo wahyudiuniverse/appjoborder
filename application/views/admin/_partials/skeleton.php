@@ -62,6 +62,8 @@
             <div class="page-content">
                 <div class="container-fluid">
 
+                    <input type="hidden" id="base" value="<?php echo base_url(); ?>">
+
                     <?php echo $sub_view; ?>
 
                 </div>

@@ -2,6 +2,121 @@
     <?php //print_r($data_kandidat); 
     ?>
 </pre> -->
+
+<!-- MODAL MULAI SCREENING -->
+<div class="modal fade" id="mulaiScreeningModal" tabindex="-1" role="dialog" aria-labelledby="mulaiScreeningModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="mulaiScreeningLabel">Mulai Proses Screening Kandidat</h5>
+                <button onclick="close_mulai_screening()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="isi-modal-mulai-screening">
+                    <div class="container" id="container_modal_mulai_screening">
+                        <div class="row">
+                            <table class="table table-striped col-md-12">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="2" class="bg-dark text-white"><strong>Mapping Project</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td style='width:25%'><strong>Nama Kandidat</strong></td>
+                                        <td style='width:75%'>
+                                            <?php echo $data_kandidat['nama']; ?>
+                                            <input hidden id="company_id_modal" name="company_id_modal" type="text">
+                                            <input hidden id="company_name_modal" name="company_name_modal" type="text">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Project</strong></td>
+                                        <td>
+                                            <select name="project_modal" id="project_modal" class="form-control dropdown-mulai-screening">
+                                                <option value="">Pilih Project</option>
+                                                <?php foreach ($all_project as $project) : ?>
+                                                    <option value="<?= $project['project_id']; ?>" style="text-wrap: wrap;">
+                                                        <?php echo "[" . $project['priority'] . "] " . $project['title']; ?>
+                                                    </option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                            <span id='pesan_project_modal'></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Posisi/Jabatan</strong></td>
+                                        <td>
+                                            <select name="jabatan_modal" id="jabatan_modal" class="form-control dropdown-mulai-screening">
+                                                <option value="" style="text-wrap: wrap;">Pilih Jabatan</option>
+                                            </select>
+                                            <span id='pesan_jabatan_modal'></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Kategori Karyawan</strong></td>
+                                        <td>
+                                            <select class="form-control dropdown-mulai-screening" name="location_id" id="location_id">
+                                                <option value="0" style="text-wrap: wrap;">Pilih Kategori Karyawan</option>
+                                                <option value="1" style="text-wrap: wrap;">In House</option>
+                                                <option value="2" style="text-wrap: wrap;">Area</option>
+                                                <option value="3" style="text-wrap: wrap;">Ratecard</option>
+                                                <option value="4" style="text-wrap: wrap;">Project</option>
+                                                <option value="5" style="text-wrap: wrap;">Freelance/magang</option>
+                                            </select>
+                                            <span id='pesan_kategori_modal'></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="2" class="bg-dark text-white"><strong>Penempatan</strong></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Provinsi</strong></td>
+                                        <td>
+                                            <select name="provinsi_input" id="provinsi_input" class="form-control dropdown-mulai-screening">
+                                                <option value="">Pilih Provinsi</option>
+                                                <?php foreach ($all_provinsi as $provinsi) : ?>
+                                                    <option value="<?= $provinsi['id_bps']; ?>" style="text-wrap: wrap;">
+                                                        <?php echo $provinsi['nama']; ?>
+                                                    </option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                            <span id='pesan_provinsi'></span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Penempatan</strong></td>
+                                        <td>
+                                            <select name="kota_input" id="kota_input" class="form-control dropdown-mulai-screening">
+                                                <option value="" style="text-wrap: wrap;">Pilih Area</option>
+                                            </select>
+                                            <span id='pesan_penempatan'></span>
+                                        </td>
+                                    </tr>
+                                    <!-- <tr>
+                                        <td><strong>Nomor Kontak</strong></td>
+                                        <td>
+                                            <input id='nomor_kontak_modal' name='nomor_kontak_modal' type='text' class='form-control' placeholder='Area/Penempatan' value='<?php echo strtoupper($penempatan); ?>'>
+                                            <span id='pesan_nomor_kontak_modal'></span>
+                                        </td>
+                                    </tr> -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-modal-mulai-screening"></div>
+
+            </div>
+            <div class="modal-footer">
+                <button onclick="close_mulai_screening()" type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
+                <button onclick="mulai_screening()" type='button' class='btn btn-primary'>Mulai Proses Screening</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="profile-foreground position-relative mx-n4 mt-n4">
     <div class="profile-wid-bg">
         <img src="<?= base_url() ?>assets/images/profile-bg.jpg" alt="" class="profile-wid-img" />
@@ -68,6 +183,11 @@
                     <li class="nav-item">
                         <a class="nav-link fs-14" data-bs-toggle="tab" href="#documents" role="tab">
                             <i class="ri-folder-4-line d-inline-block d-md-none"></i> <span class="d-none d-md-inline-block">Dokumen</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fs-14" data-bs-toggle="tab" href="#screening" role="tab">
+                            <i class="ri-edit-box-line d-inline-block d-md-none"></i> <span class="d-none d-md-inline-block">Screening</span>
                         </a>
                     </li>
                 </ul>
@@ -691,6 +811,104 @@
                     </div>
                 </div>
                 <!--end tab-pane-->
+                <div class="tab-pane fade" id="screening" role="tabpanel">
+                    <?php if (!empty($all_screening)) {
+                        foreach ($all_screening as $screening): ?>
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title mb-3">Screening Kandidat</h5>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <table class="table table-striped">
+                                                <tbody>
+                                                    <tr>
+                                                        <th scope="row" style="width: 30%">Project<span class="icon-verify-nama"></span></th>
+                                                        <td id="nama_kondar_tabel"><?php echo $data_kandidat['nama_kontak_darurat']; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Posisi/Jabatan</th>
+                                                        <td id="hubungan_kondar_tabel"><?php echo $data_kandidat['nama_hubungan_kondar']; ?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Area</th>
+                                                        <td>
+                                                            <span id="nomor_kontak_darurat_tabel"><?php echo $data_kandidat['nomor_tlp_kontak_darurat']; ?></span>
+                                                            <?php if ($data_kandidat['nomor_tlp_kontak_darurat'] == "") {
+                                                            } else { ?>
+                                                                <button id="button_send_whatsapp_kondar" class="btn btn-sm btn-outline-success ladda-button mx-1" data-style="expand-right">Send Whatsapp</button>
+                                                            <?php } ?>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th scope="row">Status</th>
+                                                        <td>
+                                                            <span id="nomor_kontak_darurat_tabel"><?php echo $data_kandidat['nomor_tlp_kontak_darurat']; ?></span>
+                                                            <?php if ($data_kandidat['nomor_tlp_kontak_darurat'] == "") {
+                                                            } else { ?>
+                                                                <button id="button_send_whatsapp_kondar" class="btn btn-sm btn-outline-success ladda-button mx-1" data-style="expand-right">Send Whatsapp</button>
+                                                            <?php } ?>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="accordion" id="accordionPanelsStayOpenExample">
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
+                                                    Interview Cakrawala
+                                                </button>
+                                            </h2>
+                                            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+                                                <div class="accordion-body">
+                                                    <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                                                    Test
+                                                </button>
+                                            </h2>
+                                            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                                                <div class="accordion-body">
+                                                    <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="accordion-item">
+                                            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                                                    Interview OPS/NAE
+                                                </button>
+                                            </h2>
+                                            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                                                <div class="accordion-body">
+                                                    <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <?php endforeach;
+                    } else { ?>
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">Belum ada Proses Screening Kandidat</h5>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <button onclick="show_modal_screening()" type='button' class='btn btn-outline-primary'>Mulai Proses Screening Baru</button>
+                                        <!-- Mulai Screening Baru -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php } ?>
+                </div>
+                <!--end tab-pane-->
             </div>
             <!--end tab-content-->
         </div>
@@ -698,6 +916,110 @@
     <!--end col-->
 </div>
 <!--end row-->
+
+<!-- define dropdown dengan search -->
+<script type='text/javascript'>
+    var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
+        csrfHash = '<?php echo $this->security->get_csrf_hash(); ?>';
+
+    $(document).ready(function() {
+        $('.dropdown-mulai-screening').select2({
+            width: '100%',
+            dropdownParent: $("#container_modal_mulai_screening")
+        });
+    });
+
+    // Provinsi Change - Kota
+    $('#provinsi_input').change(function() {
+        var provinsi = $(this).val();
+
+        // AJAX request Kota
+        $.ajax({
+            url: '<?= base_url() ?>registrasi/getKotaByProv/',
+            method: 'post',
+            data: {
+                [csrfName]: csrfHash,
+                provinsi: provinsi,
+            },
+            dataType: 'json',
+            success: function(response) {
+
+                // Remove options
+                $('#kota_input').find('option').not(':first').remove();
+
+                // Add options
+                $.each(response, function(index, data) {
+                    $('#kota_input').append('<option value="' + data['id'] + '" style="text-wrap: wrap;">' + data['nama'] + '</option>');
+                });
+            }
+        });
+    });
+
+    // Project Change - Jabatan
+    $('#project_modal').change(function() {
+        var project = $(this).val();
+
+        // alert("Project: " + project);
+
+        // AJAX request Jabatan
+        $.ajax({
+            url: '<?= base_url() ?>registrasi/getJabatanByProject/',
+            method: 'post',
+            data: {
+                [csrfName]: csrfHash,
+                project: project,
+            },
+            // dataType: 'json',
+            success: function(response) {
+                var res = jQuery.parseJSON(response);
+
+                // Remove options
+                $('#jabatan_modal').find('option').not(':first').remove();
+
+                // Add options
+                $.each(res["jabatan"], function(index, data) {
+                    $('#jabatan_modal').append('<option value="' + data['designation_id'] + '" style="text-wrap: wrap;">' + data['designation_name'] + '</option>');
+                });
+
+                $('#company_name_modal').val(res["company"]["company_name"]);
+                $('#company_id_modal').val(res["company"]["company_id"]);
+
+                alert("Company name: " + res["company"]["company_name"]);
+            }
+        });
+    });
+
+    // Jabatan Change - get company and sub project
+    $('#jabatan_modal').change(function() {
+        var jabatan = $(this).val();
+        var project = $("#project_input").val();
+
+        // alert("Project: " + project);
+
+        // AJAX request Jabatan
+        $.ajax({
+            url: '<?= base_url() ?>registrasi/getJabatanByProject/',
+            method: 'post',
+            data: {
+                [csrfName]: csrfHash,
+                jabatan: jabatan,
+                project: project,
+            },
+            dataType: 'json',
+            success: function(response) {
+                var res = jQuery.parseJSON(response);
+
+                // Remove options
+                $('#jabatan_modal').find('option').not(':first').remove();
+
+                // Add options
+                $.each(response, function(index, data) {
+                    $('#jabatan_modal').append('<option value="' + data['designation_id'] + '" style="text-wrap: wrap;">' + data['designation_name'] + '</option>');
+                });
+            }
+        });
+    });
+</script>
 
 <!-- Tombol Send Whatsapp -->
 <script type="text/javascript">
@@ -723,6 +1045,48 @@
 <script type="text/javascript">
     function edit_profile() {
         alert("under construction");
+    }
+</script>
+
+<!-- Tombol Show modal mulai screening -->
+<script type="text/javascript">
+    function show_modal_screening() {
+        // alert("show modal screening");
+        $('#mulaiScreeningModal').modal('show');
+    }
+</script>
+
+<!-- Tombol mulai screening -->
+<script type="text/javascript">
+    function mulai_screening() {
+        var kandidat_id = "<?php echo $id_kandidat; ?>";
+        var company_id = $("#company_id_modal").val();
+        var company_name = $("#company_name_modal").val();
+        var project_id = $("#project_modal").val();
+        var jabatan_id = $("#jabatan_modal").val();
+        var kategori = $("#location_id").val();
+        var provinsi_id = $("#provinsi_input").val();
+        var kota_id = $("#kota_input").val();
+        alert("mulai proses screening");
+        alert(
+            "Kandidat id: " + kandidat_id +
+            "\nCompany id: " + company_id +
+            "\nCompany name: " + company_name +
+            "\nProject id: " + project_id +
+            "\nJabatan_id: " + jabatan_id +
+            "\nKategori: " + kategori +
+            "\nProvinsi id: " + provinsi_id +
+            "\nKota id: " + kota_id
+        );
+        // $('#mulaiScreeningModal').modal('hide');
+    }
+</script>
+
+<!-- Tombol close modal mulai screening -->
+<script type="text/javascript">
+    function close_mulai_screening() {
+        // alert("show modal screening");
+        $('#mulaiScreeningModal').modal('hide');
     }
 </script>
 

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Registrasi extends CI_Controller
+class Upload extends CI_Controller
 {
 	public function __construct()
 	{
@@ -430,8 +430,7 @@ class Registrasi extends CI_Controller
 						$this->Registrasi_model->save_dokumen($file_data, $postData['id_kandidat'], $name);
 					}
 				}
-			}
-			else if ($name == "dokumen_pendukung") {
+			} else if ($name == "dokumen_pendukung") {
 				if (!is_dir('./uploads/document/dokumen_pendukung/' . $yearmonth)) {
 					mkdir('./uploads/document/dokumen_pendukung/' . $yearmonth, 0777, TRUE);
 				}
@@ -460,6 +459,125 @@ class Registrasi extends CI_Controller
 			}
 		}
 		// $this->load->view('imgtest');
+	}
+
+	function upload_dokumen_eksternal()
+	{
+		$postData = $this->input->post();
+		$image = $_FILES;
+		$return_file_data = array();
+		foreach ($image as $key => $img) {
+			$ext = pathinfo($img['name'], PATHINFO_EXTENSION);
+			$name = pathinfo($img['name'], PATHINFO_FILENAME);
+			$yearmonth = date('Y/m/');
+			if ($postData['identifier'] == "bupot") {
+				$yearmonth = $postData['periode_bupot'] . '/';
+				if (!is_dir('./uploads/document_eksternal/bupot file/' . $yearmonth . $postData['project_name'])) {
+					mkdir('./uploads/document_eksternal/bupot file/' . $yearmonth . $postData['project_name'], 0777, TRUE);
+				}
+				if (!empty($img['name'])) {
+					if ($ext == "zip") {
+						$config['upload_path'] = './uploads/document_eksternal/bupot file/' . $yearmonth . $postData['project_name'];
+						$config['allowed_types'] = '*';
+						// $config['max_size'] = '100'; 
+						// $config['max_width'] = '1024';
+						// $config['max_height'] = '768';
+						$config['overwrite'] = TRUE;
+						// $config['file_name'] = $name . '_' . $postData['project_name'] . '_' . time();
+						$config['file_name'] = $name;
+
+						$this->load->library('upload', $config);
+						$this->upload->initialize($config);
+						if (!$this->upload->do_upload($key)) {
+							$error = array('error' => $this->upload->display_errors());
+							print_r($error);
+							die;
+						} else {
+							$nama_file = $this->upload->data('file_name');
+							$path_file = './uploads/document_eksternal/bupot file/' . $yearmonth . $postData['project_name'] .  '/';
+
+							// $this->Registrasi_model->save_dokumen($file_data, $postData['id_kandidat'], $name);
+
+							//------ EXTRACT ZIP -------
+							// assuming file.zip is in the same directory as the executing script.
+							$file_data = $path_file . $nama_file;
+
+							// get the absolute path to $file
+							$path = pathinfo(realpath($file_data), PATHINFO_DIRNAME);
+
+							$zip = new ZipArchive;
+							$res = $zip->open($file_data);
+							if ($res === TRUE) {
+								// extract it to the path we determined above
+								$zip->extractTo($path);
+								$zip->close();
+								// echo "WOOT! $file_data extracted to $path";
+							} else {
+								// echo "Doh! I couldn't open $file_data";
+							}
+						}
+					} else {
+						$config['upload_path'] = './uploads/document_eksternal/bupot file/' . $yearmonth . $postData['project_name'];
+						$config['allowed_types'] = '*';
+						// $config['max_size'] = '100'; 
+						// $config['max_width'] = '1024';
+						// $config['max_height'] = '768';
+						$config['overwrite'] = TRUE;
+						// $config['file_name'] = $name . '_' . $postData['project_name'] . '_' . time();
+						$config['file_name'] = $name;
+
+						$this->load->library('upload', $config);
+						$this->upload->initialize($config);
+						if (!$this->upload->do_upload($key)) {
+							$error = array('error' => $this->upload->display_errors());
+							print_r($error);
+							die;
+						} else {
+							$nama_file = $this->upload->data('file_name');
+							$path_file = 'https://karir.onecorp.co.id/uploads/document_eksternal/bupot file/' . $yearmonth . $postData['project_name'] .  '/';
+							$file_data = $path_file . $nama_file;
+							$return_file_data[] = array(
+								"link_file" => $file_data,
+							);
+							// $this->Registrasi_model->save_dokumen($file_data, $postData['id_kandidat'], $name);
+						}
+					}
+				}
+			} else if ($postData['identifier'] == "npwp_client") {
+				$yearmonth = date('Y/m/');
+				if (!is_dir('./uploads/document_eksternal/npwp client/')) {
+					mkdir('./uploads/document_eksternal/npwp client/', 0777, TRUE);
+				}
+				if (!empty($img['name'])) {
+					$config['upload_path'] = './uploads/document_eksternal/npwp client/';
+					$config['allowed_types'] = '*';
+					// $config['max_size'] = '100'; 
+					// $config['max_width'] = '1024';
+					// $config['max_height'] = '768';
+					$config['overwrite'] = TRUE;
+					// $config['file_name'] = $name . '_' . $postData['project_name'] . '_' . time();
+					$config['file_name'] = "npwp_client_" . $postData['nama_client'];
+
+					$this->load->library('upload', $config);
+					$this->upload->initialize($config);
+					if (!$this->upload->do_upload($key)) {
+						$error = array('error' => $this->upload->display_errors());
+						print_r($error);
+						die;
+					} else {
+						$nama_file = "npwp_client_" . $postData['nama_client'];
+						$path_file = 'https://karir.onecorp.co.id/uploads/document_eksternal/npwp client/';
+						$file_data = $path_file . $nama_file;
+						$return_file_data[] = array(
+							"link_file" => $file_data,
+						);
+						// $this->Registrasi_model->save_dokumen($file_data, $postData['id_kandidat'], $name);
+					}
+				}
+			}
+		}
+		// $this->load->view('imgtest');
+		return $return_file_data;
 	}
 
 	//finish registrasi kandidat

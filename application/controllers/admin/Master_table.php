@@ -10,7 +10,9 @@ use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Style\Style;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 
-class Kandidat extends CI_Controller
+use function PHPUnit\Framework\isNull;
+
+class Master_table extends CI_Controller
 {
 	public function __construct()
 	{
@@ -25,6 +27,7 @@ class Kandidat extends CI_Controller
 		$this->load->library('form_validation');
 		$this->load->model("Kandidat_model");
 		$this->load->model("Registrasi_model");
+		$this->load->model("Master_table_model");
 		$this->load->model("Auth_model");
 
 		//cek session login
@@ -49,17 +52,142 @@ class Kandidat extends CI_Controller
 		$this->load->view('admin/_partials/skeleton.php', $data);
 	}
 
-	//load datatables Employee
-	public function list_kandidat()
+	public function interviewer()
+	{
+		$data['jumlah_all_kandidat'] = $this->Kandidat_model->jumlah_kandidat();
+		$data['all_kandidat'] = $this->Kandidat_model->getAllKandidat();
+		$data['all_company'] = $this->Registrasi_model->getAllCompany();
+		$data['all_project'] = $this->Registrasi_model->getAllProject();
+		$data['all_jabatan'] = $this->Registrasi_model->getAllJabatan();
+		$data['all_provinsi'] = $this->Registrasi_model->getAllProvinsi();
+		$data['all_interviewer'] = $this->Registrasi_model->get_all_interviewer();
+		$data['all_region'] = $this->Registrasi_model->getAllRegion();
+		$data['all_family_relation'] = $this->Registrasi_model->getAllFamilyRelation();
+		
+        $data['sub_view'] = $this->load->view('admin/master_table/interviewer.php', $data, TRUE);
+		$this->load->view('admin/_partials/skeleton.php', $data);
+	}
+
+	//load datatables kandidat
+	public function list_interviewer()
 	{
 
 		// POST data
 		$postData = $this->input->post();
 
 		// Get data
-		$data = $this->Kandidat_model->list_kandidat($postData);
+		$data = $this->Master_table_model->list_interviewer($postData);
 
 		echo json_encode($data);
+	}
+
+	//mengambil Json data interviewer
+	public function get_data_Interviewer()
+	{
+		$postData = $this->input->post();
+
+		//Cek variabel post
+		$datarequest = [
+			'id'        => $postData['id']
+		];
+
+		// get data diri
+		$data = $this->Master_table_model->get_data_interviewer($datarequest);
+
+		if (empty($data)) {
+			$data_empty = array();
+
+			$response = array(
+				'status'	=> "0",
+				'pesan' 	=> "Belum ada data",
+				'data'		=> $data_empty,
+			);
+		} else {
+			$response = array(
+				'status'	=> "1",
+				'pesan' 	=> "Berhasil Fetch Data",
+				'data'		=> $data,
+			);
+		}
+
+		echo json_encode($response);
+		// echo "<pre>";
+		// print_r($response);
+		// echo "</pre>";
+	}
+
+	//add data interviewer
+	public function add_interviewer()
+	{
+		$postData = $this->input->post();
+
+		//Cek variabel post
+		$datarequest = [
+			'nip'    		=> $postData['nip'],
+			'nama'   		=> strtoupper($postData['nama']),
+			'nama_lengkap'  => strtoupper($postData['nama_lengkap']),
+			'jabatan'  		=> strtoupper($postData['jabatan']),
+			'area'  		=> strtoupper($postData['area']),
+			'region'  		=> strtoupper($postData['region']),
+			'status_aktif'  => $postData['status'],
+		];
+
+		// save data diri
+		$data = $this->Master_table_model->add_interviewer($datarequest);
+
+		if ($data == false) {
+			$response = array(
+				'status'	=> "201",
+				'pesan' 	=> "Data Interviewer tidak ditemukan",
+			);
+		} else {
+			$response = array(
+				'status'	=> "200",
+				'pesan' 	=> "Berhasil Update Data",
+			);
+		}
+
+		echo json_encode($response);
+		// echo "<pre>";
+		// print_r($response);
+		// echo "</pre>";
+	}
+
+	//update data interviewer
+	public function update_interviewer()
+	{
+		$postData = $this->input->post();
+
+		//Cek variabel post
+		$datarequest = [
+			'nip'    		=> $postData['nip'],
+			'nama'   		=> strtoupper($postData['nama']),
+			'nama_lengkap'  => strtoupper($postData['nama_lengkap']),
+			'jabatan'  		=> strtoupper($postData['jabatan']),
+			'area'  		=> strtoupper($postData['area']),
+			'region'  		=> strtoupper($postData['region']),
+			'status_aktif'  => $postData['status'],
+		];
+
+		// save data diri
+		$data = $this->Master_table_model->update_interviewer($datarequest, $postData['id']);
+
+		if ($data == false) {
+			$response = array(
+				'status'	=> "201",
+				'pesan' 	=> "Data Interviewer tidak ditemukan",
+			);
+		} else {
+			$response = array(
+				'status'	=> "200",
+				'pesan' 	=> "Berhasil Update Data",
+			);
+		}
+
+		echo json_encode($response);
+		// echo "<pre>";
+		// print_r($response);
+		// echo "</pre>";
 	}
 
 	public function printExcel($project, $jabatan, $region,  $rekruter, $range_tanggal, $searchVal)

@@ -81,6 +81,55 @@ class Auth extends CI_Controller
 		}
 	}
 
+	//Mengambil data employee
+	public function API_get_employee($nip)
+	{
+		// set post fields
+		$post = [
+			'employee_id' => $nip,
+		];
+
+		$var_post= json_encode($post);
+
+		// print("Masuk API");
+		$curl = curl_init();
+
+		curl_setopt_array($curl, [
+			CURLOPT_URL => "http://localhost/apicakrawala/index.php/employees/getEmployee",
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => "",
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 30,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => "POST",
+			CURLOPT_HTTPHEADER => [],
+			CURLOPT_POSTFIELDS => $var_post,
+		]);
+
+		$response = curl_exec($curl);
+		$err = curl_error($curl);
+
+		curl_close($curl);
+
+		$pesan = array(
+			'status' => false,
+			'message' => "cURL Error #:" . $err,
+		);
+
+		if ($err) {
+			echo json_encode($pesan);
+		} else {
+			$result = json_decode($response, true);
+			if ($result['status'] == "1") {
+				// $this->session->set_userdata($result['data']);
+				echo json_encode($result);
+			} else {
+				// echo "ngga ada data";
+				echo json_encode($result);
+			}
+		}
+	}
+
 	public function check_login()
 	{
 		if (!$this->session->has_userdata("employee_id")) {

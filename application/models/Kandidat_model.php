@@ -14,15 +14,15 @@ class Kandidat_model extends CI_model
     }
 
     public function clean_post($post_name)
-	{
-		$name = trim($post_name);
-		$Evalue = array('-', 'alert', '<script>', '</script>', '</php>', '<php>', '<p>', '\r\n', '\n', '\r', '=', "'", '/', 'cmd', '!', "('", "')", '|');
-		$post_name = str_replace($Evalue, '', $name);
-		$post_name = preg_replace('/^(\d{1,2}[^0-9])/m', '', $post_name);
-		// $post_name = htmlspecialchars(trim($post_name), ENT_QUOTES, "UTF-8");
+    {
+        $name = trim($post_name);
+        $Evalue = array('-', 'alert', '<script>', '</script>', '</php>', '<php>', '<p>', '\r\n', '\n', '\r', '=', "'", '/', 'cmd', '!', "('", "')", '|');
+        $post_name = str_replace($Evalue, '', $name);
+        $post_name = preg_replace('/^(\d{1,2}[^0-9])/m', '', $post_name);
+        // $post_name = htmlspecialchars(trim($post_name), ENT_QUOTES, "UTF-8");
 
-		return $post_name;
-	}
+        return $post_name;
+    }
 
     //mengambil data all kandidat
     public function get_kandidat($id_kandidat = null)
@@ -141,14 +141,17 @@ class Kandidat_model extends CI_model
             $file_lainnya = "";
         }
 
-        
         $data[] = array(
             "id" => $record['id'],
+            "perusahaan_id" => $record['perusahaan_id'],
             "nik" => $record['nik'],
             "nama" => $record['nama'],
             "jenis_kelamin" => $record['jenis_kelamin'],
+            "project_id" => $record['project_id'],
             "project_name" => $record['project_name'],
             "jabatan_name" => $record['jabatan_name'],
+            "jabatan_id" => $record['jabatan_id'],
+            "kategori_karyawan" => $record['kategori_karyawan'],
             "nama_area" => $nama_area,
             "region" => $region,
             "nama_rekruter" => $nama_rekruter,
@@ -157,6 +160,7 @@ class Kandidat_model extends CI_model
             "tanggal_lahir" => $record['tanggal_lahir'],
             "asal_kota" => strtoupper($record['asal_kota']),
             "alamat_domisili" => strtoupper($record['alamat_domisili']),
+            "nama_ibu" => strtoupper($record['nama_ibu']),
             "nomor_tlp" => $record['nomor_tlp'],
             "nama_kontak_darurat" => strtoupper($record['nama_kontak_darurat']),
             "nama_hubungan_kondar" => strtoupper($record['nama_hubungan_kondar']),
@@ -178,6 +182,47 @@ class Kandidat_model extends CI_model
         );
 
         return $data[0];
+    }
+
+    //mengambil data all screening kandidat
+    public function get_screening($id_kandidat = null)
+    {
+        ## Fetch records
+        $this->db->select('*');
+        $this->db->where('kandidat_id', $id_kandidat);
+        $records = $this->db->get('screening')->result_array();
+
+        $data = array();
+
+        foreach ($records as $record) {
+            $data[] = array(
+                "id" => $record['id'],
+                "kandidat_id" => $record['kandidat_id'],
+                "project_id" => $record['project_id'],
+                "project_name" => $record['project_name'],
+                "jabatan_id" => $record['jabatan_id'],
+                "jabatan_name" => $record['jabatan_name'],
+                "area" => $record['area'],
+                "start_by" => $record['start_by'],
+                "start_on" => $record['start_on'],
+                "interview_rto_by" => $record['interview_rto_by'],
+                "interview_rto_on" => $record['interview_rto_on'],
+                "test_by" => $record['test_by'],
+                "test_on" => $record['test_on'],
+                "interview_ops_by" => $record['interview_ops_by'],
+                "interview_ops_on" => $record['interview_ops_on'],
+                "interview_user_1_by" => $record['interview_user_1_by'],
+                "interview_user_1_on" => $record['interview_user_1_on'],
+                "interview_user_2_by" => $record['interview_user_2_by'],
+                "interview_user_2_on" => $record['interview_user_2_on'],
+                "interview_user_3_by" => $record['interview_user_3_by'],
+                "interview_user_3_on" => $record['interview_user_3_on'],
+                "finish_by" => $record['finish_by'],
+                "finish_on" => $record['finish_on'],
+            );
+        }
+
+        return $data;
     }
 
     /*
