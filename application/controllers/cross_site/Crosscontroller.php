@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Upload extends CI_Controller
+class Crosscontroller extends CI_Controller
 {
 	public function __construct()
 	{
@@ -16,6 +16,64 @@ class Upload extends CI_Controller
 		$this->load->helper('security');
 		$this->load->library('form_validation');
 		$this->load->model("Registrasi_model");
+	}
+
+	//Cek rekening bank menggunakan API free 
+	//reference API:
+	//https://github.com/cekrekening/cekrekening.github.io
+	public function tes_API_Bank3($id_bank, $no_rekening)
+	{
+		// $data['nik'] = $nik;
+		//menampilkan view form pengisian data
+		// $this->load->view('frontend/templates/header');
+		// //$this->load->view('templates/sidebar', $data);
+		// $this->load->view('frontend/templates/topbar_register');
+		// $this->load->view('frontend/tes_api_bank', $data);
+		// $this->load->view('frontend/templates/footer');
+		$bank_code = $this->Registrasi_model->get_id_bank_verifikasi($id_bank);
+
+		// $no_rekening_jelas = urldecode($no_rekening);
+
+		// set post fields
+		$post_variable = [
+			'account_bank' => $bank_code,
+			'account_number' => $no_rekening
+		];
+
+		$input_post = json_encode($post_variable);
+		// $input_post = "{'account_bank': '". $bank_code ."','account_number':'".$no_rekening."'}";
+
+		$curl = curl_init();
+
+		curl_setopt_array($curl, array(
+			CURLOPT_URL => 'https://cekrekening-api.belibayar.online/api/v1/account-inquiry',
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => '',
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 0,
+			CURLOPT_FOLLOWLOCATION => true,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => 'POST',
+			CURLOPT_POSTFIELDS => $input_post,
+			CURLOPT_HTTPHEADER => array('Content-Type:application/json'),
+		));
+
+		$response = curl_exec($curl);
+		// $err = curl_error($curl);
+
+		curl_close($curl);
+		echo $response;
+
+		// $pesan = array(
+		// 	"success" => false,
+		// 	"message" => "cURL Error #:" . $err,
+		// );
+
+		// if ($err) {
+		// 	echo json_encode($pesan);
+		// } else {
+		// 	echo $response;
+		// }
 	}
 
 	/**
@@ -45,6 +103,16 @@ class Upload extends CI_Controller
 		$data['all_family_relation'] = $this->Registrasi_model->getAllFamilyRelation();
 
 		$this->load->view('registrasi', $data);
+	}
+
+	//mengambil Json data kandidat berdasarkan nik nya
+	public function cek_nik()
+	{
+		$postData = $this->input->post();
+
+		// get data 
+		$data = $this->Registrasi_model->cek_nik($postData["nik"]);
+		echo json_encode($data);
 	}
 
 	//mengambil Json data Kota berdasarkan Provinsi
@@ -430,7 +498,8 @@ class Upload extends CI_Controller
 						$this->Registrasi_model->save_dokumen($file_data, $postData['id_kandidat'], $name);
 					}
 				}
-			} else if ($name == "dokumen_pendukung") {
+			}
+			else if ($name == "dokumen_pendukung") {
 				if (!is_dir('./uploads/document/dokumen_pendukung/' . $yearmonth)) {
 					mkdir('./uploads/document/dokumen_pendukung/' . $yearmonth, 0777, TRUE);
 				}
@@ -459,224 +528,6 @@ class Upload extends CI_Controller
 			}
 		}
 		// $this->load->view('imgtest');
-	}
-
-	function upload_dokumen_eksternal()
-	{
-		$postData = $this->input->post();
-		$image = $_FILES;
-		$return_file_data = array();
-		foreach ($image as $key => $img) {
-			$ext = pathinfo($img['name'], PATHINFO_EXTENSION);
-			$name = pathinfo($img['name'], PATHINFO_FILENAME);
-			$yearmonth = date('Y/m/');
-			if ($postData['identifier'] == "bupot") {
-				$yearmonth = $postData['periode_bupot'] . '/';
-				if (!is_dir('./uploads/document_eksternal/bupot file/' . $yearmonth . $postData['project_name'])) {
-					mkdir('./uploads/document_eksternal/bupot file/' . $yearmonth . $postData['project_name'], 0777, TRUE);
-				}
-				if (!empty($img['name'])) {
-					if ($ext == "zip") {
-						$config['upload_path'] = './uploads/document_eksternal/bupot file/' . $yearmonth . $postData['project_name'];
-						$config['allowed_types'] = '*';
-						// $config['max_size'] = '100'; 
-						// $config['max_width'] = '1024';
-						// $config['max_height'] = '768';
-						$config['overwrite'] = TRUE;
-						// $config['file_name'] = $name . '_' . $postData['project_name'] . '_' . time();
-						$config['file_name'] = $name;
-
-						$this->load->library('upload', $config);
-						$this->upload->initialize($config);
-						if (!$this->upload->do_upload($key)) {
-							$error = array('error' => $this->upload->display_errors());
-							print_r($error);
-							die;
-						} else {
-							$nama_file = $this->upload->data('file_name');
-							$path_file = './uploads/document_eksternal/bupot file/' . $yearmonth . $postData['project_name'] .  '/';
-
-							// $this->Registrasi_model->save_dokumen($file_data, $postData['id_kandidat'], $name);
-
-							//------ EXTRACT ZIP -------
-							// assuming file.zip is in the same directory as the executing script.
-							$file_data = $path_file . $nama_file;
-
-							// get the absolute path to $file
-							$path = pathinfo(realpath($file_data), PATHINFO_DIRNAME);
-
-							$zip = new ZipArchive;
-							$res = $zip->open($file_data);
-							if ($res === TRUE) {
-								// extract it to the path we determined above
-								$zip->extractTo($path);
-								$zip->close();
-								// echo "WOOT! $file_data extracted to $path";
-							} else {
-								// echo "Doh! I couldn't open $file_data";
-							}
-						}
-					} else {
-						$config['upload_path'] = './uploads/document_eksternal/bupot file/' . $yearmonth . $postData['project_name'];
-						$config['allowed_types'] = '*';
-						// $config['max_size'] = '100'; 
-						// $config['max_width'] = '1024';
-						// $config['max_height'] = '768';
-						$config['overwrite'] = TRUE;
-						// $config['file_name'] = $name . '_' . $postData['project_name'] . '_' . time();
-						$config['file_name'] = $name;
-
-						$this->load->library('upload', $config);
-						$this->upload->initialize($config);
-						if (!$this->upload->do_upload($key)) {
-							$error = array('error' => $this->upload->display_errors());
-							print_r($error);
-							die;
-						} else {
-							$nama_file = $this->upload->data('file_name');
-							$path_file = 'https://karir.onecorp.co.id/uploads/document_eksternal/bupot file/' . $yearmonth . $postData['project_name'] .  '/';
-							$file_data = $path_file . $nama_file . '.' . $ext;
-							$return_file_data[] = array(
-								"link_file" => $file_data,
-							);
-							// $this->Registrasi_model->save_dokumen($file_data, $postData['id_kandidat'], $name);
-						}
-					}
-				}
-			} else if ($postData['identifier'] == "npwp_client") {
-				$yearmonth = date('Y/m/');
-				if (!is_dir('./uploads/document_eksternal/npwp client/')) {
-					mkdir('./uploads/document_eksternal/npwp client/', 0777, TRUE);
-				}
-				if (!empty($img['name'])) {
-					$config['upload_path'] = './uploads/document_eksternal/npwp client/';
-					$config['allowed_types'] = '*';
-					// $config['max_size'] = '100'; 
-					// $config['max_width'] = '1024';
-					// $config['max_height'] = '768';
-					$config['overwrite'] = TRUE;
-					// $config['file_name'] = $name . '_' . $postData['project_name'] . '_' . time();
-					$config['file_name'] = "npwp_client_" . $postData['nama_client'];
-
-					$this->load->library('upload', $config);
-					$this->upload->initialize($config);
-					if (!$this->upload->do_upload($key)) {
-						$error = array('error' => $this->upload->display_errors());
-						print_r($error);
-						die;
-					} else {
-						$nama_file = $this->upload->data('file_name');
-						// $nama_file = "npwp_client_" . $postData['nama_client'];
-						$path_file = base_url() . 'uploads/document_eksternal/npwp client/';
-						$file_data = $path_file . $nama_file;
-						$return_file_data[] = array(
-							"link_file" => $file_data,
-						);
-						// $this->Registrasi_model->save_dokumen($file_data, $postData['id_kandidat'], $name);
-					}
-				}
-			} else if ($postData['identifier'] == "pks_project") {
-				$yearmonth = date('Y/m/');
-				if (!is_dir('./uploads/document_eksternal/pks_project/')) {
-					mkdir('./uploads/document_eksternal/pks_project/', 0777, TRUE);
-				}
-				if (!empty($img['name'])) {
-					$config['upload_path'] = './uploads/document_eksternal/pks_project/';
-					$config['allowed_types'] = '*';
-					// $config['max_size'] = '100'; 
-					// $config['max_width'] = '1024';
-					// $config['max_height'] = '768';
-					$config['overwrite'] = TRUE;
-					// $config['file_name'] = $name . '_' . $postData['project_name'] . '_' . time();
-					$config['file_name'] = "pks_project_" . $postData['nama_project'];
-
-					$this->load->library('upload', $config);
-					$this->upload->initialize($config);
-					if (!$this->upload->do_upload($key)) {
-						$error = array('error' => $this->upload->display_errors());
-						print_r($error);
-						die;
-					} else {
-						$nama_file = $this->upload->data('file_name');
-						// $nama_file = preg_replace('/\s+/', '_', $nama_file);
-						// $nama_file = "pks_project_" . $postData['nama_project'];
-						$path_file = base_url() . 'uploads/document_eksternal/pks_project/';
-						$file_data = $path_file . $nama_file;
-						$return_file_data[] = array(
-							"link_file" => $file_data,
-						);
-						// $this->Registrasi_model->save_dokumen($file_data, $postData['id_kandidat'], $name);
-					}
-				}
-			} else if ($postData['identifier'] == "mou_project") {
-				$yearmonth = date('Y/m/');
-				if (!is_dir('./uploads/document_eksternal/mou_project/')) {
-					mkdir('./uploads/document_eksternal/mou_project/', 0777, TRUE);
-				}
-				if (!empty($img['name'])) {
-					$config['upload_path'] = './uploads/document_eksternal/mou_project/';
-					$config['allowed_types'] = '*';
-					// $config['max_size'] = '100'; 
-					// $config['max_width'] = '1024';
-					// $config['max_height'] = '768';
-					$config['overwrite'] = TRUE;
-					// $config['file_name'] = $name . '_' . $postData['project_name'] . '_' . time();
-					$config['file_name'] = "mou_project_" . $postData['nama_project'];
-
-					$this->load->library('upload', $config);
-					$this->upload->initialize($config);
-					if (!$this->upload->do_upload($key)) {
-						$error = array('error' => $this->upload->display_errors());
-						print_r($error);
-						die;
-					} else {
-						$nama_file = $this->upload->data('file_name');
-						// $nama_file = "mou_project_" . $postData['nama_project'];
-						$path_file = base_url() . 'uploads/document_eksternal/mou_project/';
-						$file_data = $path_file . $nama_file;
-						$return_file_data[] = array(
-							"link_file" => $file_data,
-						);
-						// $this->Registrasi_model->save_dokumen($file_data, $postData['id_kandidat'], $name);
-					}
-				}
-			} else if ($postData['identifier'] == "ratecard_project") {
-				$yearmonth = date('Y/m/');
-				if (!is_dir('./uploads/document_eksternal/ratecard_project/')) {
-					mkdir('./uploads/document_eksternal/ratecard_project/', 0777, TRUE);
-				}
-				if (!empty($img['name'])) {
-					$config['upload_path'] = './uploads/document_eksternal/ratecard_project/';
-					$config['allowed_types'] = '*';
-					// $config['max_size'] = '100'; 
-					// $config['max_width'] = '1024';
-					// $config['max_height'] = '768';
-					$config['overwrite'] = TRUE;
-					// $config['file_name'] = $name . '_' . $postData['project_name'] . '_' . time();
-					$config['file_name'] = "ratecard_project_" . $postData['nama_project'];
-
-					$this->load->library('upload', $config);
-					$this->upload->initialize($config);
-					if (!$this->upload->do_upload($key)) {
-						$error = array('error' => $this->upload->display_errors());
-						print_r($error);
-						die;
-					} else {
-						$nama_file = $this->upload->data('file_name');
-						// $nama_file = "ratecard_project_" . $postData['nama_project'];
-						$path_file = base_url() . 'uploads/document_eksternal/ratecard_project/';
-						$file_data = $path_file . $nama_file;
-						$return_file_data[] = array(
-							"link_file" => $file_data,
-						);
-						// $this->Registrasi_model->save_dokumen($file_data, $postData['id_kandidat'], $name);
-					}
-				}
-			}
-		}
-		// $this->load->view('imgtest');
-		echo json_encode($return_file_data);
-		// return $return_file_data;
 	}
 
 	//finish registrasi kandidat

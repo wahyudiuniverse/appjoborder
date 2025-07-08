@@ -47,6 +47,16 @@ class Registrasi extends CI_Controller
 		$this->load->view('registrasi', $data);
 	}
 
+	//mengambil Json data kandidat berdasarkan nik nya
+	public function cek_nik()
+	{
+		$postData = $this->input->post();
+
+		// get data 
+		$data = $this->Registrasi_model->cek_nik($postData["nik"]);
+		echo json_encode($data);
+	}
+
 	//mengambil Json data Kota berdasarkan Provinsi
 	public function getKotaByProv()
 	{
@@ -149,10 +159,18 @@ class Registrasi extends CI_Controller
 	{
 		$postData = $this->input->post();
 
-		$id_kandidat = $postData["id_kandidat"];
+		// $id_kandidat = $postData["id_kandidat"];
 
 		//Cek variabel post
 		$datarequest = [
+			'project_id'        	=> $postData['project_id'],
+			'project_name'        	=> strtoupper(trim($postData['project_name'])),
+			'jabatan_id'        	=> $postData['jabatan_id'],
+			'jabatan_name'        	=> strtoupper(trim($postData['jabatan_name'])),
+			'area'        			=> $postData['area'],
+			'sumber_info'        	=> $postData['sumber_info'],
+			'interviewer'        	=> $postData['interviewer'],
+
 			'nik'        				=> $postData['nik'],
 			'nama'  					=> strtoupper(trim($postData['nama'])),
 			'jenis_kelamin'        		=> $postData['jenis_kelamin'],
@@ -168,7 +186,9 @@ class Registrasi extends CI_Controller
 		];
 
 		// save data diri
-		$data = $this->Registrasi_model->save_data_diri($datarequest, $id_kandidat);
+		$data = $this->Registrasi_model->save_data_diri($datarequest);
+
+		echo json_encode($data);
 	}
 
 	//save pengalaman kandidat
@@ -192,6 +212,7 @@ class Registrasi extends CI_Controller
 	{
 		$postData = $this->input->post();
 		$image = $_FILES;
+		$return_file_data = array();
 		foreach ($image as $key => $img) {
 			$ext = pathinfo($img['name'], PATHINFO_EXTENSION);
 			$name = pathinfo($img['name'], PATHINFO_FILENAME);
@@ -220,6 +241,12 @@ class Registrasi extends CI_Controller
 						$path_file = '/uploads/document/pasfoto/' . $yearmonth . '/';
 						$file_data = $path_file . $nama_file;
 						$this->Registrasi_model->save_dokumen($file_data, $postData['id_kandidat'], $name);
+
+						// $path_file_return = 'https://karir.onecorp.co.id/uploads/document/pasfoto/' . $yearmonth . '/';
+						// $file_data_return = $path_file_return . $nama_file;
+						$return_file_data[] = array(
+							"link_file" => $file_data,
+						);
 					}
 				}
 			} else if ($name == "ktp") {
@@ -246,6 +273,13 @@ class Registrasi extends CI_Controller
 						$path_file = '/uploads/document/ktp/' . $yearmonth . '/';
 						$file_data = $path_file . $nama_file;
 						$this->Registrasi_model->save_dokumen($file_data, $postData['id_kandidat'], $name);
+
+						// $path_file_return = 'https://karir.onecorp.co.id/uploads/document/ktp/' . $yearmonth . '/';
+						// $path_file_return = 'http://localhost/appjoborder/uploads/document/ktp/' . $yearmonth . '/';
+						// $file_data_return = $path_file_return . $nama_file;
+						$return_file_data[] = array(
+							"link_file" => $file_data,
+						);
 					}
 				}
 			} else if ($name == "cv") {
@@ -272,6 +306,10 @@ class Registrasi extends CI_Controller
 						$path_file = '/uploads/document/cv/' . $yearmonth . '/';
 						$file_data = $path_file . $nama_file;
 						$this->Registrasi_model->save_dokumen($file_data, $postData['id_kandidat'], $name);
+
+						$return_file_data[] = array(
+							"link_file" => $file_data,
+						);
 					}
 				}
 			} else if ($name == "kk") {
@@ -298,6 +336,10 @@ class Registrasi extends CI_Controller
 						$path_file = '/uploads/document/kk/' . $yearmonth . '/';
 						$file_data = $path_file . $nama_file;
 						$this->Registrasi_model->save_dokumen($file_data, $postData['id_kandidat'], $name);
+
+						$return_file_data[] = array(
+							"link_file" => $file_data,
+						);
 					}
 				}
 			} else if ($name == "npwp") {
@@ -324,6 +366,10 @@ class Registrasi extends CI_Controller
 						$path_file = '/uploads/document/npwp/' . $yearmonth . '/';
 						$file_data = $path_file . $nama_file;
 						$this->Registrasi_model->save_dokumen($file_data, $postData['id_kandidat'], $name);
+
+						$return_file_data[] = array(
+							"link_file" => $file_data,
+						);
 					}
 				}
 			} else if ($name == "skck") {
@@ -350,6 +396,10 @@ class Registrasi extends CI_Controller
 						$path_file = '/uploads/document/skck/' . $yearmonth . '/';
 						$file_data = $path_file . $nama_file;
 						$this->Registrasi_model->save_dokumen($file_data, $postData['id_kandidat'], $name);
+
+						$return_file_data[] = array(
+							"link_file" => $file_data,
+						);
 					}
 				}
 			} else if ($name == "ijazah") {
@@ -376,6 +426,10 @@ class Registrasi extends CI_Controller
 						$path_file = '/uploads/document/ijazah/' . $yearmonth . '/';
 						$file_data = $path_file . $nama_file;
 						$this->Registrasi_model->save_dokumen($file_data, $postData['id_kandidat'], $name);
+
+						$return_file_data[] = array(
+							"link_file" => $file_data,
+						);
 					}
 				}
 			} else if ($name == "sim") {
@@ -402,6 +456,10 @@ class Registrasi extends CI_Controller
 						$path_file = '/uploads/document/sim/' . $yearmonth . '/';
 						$file_data = $path_file . $nama_file;
 						$this->Registrasi_model->save_dokumen($file_data, $postData['id_kandidat'], $name);
+
+						$return_file_data[] = array(
+							"link_file" => $file_data,
+						);
 					}
 				}
 			} else if ($name == "paklaring") {
@@ -428,10 +486,13 @@ class Registrasi extends CI_Controller
 						$path_file = '/uploads/document/paklaring/' . $yearmonth . '/';
 						$file_data = $path_file . $nama_file;
 						$this->Registrasi_model->save_dokumen($file_data, $postData['id_kandidat'], $name);
+
+						$return_file_data[] = array(
+							"link_file" => $file_data,
+						);
 					}
 				}
-			}
-			else if ($name == "dokumen_pendukung") {
+			} else if ($name == "dokumen_pendukung") {
 				if (!is_dir('./uploads/document/dokumen_pendukung/' . $yearmonth)) {
 					mkdir('./uploads/document/dokumen_pendukung/' . $yearmonth, 0777, TRUE);
 				}
@@ -455,10 +516,16 @@ class Registrasi extends CI_Controller
 						$path_file = '/uploads/document/dokumen_pendukung/' . $yearmonth . '/';
 						$file_data = $path_file . $nama_file;
 						$this->Registrasi_model->save_dokumen($file_data, $postData['id_kandidat'], $name);
+
+						$return_file_data[] = array(
+							"link_file" => $file_data,
+						);
 					}
 				}
 			}
 		}
+
+		echo json_encode($return_file_data);
 		// $this->load->view('imgtest');
 	}
 
@@ -475,6 +542,17 @@ class Registrasi extends CI_Controller
 		$datarequest = [
 			'status_finish'        		=> "1",
 			'tanggal_registrasi'		=> $tanggal_registrasi,
+
+			'file_pasfoto'				=> $postData["link_file_pasfoto"],
+			'file_ktp'					=> $postData["link_file_ktp"],
+			'file_cv'					=> $postData["link_file_cv"],
+			'file_kk'					=> $postData["link_file_kk"],
+			'file_npwp'					=> $postData["link_file_npwp"],
+			'file_skck'					=> $postData["link_file_skck"],
+			'file_ijazah'				=> $postData["link_file_ijazah"],
+			'file_sim'					=> $postData["link_file_sim"],
+			'file_paklaring_1'			=> $postData["link_file_paklaring"],
+			'file_lainnya'				=> $postData["link_file_dokumen_pendukung"],
 		];
 
 		// save data diri

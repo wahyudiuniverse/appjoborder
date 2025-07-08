@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Upload extends CI_Controller
+class Screening extends CI_Controller
 {
 	public function __construct()
 	{
@@ -16,6 +16,7 @@ class Upload extends CI_Controller
 		$this->load->helper('security');
 		$this->load->library('form_validation');
 		$this->load->model("Registrasi_model");
+		$this->load->model("Screening_model");
 	}
 
 	/**
@@ -33,19 +34,19 @@ class Upload extends CI_Controller
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/userguide3/general/urls.html
 	 */
-	public function index()
-	{
+	// public function index()
+	// {
 
-		$data['all_company'] = $this->Registrasi_model->getAllCompany();
-		$data['all_project'] = $this->Registrasi_model->getAllProject();
-		$data['all_jabatan'] = $this->Registrasi_model->getAllJabatan();
-		$data['all_provinsi'] = $this->Registrasi_model->getAllProvinsi();
-		$data['all_sumber_info'] = $this->Registrasi_model->get_all_sumber_info();
-		$data['all_interviewer'] = $this->Registrasi_model->get_all_interviewer();
-		$data['all_family_relation'] = $this->Registrasi_model->getAllFamilyRelation();
+	// 	$data['all_company'] = $this->Registrasi_model->getAllCompany();
+	// 	$data['all_project'] = $this->Registrasi_model->getAllProject();
+	// 	$data['all_jabatan'] = $this->Registrasi_model->getAllJabatan();
+	// 	$data['all_provinsi'] = $this->Registrasi_model->getAllProvinsi();
+	// 	$data['all_sumber_info'] = $this->Registrasi_model->get_all_sumber_info();
+	// 	$data['all_interviewer'] = $this->Registrasi_model->get_all_interviewer();
+	// 	$data['all_family_relation'] = $this->Registrasi_model->getAllFamilyRelation();
 
-		$this->load->view('registrasi', $data);
-	}
+	// 	$this->load->view('registrasi', $data);
+	// }
 
 	//mengambil Json data Kota berdasarkan Provinsi
 	public function getKotaByProv()
@@ -54,6 +55,36 @@ class Upload extends CI_Controller
 
 		// get data 
 		$data = $this->Registrasi_model->getKotaByProvJson($postData);
+		echo json_encode($data);
+	}
+
+	//mengambil Json data Project vacant
+	public function get_project_vacant()
+	{
+		$postData = $this->input->post();
+
+		// get data 
+		$data = $this->Screening_model->get_project_vacant_json($postData);
+		echo json_encode($data);
+	}
+
+	//mengambil Json data Jabatan vacant berdasarkan projectnya
+	public function get_jabatan_vacant()
+	{
+		$postData = $this->input->post();
+
+		// get data 
+		$data = $this->Screening_model->get_jabatan_vacant($postData["project"]);
+		echo json_encode($data);
+	}
+
+	//mengambil Json data Jabatan vacant berdasarkan projectnya
+	public function get_area_vacant()
+	{
+		$postData = $this->input->post();
+
+		// get data 
+		$data = $this->Screening_model->get_area_vacant($postData);
 		echo json_encode($data);
 	}
 
@@ -84,6 +115,59 @@ class Upload extends CI_Controller
 
 		// get data 
 		$data = $this->Registrasi_model->getAreaByJabatanJson($postData);
+		echo json_encode($data);
+	}
+
+	//save data mulai screening
+	public function save_mulai_screening()
+	{
+		$postData = $this->input->post();
+
+		//get job order master
+		$data_job_order_master = $this->Screening_model->get_job_order_master($postData['job_order_id']);
+
+		$project_id = "";
+		$project_name = "";
+		if (!empty($data_job_order_master)) {
+			$project_id = $data_job_order_master['project_id'];
+			$project_name = $data_job_order_master['project_name'];
+		}
+
+		//get vacant
+		$data_vacant = $this->Screening_model->get_vacant($postData['vacant_id']);
+
+		$jabatan_id = "";
+		$jabatan_name = "";
+		$area = "";
+		$area_id = "";
+		if (!empty($data_vacant)) {
+			$jabatan_id = $data_vacant['jabatan_id'];
+			$jabatan_name = $data_vacant['jabatan_name'];
+			$area = $data_vacant['area'];
+			$area_id = $data_vacant['area_id'];
+		}
+
+		//Cek variabel post
+		$datarequest = [
+			'kandidat_id'        	=> $postData['kandidat_id'],
+			'nik'					=> $postData['kandidat_nik'],
+			'company_id'        	=> $postData['company_id'],
+			'company_name'        	=> strtoupper(trim($postData['company_name'])),
+			'project_id'        	=> $project_id,
+			'project_name'        	=> $project_name,
+			'jabatan_id'        	=> $jabatan_id,
+			'jabatan_name'        	=> $jabatan_name,
+			'area_id'        		=> $area_id,
+			'kategori_karyawan'     => $postData['kategori'],
+			'area'        			=> $area,
+			'start_by'        		=> $postData['user_nip'],
+			'start_by_name'        	=> $postData['user_name'],
+			'start_on'        		=> date('Y-m-d H:i:s'),
+		];
+
+		// save data diri
+		$data = $this->Screening_model->save_mulai_screening($datarequest);
+
 		echo json_encode($data);
 	}
 
@@ -459,224 +543,6 @@ class Upload extends CI_Controller
 			}
 		}
 		// $this->load->view('imgtest');
-	}
-
-	function upload_dokumen_eksternal()
-	{
-		$postData = $this->input->post();
-		$image = $_FILES;
-		$return_file_data = array();
-		foreach ($image as $key => $img) {
-			$ext = pathinfo($img['name'], PATHINFO_EXTENSION);
-			$name = pathinfo($img['name'], PATHINFO_FILENAME);
-			$yearmonth = date('Y/m/');
-			if ($postData['identifier'] == "bupot") {
-				$yearmonth = $postData['periode_bupot'] . '/';
-				if (!is_dir('./uploads/document_eksternal/bupot file/' . $yearmonth . $postData['project_name'])) {
-					mkdir('./uploads/document_eksternal/bupot file/' . $yearmonth . $postData['project_name'], 0777, TRUE);
-				}
-				if (!empty($img['name'])) {
-					if ($ext == "zip") {
-						$config['upload_path'] = './uploads/document_eksternal/bupot file/' . $yearmonth . $postData['project_name'];
-						$config['allowed_types'] = '*';
-						// $config['max_size'] = '100'; 
-						// $config['max_width'] = '1024';
-						// $config['max_height'] = '768';
-						$config['overwrite'] = TRUE;
-						// $config['file_name'] = $name . '_' . $postData['project_name'] . '_' . time();
-						$config['file_name'] = $name;
-
-						$this->load->library('upload', $config);
-						$this->upload->initialize($config);
-						if (!$this->upload->do_upload($key)) {
-							$error = array('error' => $this->upload->display_errors());
-							print_r($error);
-							die;
-						} else {
-							$nama_file = $this->upload->data('file_name');
-							$path_file = './uploads/document_eksternal/bupot file/' . $yearmonth . $postData['project_name'] .  '/';
-
-							// $this->Registrasi_model->save_dokumen($file_data, $postData['id_kandidat'], $name);
-
-							//------ EXTRACT ZIP -------
-							// assuming file.zip is in the same directory as the executing script.
-							$file_data = $path_file . $nama_file;
-
-							// get the absolute path to $file
-							$path = pathinfo(realpath($file_data), PATHINFO_DIRNAME);
-
-							$zip = new ZipArchive;
-							$res = $zip->open($file_data);
-							if ($res === TRUE) {
-								// extract it to the path we determined above
-								$zip->extractTo($path);
-								$zip->close();
-								// echo "WOOT! $file_data extracted to $path";
-							} else {
-								// echo "Doh! I couldn't open $file_data";
-							}
-						}
-					} else {
-						$config['upload_path'] = './uploads/document_eksternal/bupot file/' . $yearmonth . $postData['project_name'];
-						$config['allowed_types'] = '*';
-						// $config['max_size'] = '100'; 
-						// $config['max_width'] = '1024';
-						// $config['max_height'] = '768';
-						$config['overwrite'] = TRUE;
-						// $config['file_name'] = $name . '_' . $postData['project_name'] . '_' . time();
-						$config['file_name'] = $name;
-
-						$this->load->library('upload', $config);
-						$this->upload->initialize($config);
-						if (!$this->upload->do_upload($key)) {
-							$error = array('error' => $this->upload->display_errors());
-							print_r($error);
-							die;
-						} else {
-							$nama_file = $this->upload->data('file_name');
-							$path_file = 'https://karir.onecorp.co.id/uploads/document_eksternal/bupot file/' . $yearmonth . $postData['project_name'] .  '/';
-							$file_data = $path_file . $nama_file . '.' . $ext;
-							$return_file_data[] = array(
-								"link_file" => $file_data,
-							);
-							// $this->Registrasi_model->save_dokumen($file_data, $postData['id_kandidat'], $name);
-						}
-					}
-				}
-			} else if ($postData['identifier'] == "npwp_client") {
-				$yearmonth = date('Y/m/');
-				if (!is_dir('./uploads/document_eksternal/npwp client/')) {
-					mkdir('./uploads/document_eksternal/npwp client/', 0777, TRUE);
-				}
-				if (!empty($img['name'])) {
-					$config['upload_path'] = './uploads/document_eksternal/npwp client/';
-					$config['allowed_types'] = '*';
-					// $config['max_size'] = '100'; 
-					// $config['max_width'] = '1024';
-					// $config['max_height'] = '768';
-					$config['overwrite'] = TRUE;
-					// $config['file_name'] = $name . '_' . $postData['project_name'] . '_' . time();
-					$config['file_name'] = "npwp_client_" . $postData['nama_client'];
-
-					$this->load->library('upload', $config);
-					$this->upload->initialize($config);
-					if (!$this->upload->do_upload($key)) {
-						$error = array('error' => $this->upload->display_errors());
-						print_r($error);
-						die;
-					} else {
-						$nama_file = $this->upload->data('file_name');
-						// $nama_file = "npwp_client_" . $postData['nama_client'];
-						$path_file = base_url() . 'uploads/document_eksternal/npwp client/';
-						$file_data = $path_file . $nama_file;
-						$return_file_data[] = array(
-							"link_file" => $file_data,
-						);
-						// $this->Registrasi_model->save_dokumen($file_data, $postData['id_kandidat'], $name);
-					}
-				}
-			} else if ($postData['identifier'] == "pks_project") {
-				$yearmonth = date('Y/m/');
-				if (!is_dir('./uploads/document_eksternal/pks_project/')) {
-					mkdir('./uploads/document_eksternal/pks_project/', 0777, TRUE);
-				}
-				if (!empty($img['name'])) {
-					$config['upload_path'] = './uploads/document_eksternal/pks_project/';
-					$config['allowed_types'] = '*';
-					// $config['max_size'] = '100'; 
-					// $config['max_width'] = '1024';
-					// $config['max_height'] = '768';
-					$config['overwrite'] = TRUE;
-					// $config['file_name'] = $name . '_' . $postData['project_name'] . '_' . time();
-					$config['file_name'] = "pks_project_" . $postData['nama_project'];
-
-					$this->load->library('upload', $config);
-					$this->upload->initialize($config);
-					if (!$this->upload->do_upload($key)) {
-						$error = array('error' => $this->upload->display_errors());
-						print_r($error);
-						die;
-					} else {
-						$nama_file = $this->upload->data('file_name');
-						// $nama_file = preg_replace('/\s+/', '_', $nama_file);
-						// $nama_file = "pks_project_" . $postData['nama_project'];
-						$path_file = base_url() . 'uploads/document_eksternal/pks_project/';
-						$file_data = $path_file . $nama_file;
-						$return_file_data[] = array(
-							"link_file" => $file_data,
-						);
-						// $this->Registrasi_model->save_dokumen($file_data, $postData['id_kandidat'], $name);
-					}
-				}
-			} else if ($postData['identifier'] == "mou_project") {
-				$yearmonth = date('Y/m/');
-				if (!is_dir('./uploads/document_eksternal/mou_project/')) {
-					mkdir('./uploads/document_eksternal/mou_project/', 0777, TRUE);
-				}
-				if (!empty($img['name'])) {
-					$config['upload_path'] = './uploads/document_eksternal/mou_project/';
-					$config['allowed_types'] = '*';
-					// $config['max_size'] = '100'; 
-					// $config['max_width'] = '1024';
-					// $config['max_height'] = '768';
-					$config['overwrite'] = TRUE;
-					// $config['file_name'] = $name . '_' . $postData['project_name'] . '_' . time();
-					$config['file_name'] = "mou_project_" . $postData['nama_project'];
-
-					$this->load->library('upload', $config);
-					$this->upload->initialize($config);
-					if (!$this->upload->do_upload($key)) {
-						$error = array('error' => $this->upload->display_errors());
-						print_r($error);
-						die;
-					} else {
-						$nama_file = $this->upload->data('file_name');
-						// $nama_file = "mou_project_" . $postData['nama_project'];
-						$path_file = base_url() . 'uploads/document_eksternal/mou_project/';
-						$file_data = $path_file . $nama_file;
-						$return_file_data[] = array(
-							"link_file" => $file_data,
-						);
-						// $this->Registrasi_model->save_dokumen($file_data, $postData['id_kandidat'], $name);
-					}
-				}
-			} else if ($postData['identifier'] == "ratecard_project") {
-				$yearmonth = date('Y/m/');
-				if (!is_dir('./uploads/document_eksternal/ratecard_project/')) {
-					mkdir('./uploads/document_eksternal/ratecard_project/', 0777, TRUE);
-				}
-				if (!empty($img['name'])) {
-					$config['upload_path'] = './uploads/document_eksternal/ratecard_project/';
-					$config['allowed_types'] = '*';
-					// $config['max_size'] = '100'; 
-					// $config['max_width'] = '1024';
-					// $config['max_height'] = '768';
-					$config['overwrite'] = TRUE;
-					// $config['file_name'] = $name . '_' . $postData['project_name'] . '_' . time();
-					$config['file_name'] = "ratecard_project_" . $postData['nama_project'];
-
-					$this->load->library('upload', $config);
-					$this->upload->initialize($config);
-					if (!$this->upload->do_upload($key)) {
-						$error = array('error' => $this->upload->display_errors());
-						print_r($error);
-						die;
-					} else {
-						$nama_file = $this->upload->data('file_name');
-						// $nama_file = "ratecard_project_" . $postData['nama_project'];
-						$path_file = base_url() . 'uploads/document_eksternal/ratecard_project/';
-						$file_data = $path_file . $nama_file;
-						$return_file_data[] = array(
-							"link_file" => $file_data,
-						);
-						// $this->Registrasi_model->save_dokumen($file_data, $postData['id_kandidat'], $name);
-					}
-				}
-			}
-		}
-		// $this->load->view('imgtest');
-		echo json_encode($return_file_data);
-		// return $return_file_data;
 	}
 
 	//finish registrasi kandidat

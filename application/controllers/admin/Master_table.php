@@ -52,6 +52,8 @@ class Master_table extends CI_Controller
 		$this->load->view('admin/_partials/skeleton.php', $data);
 	}
 
+	//-------------------MASTER TABLE INTERVIEWER----------------------------------------
+
 	public function interviewer()
 	{
 		$data['jumlah_all_kandidat'] = $this->Kandidat_model->jumlah_kandidat();
@@ -61,7 +63,7 @@ class Master_table extends CI_Controller
 		$data['all_jabatan'] = $this->Registrasi_model->getAllJabatan();
 		$data['all_provinsi'] = $this->Registrasi_model->getAllProvinsi();
 		$data['all_interviewer'] = $this->Registrasi_model->get_all_interviewer();
-		$data['all_region'] = $this->Registrasi_model->getAllRegion();
+		$data['all_region'] = $this->Master_table_model->get_all_data_region();
 		$data['all_family_relation'] = $this->Registrasi_model->getAllFamilyRelation();
 		
         $data['sub_view'] = $this->load->view('admin/master_table/interviewer.php', $data, TRUE);
@@ -123,12 +125,20 @@ class Master_table extends CI_Controller
 
 		//Cek variabel post
 		$datarequest = [
+			'id'    		=> $postData['region'],
+		];
+
+		$data_region = $this->Master_table_model->get_data_region($datarequest);
+
+		//Cek variabel post
+		$datarequest = [
 			'nip'    		=> $postData['nip'],
 			'nama'   		=> strtoupper($postData['nama']),
 			'nama_lengkap'  => strtoupper($postData['nama_lengkap']),
 			'jabatan'  		=> strtoupper($postData['jabatan']),
 			'area'  		=> strtoupper($postData['area']),
-			'region'  		=> strtoupper($postData['region']),
+			'id_region'  	=> $postData['region'],
+			'region'  		=> strtoupper($data_region['nama']),
 			'status_aktif'  => $postData['status'],
 		];
 
@@ -160,17 +170,126 @@ class Master_table extends CI_Controller
 
 		//Cek variabel post
 		$datarequest = [
+			'id'    		=> $postData['region'],
+		];
+
+		$data_region = $this->Master_table_model->get_data_region($datarequest);
+
+		//Cek variabel post
+		$datarequest = [
 			'nip'    		=> $postData['nip'],
 			'nama'   		=> strtoupper($postData['nama']),
 			'nama_lengkap'  => strtoupper($postData['nama_lengkap']),
 			'jabatan'  		=> strtoupper($postData['jabatan']),
 			'area'  		=> strtoupper($postData['area']),
-			'region'  		=> strtoupper($postData['region']),
+			'id_region'  	=> $postData['region'],
+			'region'  		=> strtoupper($data_region['nama']),
 			'status_aktif'  => $postData['status'],
 		];
 
 		// save data diri
 		$data = $this->Master_table_model->update_interviewer($datarequest, $postData['id']);
+
+		if ($data == false) {
+			$response = array(
+				'status'	=> "201",
+				'pesan' 	=> "Tidak ada perubahan data",
+			);
+		} else {
+			$response = array(
+				'status'	=> "200",
+				'pesan' 	=> "Berhasil Update Data",
+			);
+		}
+
+		echo json_encode($response);
+		// echo "<pre>";
+		// print_r($response);
+		// echo "</pre>";
+	}
+
+	//-------------------END MASTER TABLE INTERVIEWER----------------------------------------
+
+	//-------------------MASTER TABLE PROVINSI----------------------------------------
+
+	public function provinsi()
+	{
+		$data['mockup_variable'] = "";
+		// $data['jumlah_all_kandidat'] = $this->Kandidat_model->jumlah_kandidat();
+		// $data['all_kandidat'] = $this->Kandidat_model->getAllKandidat();
+		// $data['all_company'] = $this->Registrasi_model->getAllCompany();
+		// $data['all_project'] = $this->Registrasi_model->getAllProject();
+		// $data['all_jabatan'] = $this->Registrasi_model->getAllJabatan();
+		// $data['all_provinsi'] = $this->Registrasi_model->getAllProvinsi();
+		// $data['all_interviewer'] = $this->Registrasi_model->get_all_interviewer();
+		// $data['all_region'] = $this->Registrasi_model->getAllRegion();
+		// $data['all_family_relation'] = $this->Registrasi_model->getAllFamilyRelation();
+		
+        $data['sub_view'] = $this->load->view('admin/master_table/provinsi.php', $data, TRUE);
+		$this->load->view('admin/_partials/skeleton.php', $data);
+	}
+
+	//load datatables provinsi
+	public function list_provinsi()
+	{
+
+		// POST data
+		$postData = $this->input->post();
+
+		// Get data
+		$data = $this->Master_table_model->list_provinsi($postData);
+
+		echo json_encode($data);
+	}
+
+	//mengambil Json data provinsi
+	public function get_data_provinsi()
+	{
+		$postData = $this->input->post();
+
+		//Cek variabel post
+		$datarequest = [
+			'id'        => $postData['id']
+		];
+
+		// get data provinsi
+		$data = $this->Master_table_model->get_data_provinsi($datarequest);
+
+		if (empty($data)) {
+			$data_empty = array();
+
+			$response = array(
+				'status'	=> "0",
+				'pesan' 	=> "Belum ada data",
+				'data'		=> $data_empty,
+			);
+		} else {
+			$response = array(
+				'status'	=> "1",
+				'pesan' 	=> "Berhasil Fetch Data",
+				'data'		=> $data,
+			);
+		}
+
+		echo json_encode($response);
+		// echo "<pre>";
+		// print_r($response);
+		// echo "</pre>";
+	}
+
+	//add data provinsi
+	public function add_provinsi()
+	{
+		$postData = $this->input->post();
+
+		//Cek variabel post
+		$datarequest = [
+			'id_bps'    		=> $postData['id_bps'],
+			'nama'   			=> strtoupper($postData['nama']),
+		];
+
+		// save data diri
+		$data = $this->Master_table_model->add_provinsi($datarequest);
 
 		if ($data == false) {
 			$response = array(
@@ -189,6 +308,384 @@ class Master_table extends CI_Controller
 		// print_r($response);
 		// echo "</pre>";
 	}
+
+	//update data provinsi
+	public function update_provinsi()
+	{
+		$postData = $this->input->post();
+
+		//Cek variabel post
+		$datarequest = [
+			'id_bps'    		=> $postData['id_bps'],
+			'nama'   			=> strtoupper($postData['nama']),
+		];
+
+		// save data diri
+		$data = $this->Master_table_model->update_provinsi($datarequest, $postData['id']);
+
+		if ($data == false) {
+			$response = array(
+				'status'	=> "201",
+				'pesan' 	=> "Tidak ada perubahan data",
+			);
+		} else {
+			$response = array(
+				'status'	=> "200",
+				'pesan' 	=> "Berhasil Update Data",
+			);
+		}
+
+		echo json_encode($response);
+		// echo "<pre>";
+		// print_r($response);
+		// echo "</pre>";
+	}
+
+	//delete data provinsi
+	public function delete_provinsi()
+	{
+		$postData = $this->input->post();
+
+		// save data diri
+		$data = $this->Master_table_model->delete_provinsi($postData['id']);
+
+		if ($data == false) {
+			$response = array(
+				'status'	=> "201",
+				'pesan' 	=> "Tidak ada perubahan data",
+			);
+		} else {
+			$response = array(
+				'status'	=> "200",
+				'pesan' 	=> "Berhasil Update Data",
+			);
+		}
+
+		echo json_encode($response);
+		// echo "<pre>";
+		// print_r($response);
+		// echo "</pre>";
+	}
+
+	//-------------------END MASTER TABLE PROVINSI----------------------------------------
+
+	//-------------------MASTER TABLE AREA----------------------------------------
+
+	public function area()
+	{
+		// $data['mockup_variable'] = "";
+		// $data['jumlah_all_kandidat'] = $this->Kandidat_model->jumlah_kandidat();
+		// $data['all_kandidat'] = $this->Kandidat_model->getAllKandidat();
+		// $data['all_company'] = $this->Registrasi_model->getAllCompany();
+		// $data['all_project'] = $this->Registrasi_model->getAllProject();
+		// $data['all_jabatan'] = $this->Registrasi_model->getAllJabatan();
+		$data['all_provinsi'] = $this->Registrasi_model->getAllProvinsi();
+		// $data['all_interviewer'] = $this->Registrasi_model->get_all_interviewer();
+		// $data['all_region'] = $this->Registrasi_model->getAllRegion();
+		// $data['all_family_relation'] = $this->Registrasi_model->getAllFamilyRelation();
+		
+        $data['sub_view'] = $this->load->view('admin/master_table/area.php', $data, TRUE);
+		$this->load->view('admin/_partials/skeleton.php', $data);
+	}
+
+	//load datatables area
+	public function list_area()
+	{
+
+		// POST data
+		$postData = $this->input->post();
+
+		// Get data
+		$data = $this->Master_table_model->list_area($postData);
+
+		echo json_encode($data);
+	}
+
+	//mengambil Json data area
+	public function get_data_area()
+	{
+		$postData = $this->input->post();
+
+		//Cek variabel post
+		$datarequest = [
+			'id'        => $postData['id']
+		];
+
+		// get data area
+		$data = $this->Master_table_model->get_data_area($datarequest);
+
+		if (empty($data)) {
+			$data_empty = array();
+
+			$response = array(
+				'status'	=> "0",
+				'pesan' 	=> "Belum ada data",
+				'data'		=> $data_empty,
+			);
+		} else {
+			$response = array(
+				'status'	=> "1",
+				'pesan' 	=> "Berhasil Fetch Data",
+				'data'		=> $data,
+			);
+		}
+
+		echo json_encode($response);
+		// echo "<pre>";
+		// print_r($response);
+		// echo "</pre>";
+	}
+
+	//add data area
+	public function add_area()
+	{
+		$postData = $this->input->post();
+
+		//Cek variabel post
+		$datarequest = [
+			'id_prov_bps'    		=> $postData['id_prov_bps'],
+			'id_kab_kota_bps'    	=> $postData['id_kab_kota_bps'],
+			'nama'   				=> strtoupper($postData['nama']),
+		];
+
+		// save data diri
+		$data = $this->Master_table_model->add_area($datarequest);
+
+		if ($data == false) {
+			$response = array(
+				'status'	=> "201",
+				'pesan' 	=> "Data Interviewer tidak ditemukan",
+			);
+		} else {
+			$response = array(
+				'status'	=> "200",
+				'pesan' 	=> "Berhasil Update Data",
+			);
+		}
+
+		echo json_encode($response);
+		// echo "<pre>";
+		// print_r($response);
+		// echo "</pre>";
+	}
+
+	//update data area
+	public function update_area()
+	{
+		$postData = $this->input->post();
+
+		//Cek variabel post
+		$datarequest = [
+			'id_prov_bps'    		=> $postData['id_prov_bps'],
+			'id_kab_kota_bps'    	=> $postData['id_kab_kota_bps'],
+			'nama'   				=> strtoupper($postData['nama']),
+		];
+
+		// save data diri
+		$data = $this->Master_table_model->update_area($datarequest, $postData['id']);
+
+		if ($data == false) {
+			$response = array(
+				'status'	=> "201",
+				'pesan' 	=> "Tidak ada perubahan data",
+			);
+		} else {
+			$response = array(
+				'status'	=> "200",
+				'pesan' 	=> "Berhasil Update Data",
+			);
+		}
+
+		echo json_encode($response);
+		// echo "<pre>";
+		// print_r($response);
+		// echo "</pre>";
+	}
+
+	//delete data area
+	public function delete_area()
+	{
+		$postData = $this->input->post();
+
+		// save data diri
+		$data = $this->Master_table_model->delete_area($postData['id']);
+
+		if ($data == false) {
+			$response = array(
+				'status'	=> "201",
+				'pesan' 	=> "Tidak ada perubahan data",
+			);
+		} else {
+			$response = array(
+				'status'	=> "200",
+				'pesan' 	=> "Berhasil Update Data",
+			);
+		}
+
+		echo json_encode($response);
+		// echo "<pre>";
+		// print_r($response);
+		// echo "</pre>";
+	}
+
+	//-------------------END MASTER TABLE AREA----------------------------------------
+
+	//-------------------MASTER TABLE REGION----------------------------------------
+
+	public function region()
+	{
+		// $data['mockup_variable'] = "";
+		// $data['jumlah_all_kandidat'] = $this->Kandidat_model->jumlah_kandidat();
+		// $data['all_kandidat'] = $this->Kandidat_model->getAllKandidat();
+		// $data['all_company'] = $this->Registrasi_model->getAllCompany();
+		// $data['all_project'] = $this->Registrasi_model->getAllProject();
+		// $data['all_jabatan'] = $this->Registrasi_model->getAllJabatan();
+		$data['all_provinsi'] = $this->Registrasi_model->getAllProvinsi();
+		// $data['all_interviewer'] = $this->Registrasi_model->get_all_interviewer();
+		// $data['all_region'] = $this->Registrasi_model->getAllRegion();
+		// $data['all_family_relation'] = $this->Registrasi_model->getAllFamilyRelation();
+		
+        $data['sub_view'] = $this->load->view('admin/master_table/region.php', $data, TRUE);
+		$this->load->view('admin/_partials/skeleton.php', $data);
+	}
+
+	//load datatables region
+	public function list_region()
+	{
+
+		// POST data
+		$postData = $this->input->post();
+
+		// Get data
+		$data = $this->Master_table_model->list_region($postData);
+
+		echo json_encode($data);
+	}
+
+	//mengambil Json data region
+	public function get_data_region()
+	{
+		$postData = $this->input->post();
+
+		//Cek variabel post
+		$datarequest = [
+			'id'        => $postData['id']
+		];
+
+		// get data area
+		$data = $this->Master_table_model->get_data_region($datarequest);
+
+		if (empty($data)) {
+			$data_empty = array();
+
+			$response = array(
+				'status'	=> "0",
+				'pesan' 	=> "Belum ada data",
+				'data'		=> $data_empty,
+			);
+		} else {
+			$response = array(
+				'status'	=> "1",
+				'pesan' 	=> "Berhasil Fetch Data",
+				'data'		=> $data,
+			);
+		}
+
+		echo json_encode($response);
+		// echo "<pre>";
+		// print_r($response);
+		// echo "</pre>";
+	}
+
+	//add data region
+	public function add_region()
+	{
+		$postData = $this->input->post();
+
+		//Cek variabel post
+		$datarequest = [
+			'nama'   				=> strtoupper($postData['nama']),
+		];
+
+		// save data diri
+		$data = $this->Master_table_model->add_region($datarequest);
+
+		if ($data == false) {
+			$response = array(
+				'status'	=> "201",
+				'pesan' 	=> "Data Interviewer tidak ditemukan",
+			);
+		} else {
+			$response = array(
+				'status'	=> "200",
+				'pesan' 	=> "Berhasil Update Data",
+			);
+		}
+
+		echo json_encode($response);
+		// echo "<pre>";
+		// print_r($response);
+		// echo "</pre>";
+	}
+
+	//update data region
+	public function update_region()
+	{
+		$postData = $this->input->post();
+
+		//Cek variabel post
+		$datarequest = [
+			'nama'   				=> strtoupper($postData['nama']),
+		];
+
+		// save data diri
+		$data = $this->Master_table_model->update_region($datarequest, $postData['id']);
+
+		if ($data == false) {
+			$response = array(
+				'status'	=> "201",
+				'pesan' 	=> "Tidak ada perubahan data",
+			);
+		} else {
+			$response = array(
+				'status'	=> "200",
+				'pesan' 	=> "Berhasil Update Data",
+			);
+		}
+
+		echo json_encode($response);
+		// echo "<pre>";
+		// print_r($response);
+		// echo "</pre>";
+	}
+
+	//delete data region
+	public function delete_region()
+	{
+		$postData = $this->input->post();
+
+		// save data diri
+		$data = $this->Master_table_model->delete_region($postData['id']);
+
+		if ($data == false) {
+			$response = array(
+				'status'	=> "201",
+				'pesan' 	=> "Tidak ada perubahan data",
+			);
+		} else {
+			$response = array(
+				'status'	=> "200",
+				'pesan' 	=> "Berhasil Update Data",
+			);
+		}
+
+		echo json_encode($response);
+		// echo "<pre>";
+		// print_r($response);
+		// echo "</pre>";
+	}
+
+	//-------------------END MASTER TABLE REGION----------------------------------------
 
 	public function printExcel($project, $jabatan, $region,  $rekruter, $range_tanggal, $searchVal)
 	{

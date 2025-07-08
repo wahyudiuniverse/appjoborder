@@ -55,20 +55,34 @@
                                             <span id='pesan_area_interviewer_modal'></span>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <!-- <tr>
                                         <td><strong>REGION <font color="#FF0000">*</font></strong></td>
                                         <td>
                                             <input id='region_interviewer_modal' name='region_interviewer_modal' type='text' class='form-control' placeholder='Region Interviewer' value=''>
                                             <span id='pesan_region_interviewer_modal'></span>
                                         </td>
-                                    </tr>
+                                    </tr> -->
+									<tr>
+										<td style='width:25%'><strong>REGION <font color="#FF0000">*</font></strong></td>
+										<td style='width:75%'>
+											<select name="region_interviewer_modal" id="region_interviewer_modal" class="form-control select_interviewer_modal">
+												<option value="">Pilih REGION</option>
+												<?php foreach ($all_region as $region) : ?>
+													<option value="<?php echo $region['id']; ?>" style="text-wrap: wrap;">
+														<?php echo $region['nama']; ?>
+													</option>
+												<?php endforeach; ?>
+											</select>
+											<span id='pesan_region_interviewer_modal'></span>
+										</td>
+									</tr>
                                     <tr>
                                         <td><strong>Status <font color="#FF0000">*</font></strong></td>
                                         <td>
                                             <select class="form-control" id="status_interviewer_modal" name="status_interviewer_modal" data-plugin="select_interviewer_modal" data-placeholder="Pilih Status">
                                                 <option value="">Pilih Status</option>
                                                 <option value="1">AKTIF</option>
-                                                <option value="2">TIDAK AKTIF</option>
+                                                <option value="0">TIDAK AKTIF</option>
                                             </select>
                                             <span id='pesan_status_interviewer_modal'></span>
                                         </td>
@@ -179,7 +193,7 @@
             width: '100%'
         });
 
-        $('[data-plugin="select_interviewer_modal"]').select2({
+        $('.select_interviewer_modal').select2({
             width: "100%",
             dropdownParent: $("#container_modal_interviewer")
         });
@@ -364,7 +378,7 @@
                     $('#nama_lengkap_interviewer_modal').val(res['data']['nama_lengkap']);
                     $('#jabatan_interviewer_modal').val(res['data']['jabatan']);
                     $('#area_interviewer_modal').val(res['data']['area']);
-                    $('#region_interviewer_modal').val(res['data']['region']);
+                    $('#region_interviewer_modal').val(res['data']['id_region']).change();
                     $("#status_interviewer_modal").val(res['data']['status_aktif']).change();
 
                     $('.isi-modal-edit-interviewer').attr("hidden", false);
@@ -496,7 +510,7 @@
                         $('.isi-modal-edit-interviewer').attr("hidden", true);
                         $('.info-modal-edit-interviewer').attr("hidden", false);
                         $('#button_save_interviewer').attr("hidden", true);
-                        $('#id_interviewer_modal').val();
+                        $('#id_interviewer_modal').val("");
                     }
                 },
                 error: function(xhr, status, error) {
@@ -507,7 +521,7 @@
                     $('.isi-modal-edit-interviewer').attr("hidden", true);
                     $('.info-modal-edit-interviewer').attr("hidden", false);
                     $('#button_save_interviewer').attr("hidden", true);
-                    $('#id_interviewer_modal').val();
+                    $('#id_interviewer_modal').val("");
                 }
             });
 
@@ -559,7 +573,7 @@
                         $('.isi-modal-edit-interviewer').attr("hidden", true);
                         $('.info-modal-edit-interviewer').attr("hidden", false);
                         $('#button_save_interviewer').attr("hidden", true);
-                        $('#id_interviewer_modal').val();
+                        $('#id_interviewer_modal').val("");
                     }
                 },
                 error: function(xhr, status, error) {
@@ -570,7 +584,7 @@
                     $('.isi-modal-edit-interviewer').attr("hidden", true);
                     $('.info-modal-edit-interviewer').attr("hidden", false);
                     $('#button_save_interviewer').attr("hidden", true);
-                    $('#id_interviewer_modal').val();
+                    $('#id_interviewer_modal').val("");
                 }
             });
 

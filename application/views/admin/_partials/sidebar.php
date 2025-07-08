@@ -73,17 +73,32 @@
                                 <a href="<?= base_url() ?>admin/master_table/interviewer" class="nav-link" data-key="t-analytics"> Interviewer </a>
                             </li>
                         </ul>
+						<ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="<?= base_url() ?>admin/master_table/provinsi" class="nav-link" data-key="t-analytics"> Provinsi </a>
+                            </li>
+                        </ul>
+						<ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="<?= base_url() ?>admin/master_table/area" class="nav-link" data-key="t-analytics"> Area </a>
+                            </li>
+                        </ul>
+						<ul class="nav nav-sm flex-column">
+                            <li class="nav-item">
+                                <a href="<?= base_url() ?>admin/master_table/region" class="nav-link" data-key="t-analytics"> Region </a>
+                            </li>
+                        </ul>
                     </div>
                 </li> <!-- end Master Table Menu -->
 
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#sidebarJobOrder" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarJobOrder">
-                        <i class="ri-briefcase-4-line"></i> <span data-key="t-job-order">Job Order (Under Construction)</span>
+                        <i class="ri-briefcase-4-line"></i> <span data-key="t-job-order">Job Order</span>
                     </a>
                     <div class="collapse menu-dropdown" id="sidebarJobOrder">
                         <ul class="nav nav-sm flex-column">
                             <li class="nav-item">
-                                <a href="#" class="nav-link" data-key="t-job-order"> Job Order (Under Construction) </a>
+                                <a href="<?= base_url() ?>job_order" class="nav-link" data-key="t-job-order"> Job Order</a>
                             </li>
                         </ul>
                     </div>

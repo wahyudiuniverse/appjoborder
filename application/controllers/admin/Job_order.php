@@ -10,8 +10,9 @@ use PhpOffice\PhpSpreadsheet\Style\Fill;
 use PhpOffice\PhpSpreadsheet\Style\Style;
 use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 
-class Kandidat extends CI_Controller
+class Job_order extends CI_Controller
 {
+	//---------------GENERAL JOB ORDER----------------------------
 	public function __construct()
 	{
 		parent::__construct();
@@ -23,8 +24,10 @@ class Kandidat extends CI_Controller
 		$this->load->database();
 		$this->load->helper('security');
 		$this->load->library('form_validation');
+		$this->load->model("Job_order_model");
 		$this->load->model("Kandidat_model");
 		$this->load->model("Registrasi_model");
+		$this->load->model("Master_table_model");
 		$this->load->model("Auth_model");
 
 		//cek session login
@@ -35,32 +38,241 @@ class Kandidat extends CI_Controller
 
     public function index()
 	{
-		$data['jumlah_all_kandidat'] = $this->Kandidat_model->jumlah_kandidat();
-		$data['all_kandidat'] = $this->Kandidat_model->getAllKandidat();
-		$data['all_company'] = $this->Registrasi_model->getAllCompany();
-		$data['all_project'] = $this->Registrasi_model->getAllProject();
-		$data['all_jabatan'] = $this->Registrasi_model->getAllJabatan();
-		$data['all_provinsi'] = $this->Registrasi_model->getAllProvinsi();
-		$data['all_interviewer'] = $this->Registrasi_model->get_all_interviewer();
-		$data['all_region'] = $this->Registrasi_model->getAllRegion();
-		$data['all_family_relation'] = $this->Registrasi_model->getAllFamilyRelation();
+		// $data['jumlah_all_kandidat'] = $this->Kandidat_model->jumlah_kandidat();
+		// $data['all_kandidat'] = $this->Kandidat_model->getAllKandidat();
+		// $data['all_company'] = $this->Registrasi_model->getAllCompany();
+		$data['all_project'] = $this->Job_order_model->getAllProject();
+		// $data['all_jabatan'] = $this->Registrasi_model->getAllJabatan();
+		// $data['all_provinsi'] = $this->Registrasi_model->getAllProvinsi();
+		// $data['all_interviewer'] = $this->Registrasi_model->get_all_interviewer();
+		// $data['all_region'] = $this->Registrasi_model->getAllRegion();
+		// $data['all_family_relation'] = $this->Registrasi_model->getAllFamilyRelation();
 		
-        $data['sub_view'] = $this->load->view('admin/kandidat.php', $data, TRUE);
+        $data['sub_view'] = $this->load->view('admin/master_job_order.php', $data, TRUE);
 		$this->load->view('admin/_partials/skeleton.php', $data);
 	}
+	//---------------END GENERAL JOB ORDER----------------------------
 
-	//load datatables Employee
-	public function list_kandidat()
+	//---------------MASTER JOB ORDER----------------------------
+	//load rekapitulasi datatables JO
+	public function list_rekap_jo()
 	{
 
 		// POST data
 		$postData = $this->input->post();
 
 		// Get data
-		$data = $this->Kandidat_model->list_kandidat($postData);
+		$data = $this->Job_order_model->list_rekap_jo($postData);
 
 		echo json_encode($data);
 	}
+
+	//add data area
+	public function add_master_JO()
+	{
+		$postData = $this->input->post();
+
+		$created_on = date('Y-m-d H:i:s');
+
+		//Cek variabel post
+		$datarequest = [
+			'project_id'    		=> $postData['project_id'],
+			'project_name'   		=> strtoupper($postData['project_name']),
+			'created_on'    		=> $created_on,
+		];
+
+		// save data diri
+		$data = $this->Job_order_model->add_master_JO($datarequest);
+
+		// if ($data == false) {
+		// 	$response = array(
+		// 		'status'	=> "201",
+		// 		'pesan' 	=> "Data Interviewer tidak ditemukan",
+		// 	);
+		// } else {
+		// 	$response = array(
+		// 		'status'	=> "200",
+		// 		'pesan' 	=> "Berhasil Update Data",
+		// 	);
+		// }
+
+		echo json_encode($data);
+		// echo "<pre>";
+		// print_r($response);
+		// echo "</pre>";
+	}
+	//---------------END MASTER JOB ORDER----------------------------
+
+	//---------------JOB ORDER----------------------------
+	public function detail_jabatan_jo($id_master_jo)
+	{
+		$data['id_master_jo'] = $id_master_jo;
+		$data['master_jo'] = $this->Job_order_model->get_master_JO($id_master_jo);
+		$data['rekap_vacant'] = $this->Job_order_model->get_rekap_vacant($id_master_jo);
+		$data['all_region'] = $this->Master_table_model->get_all_data_region($id_master_jo);
+		if(empty($data['master_jo'])){
+			$data['nama_project'] = "";
+			$data['project_id'] = "";
+			$data['all_jabatan'] = null;
+		} else {
+			$data['nama_project'] = $data['master_jo']['project_name'];
+			$data['project_id'] = $data['master_jo']['project_id'];
+			$data['all_jabatan'] = $this->Job_order_model->getAllJabatan($data['master_jo']['project_id']);
+		}
+		
+        $data['sub_view'] = $this->load->view('admin/job_order.php', $data, TRUE);
+		$this->load->view('admin/_partials/skeleton.php', $data);
+	}
+
+	//list JO jabatan dalam satu project
+	public function list_jabatan_jo()
+	{
+		// POST data
+		$postData = $this->input->post();
+
+		// Get data
+		$data = $this->Job_order_model->list_jabatan_jo($postData);
+
+		echo json_encode($data);
+	}
+
+	//add data jabatan JO
+	public function add_jabatan_JO()
+	{
+		$isi_session = $this->session->userdata();
+		$created_by_id = $isi_session['employee_id'];
+		$created_by = $isi_session['fullname'];
+
+		$postData = $this->input->post();
+
+		$created_on = date('Y-m-d H:i:s');
+
+		//Cek variabel post
+		$datarequest = [
+			'job_master_id'    		=> $postData['id_master_jo'],
+			'jabatan_id'    		=> $postData['jabatan_id'],
+			'jabatan_name'   		=> strtoupper($postData['jabatan_name']),
+			'kriteria'   			=> strtoupper($postData['kriteria']),
+			'jobdesc'   			=> strtoupper($postData['jobdesc']),
+			'benefit'   			=> strtoupper($postData['benefit']),
+			'created_by_id'    		=> $created_by_id,
+			'created_by'    		=> $created_by,
+			'created_on'    		=> $created_on,
+		];
+
+		// save data diri
+		$data = $this->Job_order_model->add_jabatan_JO($datarequest);
+
+		// if ($data == false) {
+		// 	$response = array(
+		// 		'status'	=> "201",
+		// 		'pesan' 	=> "Data Interviewer tidak ditemukan",
+		// 	);
+		// } else {
+		// 	$response = array(
+		// 		'status'	=> "200",
+		// 		'pesan' 	=> "Berhasil Update Data",
+		// 	);
+		// }
+
+		echo json_encode($data);
+		// echo "<pre>";
+		// print_r($response);
+		// echo "</pre>";
+	}
+	//---------------END JOB ORDER----------------------------
+
+	//---------------JOB ORDER DETAIL----------------------------
+	public function detail_jo($id_jabatan_jo)
+	{
+		$data['id_jabatan_jo'] = $id_jabatan_jo;
+		$data['master_jo'] = $this->Job_order_model->get_master_JO_by_jo($id_jabatan_jo);
+		$data['id_master_jo'] = $data['master_jo']['id'];
+
+		$data['jabatan_jo'] = $this->Job_order_model->get_jabatan_JO($id_jabatan_jo);
+		$data['rekap_vacant_area'] = $this->Job_order_model->get_rekap_vacant_area($id_jabatan_jo);
+		$data['all_region'] = $this->Master_table_model->get_all_data_region();
+		$data['all_provinsi'] = $this->Master_table_model->get_all_data_provinsi();
+		$data['all_interviewer'] = $this->Master_table_model->get_all_data_interviewer();
+		if (empty($data['master_jo'])) {
+			$data['nama_project'] = "";
+			$data['project_id'] = "";
+			$data['jumlah_area'] = "0";
+		} else {
+			$data['nama_project'] = $data['master_jo']['project_name'];
+			$data['project_id'] = $data['master_jo']['project_id'];
+			$data['jumlah_area'] = $this->Job_order_model->get_jumlah_area($id_jabatan_jo);
+		}
+
+		$data['sub_view'] = $this->load->view('admin/job_order_detail.php', $data, TRUE);
+		$this->load->view('admin/_partials/skeleton.php', $data);
+	}
+
+	//list JO jabatan dalam satu project
+	public function list_detail_jo()
+	{
+		// POST data
+		$postData = $this->input->post();
+
+		// Get data
+		$data = $this->Job_order_model->list_detail_jo($postData);
+
+		echo json_encode($data);
+	}
+
+	//add data jabatan JO
+	public function add_detail_JO()
+	{
+		$isi_session = $this->session->userdata();
+		$created_by_id = $isi_session['employee_id'];
+		$created_by = $isi_session['fullname'];
+
+		$postData = $this->input->post();
+
+		$created_on = date('Y-m-d H:i:s');
+
+		//Cek variabel post
+		$datarequest = [
+			'job_order_id'    		=> $postData['job_order_id'],
+			'region_id'    			=> $postData['region_id'],
+			'region'   				=> strtoupper($postData['region']),
+			'provinsi_id'    		=> $postData['provinsi_id'],
+			'provinsi'   			=> strtoupper($postData['provinsi']),
+			'area_id'    			=> $postData['area_id'],
+			'area'   				=> strtoupper($postData['area']),
+			'detail_area'   		=> strtoupper($postData['detail_area']),
+			'jumlah_request'    	=> $postData['jumlah_request'],
+			'jumlah_vacant'    		=> $postData['jumlah_request'],
+			'jumlah_fill'    		=> "0",
+			'pic_vacant'    		=> $postData['pic_vacant'],
+			'pic_vacant_name'   	=> strtoupper($postData['pic_vacant_name']),
+			'is_active'    			=> "1",
+			'created_by_id'    		=> $created_by_id,
+			'created_by'    		=> $created_by,
+			'created_on'    		=> $created_on,
+		];
+
+		// save data diri
+		$data = $this->Job_order_model->add_detail_JO($datarequest);
+
+		// if ($data == false) {
+		// 	$response = array(
+		// 		'status'	=> "201",
+		// 		'pesan' 	=> "Data Interviewer tidak ditemukan",
+		// 	);
+		// } else {
+		// 	$response = array(
+		// 		'status'	=> "200",
+		// 		'pesan' 	=> "Berhasil Update Data",
+		// 	);
+		// }
+
+		echo json_encode($data);
+		// echo "<pre>";
+		// print_r($response);
+		// echo "</pre>";
+	}
+	//---------------END JOB ORDER DETAIL----------------------------
 
 	public function printExcel($project, $jabatan, $region,  $rekruter, $range_tanggal, $searchVal)
 	{

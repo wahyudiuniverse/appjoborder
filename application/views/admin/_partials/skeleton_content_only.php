@@ -43,24 +43,24 @@
 <body>
 
     <!-- Begin page -->
-    <div id="layout-wrapper">
+    <!-- <div id="layout-wrapper"> -->
 
-    <div id="section_topbar"><?php $this->load->view('admin/_partials/topbar.php') ?></div>
+        <div id="section_topbar"><?php //$this->load->view('admin/_partials/topbar.php') ?></div>
 
-    <div id="section_remove_notification"><?php $this->load->view('admin/_partials/remove_notification_modal.php') ?></div>
+        <div id="section_remove_notification"><?php //$this->load->view('admin/_partials/remove_notification_modal.php') ?></div>
 
-        <div id="section_sidebar"><?php $this->load->view('admin/_partials/sidebar.php') ?></div>
+        <div id="section_sidebar"><?php //$this->load->view('admin/_partials/sidebar.php') ?></div>
 
         <!-- Vertical Overlay-->
-        <div class="vertical-overlay"></div>
+        <!-- <div class="vertical-overlay"></div> -->
 
         <!-- ============================================================== -->
         <!-- Start right Content here -->
         <!-- ============================================================== -->
-        <div class="main-content">
+        <!-- <div class="main-content"> -->
 
-            <div class="page-content">
-                <div class="container-fluid">
+            <!-- <div class="page-content"> -->
+                <div class="container-fluid mt-4">
 
                     <input type="hidden" id="base" value="<?php echo base_url(); ?>">
 
@@ -68,14 +68,14 @@
 
                 </div>
                 <!-- container-fluid -->
-            </div>
+            <!-- </div> -->
             <!-- End Page-content -->
 
-            <div id="section_footer"><?php $this->load->view('admin/_partials/footer.php') ?></div>
-        </div>
+            <div id="section_footer"><?php //$this->load->view('admin/_partials/footer.php') ?></div>
+        <!-- </div> -->
         <!-- end main content-->
 
-    </div>
+    <!-- </div> -->
     <!-- END layout-wrapper -->
 
     <?php $this->load->view('admin/_partials/theme_settings.php') ?>

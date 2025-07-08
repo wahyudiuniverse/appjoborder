@@ -96,7 +96,7 @@
     </div><!-- end col -->
 </div><!-- end row -->
 
-<div class="row">
+<div hidden class="row">
     <div class="col-xs-12">
         <div class="card card-height-100">
             <div class="card-header align-items-center d-flex">

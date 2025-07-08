@@ -43,12 +43,12 @@
 	<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js" defer></script>
 
 	<!-- dropzone css -->
-	<link rel="stylesheet" href="<?= base_url() ?>assets/libs/dropzone/dropzone.css" type="text/css" />
+	<link rel="stylesheet" href="assets/libs/dropzone/dropzone.css" type="text/css" />
 
 	<!-- Filepond css -->
-	<link rel="stylesheet" href="<?= base_url() ?>assets/libs/filepond/filepond.min.css" type="text/css" />
+	<link rel="stylesheet" href="assets/libs/filepond/filepond.min.css" type="text/css" />
 	<!-- <link href="assets/libs/filepond-plugin-image-edit/filepond-plugin-image-edit.css" rel="stylesheet" /> -->
-	<link rel="stylesheet" href="<?= base_url() ?>assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.css">
+	<link rel="stylesheet" href="assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.css">
 
 
 	<!-- Bootstrap Css -->
@@ -97,19 +97,19 @@
 			<!-- Dark Logo-->
 			<a href="index.html" class="logo logo-dark">
 				<span class="logo-sm">
-					<img src="<?= base_url() ?>assets/images/logo-sm.png" alt="" height="22">
+					<img src="assets/images/logo-sm.png" alt="" height="22">
 				</span>
 				<span class="logo-lg">
-					<img src="<?= base_url() ?>assets/images/logo-dark.png" alt="" height="17">
+					<img src="assets/images/logo-dark.png" alt="" height="17">
 				</span>
 			</a>
 			<!-- Light Logo-->
 			<a href="index.html" class="logo logo-light">
 				<span class="logo-sm">
-					<img src="<?= base_url() ?>assets/images/logo-sm.png" alt="" height="22">
+					<img src="assets/images/logo-sm.png" alt="" height="22">
 				</span>
 				<span class="logo-lg">
-					<img src="<?= base_url() ?>assets/images/logo-light.png" alt="" height="17">
+					<img src="assets/images/logo-light.png" alt="" height="17">
 				</span>
 			</a>
 			<button type="button" class="btn btn-sm p-0 fs-20 header-item float-end btn-vertical-sm-hover" id="vertical-hover">
@@ -120,7 +120,7 @@
 		<div class="dropdown sidebar-user m-1 rounded">
 			<button type="button" class="btn material-shadow-none" id="page-header-user-dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				<span class="d-flex align-items-center gap-2">
-					<img class="rounded header-profile-user" src="<?= base_url() ?>assets/images/users/avatar-1.jpg" alt="Header Avatar">
+					<img class="rounded header-profile-user" src="assets/images/users/avatar-1.jpg" alt="Header Avatar">
 					<span class="text-start">
 						<span class="d-block fw-medium sidebar-user-name-text">Anna Adame</span>
 						<span class="d-block fs-14 sidebar-user-name-sub-text"><i class="ri ri-circle-fill fs-10 text-success align-baseline"></i> <span class="align-middle">Online</span></span>
@@ -1652,13 +1652,12 @@
 										<form class="g-3">
 											<div class="row">
 												<div class="mb-3">
-													<label for="pengalaman_kerja" class="form-label">PENGALAMAN KERJA <font color="#FF0000">*</font></label></br>
+													<label for="pengalaman_kerja" class="form-label">PENGALAMAN KERJA</label></br>
 													<small for="pengalaman_kerja" class="form-label" style="color:red">ISI DENGAN 3 PENGALAMAN KERJA TERAKHIR. CONTOH:</small></br>
 													<small for="pengalaman_kerja" class="form-label" style="color:red">1. FINISAR MALAYSIA MANUFACTURING</small></br>
 													<small for="pengalaman_kerja" class="form-label" style="color:red">2. PT PERMODALAN NASIONAL MADANI</small></br>
 													<small for="pengalaman_kerja" class="form-label" style="color:red">3. PT NIAGA INDOGUNA YASA</small></br>
 													<textarea class="form-control" id="pengalaman_kerja" placeholder="Pengalaman Kerja" rows="3" required></textarea>
-													<span id='pesan_pengalaman_kerja'></span>
 												</div>
 											</div>
 											<div class="row">
@@ -1668,7 +1667,6 @@
 													<small for="kontak_person_sebelumnya" class="form-label" style="color:red">1. PT NIAGA INDOGUNA YASA, BAPAK DIMAS 082298738904</small></br>
 													<small for="kontak_person_sebelumnya" class="form-label" style="color:red">2. PT FINISAR MALAYSIA MANUFACTURING, IBU LELI 098776543277</small></br>
 													<textarea class="form-control" id="kontak_person_sebelumnya" placeholder="Contact Person" rows="3" required></textarea>
-													<span id='pesan_kontak_person_sebelumnya'></span>
 												</div>
 											</div>
 											<div class="row">
@@ -1712,17 +1710,12 @@
 														<div class="card">
 															<div class="card-header">
 																<h4 class="card-title mb-0">PAS FOTO (TERBARU)</h4>
-																<span id='display_file_pas_foto'>
-																	<h2>BELUM UPLOAD FILE</h2>
-																</span>
 															</div><!-- end card header -->
 
 															<div class="card-body">
 																<small class="text-muted">File bertipe jpg, jpeg, png atau pdf. Ukuran maksimal 5 MB</small>
 																<input type="file" class="filepond filepond-input-multiple" multiple id="pas_foto" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1" accept="image/png, image/jpeg, application/pdf">
 																<input hidden type="text" id="status_file_pasfoto" value="0">
-																<input hidden type="text" id="link_file_pasfoto">
-																<span id='pesan_pas_foto'></span>
 															</div>
 															<!-- end card body -->
 														</div>
@@ -1733,19 +1726,13 @@
 													<div class="col-lg-3">
 														<div class="card">
 															<div class="card-header">
-																<h4 class="card-title mb-0">FILE KTP <font color="#FF0000">*</font>
-																</h4>
-																<span id='display_file_ktp'>
-																	<h2>BELUM UPLOAD FILE</h2>
-																</span>
+																<h4 class="card-title mb-0">FILE KTP</h4>
 															</div><!-- end card header -->
 
 															<div class="card-body">
 																<small class="text-muted">File bertipe jpg, jpeg, png atau pdf. Ukuran maksimal 5 MB</small>
 																<input type="file" class="filepond filepond-input-multiple" multiple id="file_ktp" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1" accept="image/png, image/jpeg, application/pdf">
 																<input hidden type="text" id="status_file_ktp" value="0">
-																<input hidden type="text" id="link_file_ktp">
-																<span id='pesan_file_ktp'></span>
 															</div>
 															<!-- end card body -->
 														</div>
@@ -1756,19 +1743,13 @@
 													<div class="col-lg-3">
 														<div class="card">
 															<div class="card-header">
-																<h4 class="card-title mb-0">FILE CV <font color="#FF0000">*</font>
-																</h4>
-																<span id='display_file_cv'>
-																	<h2>BELUM UPLOAD FILE</h2>
-																</span>
+																<h4 class="card-title mb-0">FILE CV</h4>
 															</div><!-- end card header -->
 
 															<div class="card-body">
 																<small class="text-muted">File bertipe jpg, jpeg, png atau pdf. Ukuran maksimal 10 MB</small>
 																<input type="file" class="filepond filepond-input-multiple" multiple id="file_cv" data-allow-reorder="true" data-max-file-size="10MB" data-max-files="1" accept="image/png, image/jpeg, application/pdf">
 																<input hidden type="text" id="status_file_cv" value="0">
-																<input hidden type="text" id="link_file_cv">
-																<span id='pesan_file_cv'></span>
 															</div>
 															<!-- end card body -->
 														</div>
@@ -1780,16 +1761,11 @@
 														<div class="card">
 															<div class="card-header">
 																<h4 class="card-title mb-0">FILE KK</h4>
-																<span id='display_file_kk'>
-																	<h2>BELUM UPLOAD FILE</h2>
-																</span>
 															</div><!-- end card header -->
 
 															<div class="card-body">
 																<small class="text-muted">File bertipe jpg, jpeg, png atau pdf. Ukuran maksimal 5 MB</small>
 																<input type="file" class="filepond filepond-input-multiple" multiple id="file_kk" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1" accept="image/png, image/jpeg, application/pdf">
-																<span id='pesan_file_kk'></span>
-																<input hidden type="text" id="link_file_kk">
 															</div>
 															<!-- end card body -->
 														</div>
@@ -1805,16 +1781,11 @@
 														<div class="card">
 															<div class="card-header">
 																<h4 class="card-title mb-0">FILE NPWP</h4>
-																<span id='display_file_npwp'>
-																	<h2>BELUM UPLOAD FILE</h2>
-																</span>
 															</div><!-- end card header -->
 
 															<div class="card-body">
 																<small class="text-muted">File bertipe jpg, jpeg, png atau pdf. Ukuran maksimal 5 MB</small>
 																<input type="file" class="filepond filepond-input-multiple" multiple id="file_npwp" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1" accept="image/png, image/jpeg, application/pdf">
-																<span id='pesan_file_npwp'></span>
-																<input hidden type="text" id="link_file_npwp">
 															</div>
 															<!-- end card body -->
 														</div>
@@ -1826,16 +1797,11 @@
 														<div class="card">
 															<div class="card-header">
 																<h4 class="card-title mb-0">FILE SKCK</h4>
-																<span id='display_file_skck'>
-																	<h2>BELUM UPLOAD FILE</h2>
-																</span>
 															</div><!-- end card header -->
 
 															<div class="card-body">
 																<small class="text-muted">File bertipe jpg, jpeg, png atau pdf. Ukuran maksimal 5 MB</small>
 																<input type="file" class="filepond filepond-input-multiple" multiple id="file_skck" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1" accept="image/png, image/jpeg, application/pdf">
-																<span id='pesan_file_skck'></span>
-																<input hidden type="text" id="link_file_skck">
 															</div>
 															<!-- end card body -->
 														</div>
@@ -1846,19 +1812,13 @@
 													<div class="col-lg-3">
 														<div class="card">
 															<div class="card-header">
-																<h4 class="card-title mb-0">FILE IJAZAH <font color="#FF0000">*</font>
-																</h4>
-																<span id='display_file_ijazah'>
-																	<h2>BELUM UPLOAD FILE</h2>
-																</span>
+																<h4 class="card-title mb-0">FILE IJAZAH</h4>
 															</div><!-- end card header -->
 
 															<div class="card-body">
 																<small class="text-muted">File bertipe jpg, jpeg, png atau pdf. Ukuran maksimal 5 MB</small>
 																<input type="file" class="filepond filepond-input-multiple" multiple id="file_ijazah" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1" accept="image/png, image/jpeg, application/pdf">
 																<input hidden type="text" id="status_file_ijazah" value="0">
-																<span id='pesan_file_ijazah'></span>
-																<input hidden type="text" id="link_file_ijazah">
 															</div>
 															<!-- end card body -->
 														</div>
@@ -1870,16 +1830,11 @@
 														<div class="card">
 															<div class="card-header">
 																<h4 class="card-title mb-0">FILE SIM A / C</h4>
-																<span id='display_file_sim'>
-																	<h2>BELUM UPLOAD FILE</h2>
-																</span>
 															</div><!-- end card header -->
 
 															<div class="card-body">
 																<small class="text-muted">File bertipe jpg, jpeg, png atau pdf. Ukuran maksimal 5 MB</small>
 																<input type="file" class="filepond filepond-input-multiple" multiple id="file_sim" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1" accept="image/png, image/jpeg, application/pdf">
-																<span id='pesan_file_sim'></span>
-																<input hidden type="text" id="link_file_sim">
 															</div>
 															<!-- end card body -->
 														</div>
@@ -1895,16 +1850,11 @@
 														<div class="card">
 															<div class="card-header">
 																<h4 class="card-title mb-0">FILE PAKLARING</h4>
-																<span id='display_file_paklaring'>
-																	<h2>BELUM UPLOAD FILE</h2>
-																</span>
 															</div><!-- end card header -->
 
 															<div class="card-body">
 																<small class="text-muted">File bertipe jpg, jpeg, png atau pdf. Ukuran maksimal 5 MB</small>
 																<input type="file" class="filepond filepond-input-multiple" multiple id="file_paklaring" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1" accept="image/png, image/jpeg, application/pdf">
-																<span id='pesan_file_paklaring'></span>
-																<input hidden type="text" id="link_file_paklaring">
 															</div>
 															<!-- end card body -->
 														</div>
@@ -1916,16 +1866,11 @@
 														<div class="card">
 															<div class="card-header">
 																<h4 class="card-title mb-0">FILE DOKUMEN PENDUKUNG</h4>
-																<span id='display_file_dokumen_pendukung'>
-																	<h2>BELUM UPLOAD FILE</h2>
-																</span>
 															</div><!-- end card header -->
 
 															<div class="card-body">
 																<small class="text-muted">File bertipe jpg, jpeg, png atau pdf. Ukuran maksimal 5 MB</small>
 																<input type="file" class="filepond filepond-input-multiple" multiple id="file_dokumen_pendukung" data-allow-reorder="true" data-max-file-size="5MB" data-max-files="1" accept="image/png, image/jpeg, application/pdf">
-																<span id='pesan_file_dokumen_pendukung'></span>
-																<input hidden type="text" id="link_file_dokumen_pendukung">
 															</div>
 															<!-- end card body -->
 														</div>
@@ -1956,7 +1901,7 @@
 												onclick="next_dokumen()"
 												class="btn btn-success btn-label right ms-auto">
 												<i
-													class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>Selesai
+													class="ri-arrow-right-line label-icon align-middle fs-16 ms-2"></i>Next
 											</button>
 										</div>
 									</div>
@@ -2066,22 +2011,22 @@
 	<!-- dropzone min -->
 	<!-- <script src="assets/libs/dropzone/dropzone-min.js"></script> -->
 	<!-- filepond js -->
-	<script src="<?= base_url() ?>assets/libs/filepond/filepond.min.js"></script>
-	<script src="<?= base_url() ?>assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js"></script>
-	<script src="<?= base_url() ?>assets/libs/filepond-plugin-file-validate-size/filepond-plugin-file-validate-size.min.js"></script>
-	<script src="<?= base_url() ?>assets/libs/filepond-plugin-image-exif-orientation/filepond-plugin-image-exif-orientation.min.js"></script>
-	<script src="<?= base_url() ?>assets/libs/filepond-plugin-file-encode/filepond-plugin-file-encode.min.js"></script>
-	<script src="<?= base_url() ?>assets/libs/filepond-plugin-file-validate-type/filepond-plugin-file-validate-type.js"></script>
-	<script src="<?= base_url() ?>assets/libs/filepond-plugin-file-rename/filepond-plugin-file-rename.js"></script>
+	<script src="assets/libs/filepond/filepond.min.js"></script>
+	<script src="assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js"></script>
+	<script src="assets/libs/filepond-plugin-file-validate-size/filepond-plugin-file-validate-size.min.js"></script>
+	<script src="assets/libs/filepond-plugin-image-exif-orientation/filepond-plugin-image-exif-orientation.min.js"></script>
+	<script src="assets/libs/filepond-plugin-file-encode/filepond-plugin-file-encode.min.js"></script>
+	<script src="assets/libs/filepond-plugin-file-validate-type/filepond-plugin-file-validate-type.js"></script>
+	<script src="assets/libs/filepond-plugin-file-rename/filepond-plugin-file-rename.js"></script>
 	<!-- <script src="assets/libs/filepond-plugin-image-edit/filepond-plugin-image-edit.js"></script> -->
 
 	<!-- <script src="assets/js/pages/form-file-upload.init.js"></script> -->
 
 	<!-- Modern colorpicker bundle -->
-	<script src="<?= base_url() ?>assets/libs/%40simonwep/pickr/pickr.min.js"></script>
+	<script src="assets/libs/%40simonwep/pickr/pickr.min.js"></script>
 	<script src="<?= base_url() ?>assets/js/pages/form-pickers.init.js"></script>
 
-	<script src="<?= base_url() ?>assets/js/app.js"></script>
+	<script src="assets/js/app.js"></script>
 
 	<script>
 		var csrfName = '<?php echo $this->security->get_csrf_token_name(); ?>',
@@ -2265,8 +2210,7 @@
 				success: function(response) {
 
 					// Remove options
-					// $('#kota_input').find('option').not(':first').remove();
-					$('#kota_input').find('option').remove();
+					$('#kota_input').find('option').not(':first').remove();
 
 					// Add options
 					$.each(response, function(index, data) {
@@ -2499,15 +2443,180 @@
 				$('#pesan_interviewer_input').html(pesan_interviewer_input);
 				$('#pesan_sumber_info_input').html(pesan_sumber_info_input);
 			} else {
-				$('#project-tab').prop('disabled', 'disabled');
-				$("#data-diri-tab").removeAttr('disabled');
-				$('#project-tab').removeClass('active');
-				$('#project-tab').addClass('done');
-				$('#data-diri-tab').addClass('active');
-				$('#project').removeClass('active');
-				$('#project').removeClass('show');
-				$('#data-diri').addClass('active');
-				$('#data-diri').addClass('show');
+				if (project_id == "") {
+					project_name = "";
+				}
+				if (jabatan_id == "") {
+					jabatan_name = "";
+				}
+				// AJAX untuk save data diri
+				$.ajax({
+					url: '<?= base_url() ?>registrasi/save_project/',
+					method: 'post',
+					data: {
+						[csrfName]: csrfHash,
+						project_id: project_id,
+						project_name: project_name,
+						jabatan_id: jabatan_id,
+						jabatan_name: jabatan_name,
+						area: area,
+						sumber_info: sumber_info,
+						interviewer: interviewer,
+					},
+					beforeSend: function() {},
+					success: function(response) {
+						var res = jQuery.parseJSON(response);
+
+						//append id_kandidat ke objek filepond
+						pond_pasfoto.setOptions({
+							server: {
+								process: {
+									url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+									method: 'POST',
+									ondata: (formData) => {
+										formData.append('id_kandidat', res);
+										formData.append([csrfName], csrfHash);
+										return formData;
+									}
+								}
+							}
+						});
+						pond_ktp.setOptions({
+							server: {
+								process: {
+									url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+									method: 'POST',
+									ondata: (formData) => {
+										formData.append('id_kandidat', res);
+										formData.append([csrfName], csrfHash);
+										return formData;
+									}
+								}
+							}
+						});
+						pond_cv.setOptions({
+							server: {
+								process: {
+									url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+									method: 'POST',
+									ondata: (formData) => {
+										formData.append('id_kandidat', res);
+										formData.append([csrfName], csrfHash);
+										return formData;
+									}
+								}
+							}
+						});
+						pond_kk.setOptions({
+							server: {
+								process: {
+									url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+									method: 'POST',
+									ondata: (formData) => {
+										formData.append('id_kandidat', res);
+										formData.append([csrfName], csrfHash);
+										return formData;
+									}
+								}
+							}
+						});
+						pond_npwp.setOptions({
+							server: {
+								process: {
+									url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+									method: 'POST',
+									ondata: (formData) => {
+										formData.append('id_kandidat', res);
+										formData.append([csrfName], csrfHash);
+										return formData;
+									}
+								}
+							}
+						});
+						pond_skck.setOptions({
+							server: {
+								process: {
+									url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+									method: 'POST',
+									ondata: (formData) => {
+										formData.append('id_kandidat', res);
+										formData.append([csrfName], csrfHash);
+										return formData;
+									}
+								}
+							}
+						});
+						pond_ijazah.setOptions({
+							server: {
+								process: {
+									url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+									method: 'POST',
+									ondata: (formData) => {
+										formData.append('id_kandidat', res);
+										formData.append([csrfName], csrfHash);
+										return formData;
+									}
+								}
+							}
+						});
+						pond_sim.setOptions({
+							server: {
+								process: {
+									url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+									method: 'POST',
+									ondata: (formData) => {
+										formData.append('id_kandidat', res);
+										formData.append([csrfName], csrfHash);
+										return formData;
+									}
+								}
+							}
+						});
+						pond_paklaring.setOptions({
+							server: {
+								process: {
+									url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+									method: 'POST',
+									ondata: (formData) => {
+										formData.append('id_kandidat', res);
+										formData.append([csrfName], csrfHash);
+										return formData;
+									}
+								}
+							}
+						});
+						pond_dokumen_pendukung.setOptions({
+							server: {
+								process: {
+									url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
+									method: 'POST',
+									ondata: (formData) => {
+										formData.append('id_kandidat', res);
+										formData.append([csrfName], csrfHash);
+										return formData;
+									}
+								}
+							}
+						});
+
+						$("#id_kandidat").val(res);
+						$("#nomor_registrasi").html(res);
+
+						// alert(id);
+						$('#project-tab').prop('disabled', 'disabled');
+						$("#data-diri-tab").removeAttr('disabled');
+						$('#project-tab').removeClass('active');
+						$('#project-tab').addClass('done');
+						$('#data-diri-tab').addClass('active');
+						$('#project').removeClass('active');
+						$('#project').removeClass('show');
+						$('#data-diri').addClass('active');
+						$('#data-diri').addClass('show');
+					},
+					error: function(xhr, status, error) {
+						alert("error save project");
+					}
+				});
 			}
 
 		}
@@ -2599,29 +2708,8 @@
 									$("#nomor_kondar").val("");
 									$("#status_nikah").removeAttr('disabled');
 									$("#status_nikah").val("").change();
-
-									//reset pesan required field
-									var pesan_nama_lengkap = "";
-									var pesan_jenis_kelamin = "";
-									var pesan_tempat_lahir = "";
-									var pesan_tanggal_lahir = "";
-									var pesan_alamat_domisili = "";
-									var pesan_no_hp = "";
-									var pesan_nama_kondar = "";
-									var pesan_hubungan_kondar = "";
-									var pesan_nomor_kondar = "";
-									$('#pesan_nama_lengkap').html(pesan_nama_lengkap);
-									$('#pesan_jenis_kelamin').html(pesan_jenis_kelamin);
-									$('#pesan_tempat_lahir').html(pesan_tempat_lahir);
-									$('#pesan_tanggal_lahir').html(pesan_tanggal_lahir);
-									$('#pesan_alamat_domisili').html(pesan_alamat_domisili);
-									$('#pesan_no_hp').html(pesan_no_hp);
-									$('#pesan_nama_kondar').html(pesan_nama_kondar);
-									$('#pesan_hubungan_kondar').html(pesan_hubungan_kondar);
-									$('#pesan_nomor_kondar').html(pesan_nomor_kondar);
 								} else if (res["status"] == "1") {
-									//-----isi variable yang sudah pernah diisi kalau ditemukan-----
-									//variabel data diri
+									//isi variable yang sudah pernah diisi kalau ditemukan
 									$("#nama_lengkap").removeAttr('disabled');
 									$("#nama_lengkap").val(res["data"]["nama"]);
 									$("#jenis_kelamin").removeAttr('disabled');
@@ -2644,288 +2732,6 @@
 									$("#nomor_kondar").val(res["data"]["nomor_tlp_kontak_darurat"]);
 									$("#status_nikah").removeAttr('disabled');
 									$("#status_nikah").val(res["data"]["status_nikah"]).change();
-
-									//reset pesan required field
-									var pesan_nama_lengkap = "";
-									var pesan_jenis_kelamin = "";
-									var pesan_tempat_lahir = "";
-									var pesan_tanggal_lahir = "";
-									var pesan_alamat_domisili = "";
-									var pesan_no_hp = "";
-									var pesan_nama_kondar = "";
-									var pesan_hubungan_kondar = "";
-									var pesan_nomor_kondar = "";
-									$('#pesan_nama_lengkap').html(pesan_nama_lengkap);
-									$('#pesan_jenis_kelamin').html(pesan_jenis_kelamin);
-									$('#pesan_tempat_lahir').html(pesan_tempat_lahir);
-									$('#pesan_tanggal_lahir').html(pesan_tanggal_lahir);
-									$('#pesan_alamat_domisili').html(pesan_alamat_domisili);
-									$('#pesan_no_hp').html(pesan_no_hp);
-									$('#pesan_nama_kondar').html(pesan_nama_kondar);
-									$('#pesan_hubungan_kondar').html(pesan_hubungan_kondar);
-									$('#pesan_nomor_kondar').html(pesan_nomor_kondar);
-
-									//variabel pengalaman
-									$("#pengalaman_kerja").val(res["data"]["pengalaman_kerja"]);
-									$("#kontak_person_sebelumnya").val(res["data"]["kontak_person_sebelumnya"]);
-
-									//-----variabel dokumen-----
-									//file pasfoto
-									if ((res['data']['file_pasfoto'] == null) || (res['data']['file_pasfoto'] == "")) {
-										//do nothing
-									} else {
-										var nama_file = '<?= base_url() ?>' + res['data']['file_pasfoto'];
-										var tipe_file = nama_file.slice(-3);
-										var atribut = "";
-										var height = '';
-										var d = new Date();
-										var time = d.getTime();
-										nama_file = nama_file + "?" + time;
-
-										if (tipe_file == "pdf") {
-											atribut = "application/pdf";
-											height = 'height="300px"';
-											var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>Browser anda tidak mendukung plugin PDF. Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-											$('#display_file_pas_foto').html(html_text);
-										} else {
-											atribut = "image/jpg";
-											var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-											$('#display_file_pas_foto').html(html_text);
-										}
-
-										$('#link_file_pasfoto').val(res['data']['file_pasfoto']);
-									}
-									//file ktp
-									if ((res['data']['file_ktp'] == null) || (res['data']['file_ktp'] == "")) {
-										//do nothing
-									} else {
-										var nama_file = '<?= base_url() ?>' + res['data']['file_ktp'];
-										var tipe_file = nama_file.slice(-3);
-										var atribut = "";
-										var height = '';
-										var d = new Date();
-										var time = d.getTime();
-										nama_file = nama_file + "?" + time;
-
-										if (tipe_file == "pdf") {
-											atribut = "application/pdf";
-											height = 'height="300px"';
-											var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>Browser anda tidak mendukung plugin PDF. Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-											$('#display_file_ktp').html(html_text);
-											$('#status_file_ktp').val("1");
-										} else {
-											atribut = "image/jpg";
-											var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-											$('#display_file_ktp').html(html_text);
-											$('#status_file_ktp').val("1");
-										}
-
-										$('#link_file_ktp').val(res['data']['file_ktp']);
-									}
-									//file cv
-									if ((res['data']['file_cv'] == null) || (res['data']['file_cv'] == "")) {
-										//do nothing
-									} else {
-										var nama_file = '<?= base_url() ?>' + res['data']['file_cv'];
-										var tipe_file = nama_file.slice(-3);
-										var atribut = "";
-										var height = '';
-										var d = new Date();
-										var time = d.getTime();
-										nama_file = nama_file + "?" + time;
-
-										if (tipe_file == "pdf") {
-											atribut = "application/pdf";
-											height = 'height="300px"';
-											var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>Browser anda tidak mendukung plugin PDF. Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-											$('#display_file_cv').html(html_text);
-											$('#status_file_cv').val("1");
-										} else {
-											atribut = "image/jpg";
-											var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-											$('#display_file_cv').html(html_text);
-											$('#status_file_cv').val("1");
-										}
-
-										$('#link_file_cv').val(res['data']['file_cv']);
-									}
-									//file kk
-									if ((res['data']['file_kk'] == null) || (res['data']['file_kk'] == "")) {
-										//do nothing
-									} else {
-										var nama_file = '<?= base_url() ?>' + res['data']['file_kk'];
-										var tipe_file = nama_file.slice(-3);
-										var atribut = "";
-										var height = '';
-										var d = new Date();
-										var time = d.getTime();
-										nama_file = nama_file + "?" + time;
-
-										if (tipe_file == "pdf") {
-											atribut = "application/pdf";
-											height = 'height="300px"';
-											var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>Browser anda tidak mendukung plugin PDF. Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-											$('#display_file_kk').html(html_text);
-										} else {
-											atribut = "image/jpg";
-											var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-											$('#display_file_kk').html(html_text);
-										}
-
-										$('#link_file_kk').val(res['data']['file_kk']);
-									}
-									//file npwp
-									if ((res['data']['file_npwp'] == null) || (res['data']['file_npwp'] == "")) {
-										//do nothing
-									} else {
-										var nama_file = '<?= base_url() ?>' + res['data']['file_npwp'];
-										var tipe_file = nama_file.slice(-3);
-										var atribut = "";
-										var height = '';
-										var d = new Date();
-										var time = d.getTime();
-										nama_file = nama_file + "?" + time;
-
-										if (tipe_file == "pdf") {
-											atribut = "application/pdf";
-											height = 'height="300px"';
-											var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>Browser anda tidak mendukung plugin PDF. Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-											$('#display_file_npwp').html(html_text);
-										} else {
-											atribut = "image/jpg";
-											var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-											$('#display_file_npwp').html(html_text);
-										}
-
-										$('#link_file_npwp').val(res['data']['file_npwp']);
-									}
-									//file skck
-									if ((res['data']['file_skck'] == null) || (res['data']['file_skck'] == "")) {
-										//do nothing
-									} else {
-										var nama_file = '<?= base_url() ?>' + res['data']['file_skck'];
-										var tipe_file = nama_file.slice(-3);
-										var atribut = "";
-										var height = '';
-										var d = new Date();
-										var time = d.getTime();
-										nama_file = nama_file + "?" + time;
-
-										if (tipe_file == "pdf") {
-											atribut = "application/pdf";
-											height = 'height="300px"';
-											var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>Browser anda tidak mendukung plugin PDF. Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-											$('#display_file_skck').html(html_text);
-										} else {
-											atribut = "image/jpg";
-											var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-											$('#display_file_skck').html(html_text);
-										}
-
-										$('#link_file_skck').val(res['data']['file_skck']);
-									}
-									//file ijazah
-									if ((res['data']['file_ijazah'] == null) || (res['data']['file_ijazah'] == "")) {
-										//do nothing
-									} else {
-										var nama_file = '<?= base_url() ?>' + res['data']['file_ijazah'];
-										var tipe_file = nama_file.slice(-3);
-										var atribut = "";
-										var height = '';
-										var d = new Date();
-										var time = d.getTime();
-										nama_file = nama_file + "?" + time;
-
-										if (tipe_file == "pdf") {
-											atribut = "application/pdf";
-											height = 'height="300px"';
-											var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>Browser anda tidak mendukung plugin PDF. Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-											$('#display_file_ijazah').html(html_text);
-											$('#status_file_ijazah').val("1");
-										} else {
-											atribut = "image/jpg";
-											var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-											$('#display_file_ijazah').html(html_text);
-											$('#status_file_ijazah').val("1");
-										}
-
-										$('#link_file_ijazah').val(res['data']['file_ijazah']);
-									}
-									//file sim
-									if ((res['data']['file_sim'] == null) || (res['data']['file_sim'] == "")) {
-										//do nothing
-									} else {
-										var nama_file = '<?= base_url() ?>' + res['data']['file_sim'];
-										var tipe_file = nama_file.slice(-3);
-										var atribut = "";
-										var height = '';
-										var d = new Date();
-										var time = d.getTime();
-										nama_file = nama_file + "?" + time;
-
-										if (tipe_file == "pdf") {
-											atribut = "application/pdf";
-											height = 'height="300px"';
-											var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>Browser anda tidak mendukung plugin PDF. Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-											$('#display_file_sim').html(html_text);
-										} else {
-											atribut = "image/jpg";
-											var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-											$('#display_file_sim').html(html_text);
-										}
-
-										$('#link_file_sim').val(res['data']['file_sim']);
-									}
-									//file paklaring
-									if ((res['data']['file_paklaring_1'] == null) || (res['data']['file_paklaring_1'] == "")) {
-										//do nothing
-									} else {
-										var nama_file = '<?= base_url() ?>' + res['data']['file_paklaring_1'];
-										var tipe_file = nama_file.slice(-3);
-										var atribut = "";
-										var height = '';
-										var d = new Date();
-										var time = d.getTime();
-										nama_file = nama_file + "?" + time;
-
-										if (tipe_file == "pdf") {
-											atribut = "application/pdf";
-											height = 'height="300px"';
-											var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>Browser anda tidak mendukung plugin PDF. Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-											$('#display_file_paklaring').html(html_text);
-										} else {
-											atribut = "image/jpg";
-											var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-											$('#display_file_paklaring').html(html_text);
-										}
-
-										$('#link_file_sim').val(res['data']['file_paklaring_1']);
-									}
-									//file dokumen pendukung
-									if ((res['data']['file_lainnya'] == null) || (res['data']['file_lainnya'] == "")) {
-										//do nothing
-									} else {
-										var nama_file = '<?= base_url() ?>' + res['data']['file_lainnya'];
-										var tipe_file = nama_file.slice(-3);
-										var atribut = "";
-										var height = '';
-										var d = new Date();
-										var time = d.getTime();
-										nama_file = nama_file + "?" + time;
-
-										if (tipe_file == "pdf") {
-											atribut = "application/pdf";
-											height = 'height="300px"';
-											var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>Browser anda tidak mendukung plugin PDF. Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-											$('#display_file_dokumen_pendukung').html(html_text);
-										} else {
-											atribut = "image/jpg";
-											var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-											$('#display_file_dokumen_pendukung').html(html_text);
-										}
-
-										$('#link_file_dokumen_pendukung').val(res['data']['file_lainnya']);
-									}
 								}
 
 								$('#pesan_nik_ktp').html("<small style='color:#00FF00;'>NIK tidak boleh kosong</small></br><small style='color:#00FF00;'>NIK harus 16 Digit angka</small></br><small style='color:#00FF00;'>Tidak boleh ada karakter lain selain angka</small></br><small class'mt-1' style='color:darkgreen;'>NIK dikunci. <button onclick='reset_nip()' class='btn btn-sm btn-outline-success mt-1'>KLIK DISINI</button> untuk memasukkan NIP ulang</small>");
@@ -2933,7 +2739,7 @@
 							error: function(xhr, status, error) {
 								alert("Error load data kandidat. Tidak bisa mengambil data kandidat.\nStatus error: " + xhr.status + "\nSilahkan lanjutkan pengisian data");
 								$('#pesan_nik_ktp').html("<small style='color:#00FF00;'>NIK tidak boleh kosong</small></br><small style='color:#00FF00;'>NIK harus 16 Digit angka</small></br><small style='color:#00FF00;'>Tidak boleh ada karakter lain selain angka</small></br><small class'mt-1' style='color:darkgreen;'>NIK dikunci. <button onclick='reset_nip()' class='btn btn-sm btn-outline-success mt-1'>KLIK DISINI</button> untuk memasukkan NIP ulang</small>");
-
+								
 								//isi variable kalau ajax error
 								$("#nama_lengkap").removeAttr('disabled');
 								$("#nama_lengkap").val("");
@@ -2957,492 +2763,6 @@
 								$("#nomor_kondar").val("");
 								$("#status_nikah").removeAttr('disabled');
 								$("#status_nikah").val("").change();
-
-								//reset pesan required field
-								var pesan_nama_lengkap = "";
-								var pesan_jenis_kelamin = "";
-								var pesan_tempat_lahir = "";
-								var pesan_tanggal_lahir = "";
-								var pesan_alamat_domisili = "";
-								var pesan_no_hp = "";
-								var pesan_nama_kondar = "";
-								var pesan_hubungan_kondar = "";
-								var pesan_nomor_kondar = "";
-								$('#pesan_nama_lengkap').html(pesan_nama_lengkap);
-								$('#pesan_jenis_kelamin').html(pesan_jenis_kelamin);
-								$('#pesan_tempat_lahir').html(pesan_tempat_lahir);
-								$('#pesan_tanggal_lahir').html(pesan_tanggal_lahir);
-								$('#pesan_alamat_domisili').html(pesan_alamat_domisili);
-								$('#pesan_no_hp').html(pesan_no_hp);
-								$('#pesan_nama_kondar').html(pesan_nama_kondar);
-								$('#pesan_hubungan_kondar').html(pesan_hubungan_kondar);
-								$('#pesan_nomor_kondar').html(pesan_nomor_kondar);
-							}
-						});
-					} else {
-						$('#pesan_nik_ktp').html("<small style='color:#00FF00;'>NIK tidak boleh kosong</small></br><small style='color:#00FF00;'>NIK harus 16 Digit angka</small></br><small style='color:#FF0000;'>Tidak boleh ada karakter lain selain angka</small>");
-					}
-				}
-			}
-
-			// alert(nik);
-		});
-
-		$("#nik_ktp").bind("paste", function(e) {
-			e.preventDefault();
-			var pastedData = e.originalEvent.clipboardData.getData('text');
-			// alert(pastedData);
-			// alert("paste nik");
-
-			var lock_nik = $("#lock_nik").val();
-
-			// alert(lock_nik);
-
-			if (lock_nik == "0") {
-				// var nik_raw = $("#nik_ktp").val();
-				var nik_raw = e.originalEvent.clipboardData.getData('text');
-				var nik = nik_raw.replaceAll(" ", "");
-				nik = nik.replaceAll("-", "");
-				nik = nik.replaceAll(".", "");
-				nik = nik.replaceAll(",", "");
-				nik = nik.replaceAll(/\D/g, "");
-				$("#nik_ktp").val(nik);
-				let len = nik.length;
-				var pesan_nik_ktp = "<small style='color:#FF0000;'>NIK tidak boleh kosong</br>NIK harus 16 Digit angka</br>Tidak boleh ada karakter lain selain angka</small>";
-
-				if ((len <= 0)) {
-					$('#pesan_nik_ktp').html(pesan_nik_ktp);
-				} else if ((len > 0) && ((len < 16) || (len > 16))) {
-					if (!isNaN(nik)) {
-						$('#pesan_nik_ktp').html("<small style='color:#00FF00;'>NIK tidak boleh kosong</small></br><small style='color:#FF0000;'>NIK harus 16 Digit angka</small></br><small style='color:#00FF00;'>Tidak boleh ada karakter lain selain angka</small>");
-					} else {
-						$('#pesan_nik_ktp').html("<small style='color:#00FF00;'>NIK tidak boleh kosong</small></br><small style='color:#FF0000;'>NIK harus 16 Digit angka</small></br><small style='color:#FF0000;'>Tidak boleh ada karakter lain selain angka</small>");
-					}
-				} else {
-					if (!isNaN(nik)) {
-						$("#lock_nik").val("1");
-						$('#pesan_nik_ktp').html("");
-						$("#nik_ktp").prop("readonly", true);
-						$("#nik_ktp").css('background-color', 'lightgreen');
-						$("#nik_ktp").val(nik);
-
-						// AJAX untuk save data diri
-						$.ajax({
-							url: '<?= base_url() ?>registrasi/cek_nik/',
-							method: 'post',
-							data: {
-								[csrfName]: csrfHash,
-								nik: nik,
-							},
-							beforeSend: function() {
-								$('#pesan_nik_ktp').html("<small style='color:#00FF00;'>NIK tidak boleh kosong</small></br><small style='color:#00FF00;'>NIK harus 16 Digit angka</small></br><small style='color:#00FF00;'>Tidak boleh ada karakter lain selain angka</small></br><small class'mt-1' style='color:darkgreen;'>Sedang melakukan cek apakah NIK sudah pernah daftar</small>");
-							},
-							success: function(response) {
-								var res = jQuery.parseJSON(response);
-
-								//data tidak ditemukan
-								if (res["status"] == "0") {
-									//isi variable kalau nik tidak ditemukan
-									$("#nama_lengkap").removeAttr('disabled');
-									$("#nama_lengkap").val("");
-									$("#jenis_kelamin").removeAttr('disabled');
-									$("#jenis_kelamin").val("").change();
-									$("#tempat_lahir").removeAttr('disabled');
-									$("#tempat_lahir").val("");
-									$("#tanggal_lahir").removeAttr('disabled');
-									$("#tanggal_lahir").val("");
-									$("#asal_kota").removeAttr('disabled');
-									$("#asal_kota").val("");
-									$("#alamat_domisili").removeAttr('disabled');
-									$("#alamat_domisili").val("");
-									$("#no_hp").removeAttr('disabled');
-									$("#no_hp").val("");
-									$("#nama_kondar").removeAttr('disabled');
-									$("#nama_kondar").val("");
-									$("#hubungan_kondar").removeAttr('disabled');
-									$("#hubungan_kondar").val("").change();
-									$("#nomor_kondar").removeAttr('disabled');
-									$("#nomor_kondar").val("");
-									$("#status_nikah").removeAttr('disabled');
-									$("#status_nikah").val("").change();
-
-									//reset pesan required field
-									var pesan_nama_lengkap = "";
-									var pesan_jenis_kelamin = "";
-									var pesan_tempat_lahir = "";
-									var pesan_tanggal_lahir = "";
-									var pesan_alamat_domisili = "";
-									var pesan_no_hp = "";
-									var pesan_nama_kondar = "";
-									var pesan_hubungan_kondar = "";
-									var pesan_nomor_kondar = "";
-									$('#pesan_nama_lengkap').html(pesan_nama_lengkap);
-									$('#pesan_jenis_kelamin').html(pesan_jenis_kelamin);
-									$('#pesan_tempat_lahir').html(pesan_tempat_lahir);
-									$('#pesan_tanggal_lahir').html(pesan_tanggal_lahir);
-									$('#pesan_alamat_domisili').html(pesan_alamat_domisili);
-									$('#pesan_no_hp').html(pesan_no_hp);
-									$('#pesan_nama_kondar').html(pesan_nama_kondar);
-									$('#pesan_hubungan_kondar').html(pesan_hubungan_kondar);
-									$('#pesan_nomor_kondar').html(pesan_nomor_kondar);
-								} else if (res["status"] == "1") {
-									//-----isi variable yang sudah pernah diisi kalau ditemukan-----
-									//variabel data diri
-									$("#nama_lengkap").removeAttr('disabled');
-									$("#nama_lengkap").val(res["data"]["nama"]);
-									$("#jenis_kelamin").removeAttr('disabled');
-									$("#jenis_kelamin").val(res["data"]["jenis_kelamin"]).change();
-									$("#tempat_lahir").removeAttr('disabled');
-									$("#tempat_lahir").val(res["data"]["tempat_lahir"]);
-									$("#tanggal_lahir").removeAttr('disabled');
-									$("#tanggal_lahir").val(res["data"]["tanggal_lahir"]);
-									$("#asal_kota").removeAttr('disabled');
-									$("#asal_kota").val(res["data"]["asal_kota"]);
-									$("#alamat_domisili").removeAttr('disabled');
-									$("#alamat_domisili").val(res["data"]["alamat_domisili"]);
-									$("#no_hp").removeAttr('disabled');
-									$("#no_hp").val(res["data"]["nomor_tlp"]);
-									$("#nama_kondar").removeAttr('disabled');
-									$("#nama_kondar").val(res["data"]["nama_kontak_darurat"]);
-									$("#hubungan_kondar").removeAttr('disabled');
-									$("#hubungan_kondar").val(res["data"]["hubungan_kontak_darurat"]).change();
-									$("#nomor_kondar").removeAttr('disabled');
-									$("#nomor_kondar").val(res["data"]["nomor_tlp_kontak_darurat"]);
-									$("#status_nikah").removeAttr('disabled');
-									$("#status_nikah").val(res["data"]["status_nikah"]).change();
-
-									//reset pesan required field
-									var pesan_nama_lengkap = "";
-									var pesan_jenis_kelamin = "";
-									var pesan_tempat_lahir = "";
-									var pesan_tanggal_lahir = "";
-									var pesan_alamat_domisili = "";
-									var pesan_no_hp = "";
-									var pesan_nama_kondar = "";
-									var pesan_hubungan_kondar = "";
-									var pesan_nomor_kondar = "";
-									$('#pesan_nama_lengkap').html(pesan_nama_lengkap);
-									$('#pesan_jenis_kelamin').html(pesan_jenis_kelamin);
-									$('#pesan_tempat_lahir').html(pesan_tempat_lahir);
-									$('#pesan_tanggal_lahir').html(pesan_tanggal_lahir);
-									$('#pesan_alamat_domisili').html(pesan_alamat_domisili);
-									$('#pesan_no_hp').html(pesan_no_hp);
-									$('#pesan_nama_kondar').html(pesan_nama_kondar);
-									$('#pesan_hubungan_kondar').html(pesan_hubungan_kondar);
-									$('#pesan_nomor_kondar').html(pesan_nomor_kondar);
-
-									//variabel pengalaman
-									$("#pengalaman_kerja").val(res["data"]["pengalaman_kerja"]);
-									$("#kontak_person_sebelumnya").val(res["data"]["kontak_person_sebelumnya"]);
-
-									//-----variabel dokumen-----
-									//file pasfoto
-									if ((res['data']['file_pasfoto'] == null) || (res['data']['file_pasfoto'] == "")) {
-										//do nothing
-									} else {
-										var nama_file = '<?= base_url() ?>' + res['data']['file_pasfoto'];
-										var tipe_file = nama_file.slice(-3);
-										var atribut = "";
-										var height = '';
-										var d = new Date();
-										var time = d.getTime();
-										nama_file = nama_file + "?" + time;
-
-										if (tipe_file == "pdf") {
-											atribut = "application/pdf";
-											height = 'height="300px"';
-											var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>Browser anda tidak mendukung plugin PDF. Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-											$('#display_file_pas_foto').html(html_text);
-										} else {
-											atribut = "image/jpg";
-											var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-											$('#display_file_pas_foto').html(html_text);
-										}
-
-										$('#link_file_pasfoto').val(res['data']['file_pasfoto']);
-									}
-									//file ktp
-									if ((res['data']['file_ktp'] == null) || (res['data']['file_ktp'] == "")) {
-										//do nothing
-									} else {
-										var nama_file = '<?= base_url() ?>' + res['data']['file_ktp'];
-										var tipe_file = nama_file.slice(-3);
-										var atribut = "";
-										var height = '';
-										var d = new Date();
-										var time = d.getTime();
-										nama_file = nama_file + "?" + time;
-
-										if (tipe_file == "pdf") {
-											atribut = "application/pdf";
-											height = 'height="300px"';
-											var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>Browser anda tidak mendukung plugin PDF. Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-											$('#display_file_ktp').html(html_text);
-											$('#status_file_ktp').val("1");
-										} else {
-											atribut = "image/jpg";
-											var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-											$('#display_file_ktp').html(html_text);
-											$('#status_file_ktp').val("1");
-										}
-
-										$('#link_file_ktp').val(res['data']['file_ktp']);
-									}
-									//file cv
-									if ((res['data']['file_cv'] == null) || (res['data']['file_cv'] == "")) {
-										//do nothing
-									} else {
-										var nama_file = '<?= base_url() ?>' + res['data']['file_cv'];
-										var tipe_file = nama_file.slice(-3);
-										var atribut = "";
-										var height = '';
-										var d = new Date();
-										var time = d.getTime();
-										nama_file = nama_file + "?" + time;
-
-										if (tipe_file == "pdf") {
-											atribut = "application/pdf";
-											height = 'height="300px"';
-											var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>Browser anda tidak mendukung plugin PDF. Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-											$('#display_file_cv').html(html_text);
-											$('#status_file_cv').val("1");
-										} else {
-											atribut = "image/jpg";
-											var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-											$('#display_file_cv').html(html_text);
-											$('#status_file_cv').val("1");
-										}
-
-										$('#link_file_cv').val(res['data']['file_cv']);
-									}
-									//file kk
-									if ((res['data']['file_kk'] == null) || (res['data']['file_kk'] == "")) {
-										//do nothing
-									} else {
-										var nama_file = '<?= base_url() ?>' + res['data']['file_kk'];
-										var tipe_file = nama_file.slice(-3);
-										var atribut = "";
-										var height = '';
-										var d = new Date();
-										var time = d.getTime();
-										nama_file = nama_file + "?" + time;
-
-										if (tipe_file == "pdf") {
-											atribut = "application/pdf";
-											height = 'height="300px"';
-											var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>Browser anda tidak mendukung plugin PDF. Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-											$('#display_file_kk').html(html_text);
-										} else {
-											atribut = "image/jpg";
-											var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-											$('#display_file_kk').html(html_text);
-										}
-
-										$('#link_file_kk').val(res['data']['file_kk']);
-									}
-									//file npwp
-									if ((res['data']['file_npwp'] == null) || (res['data']['file_npwp'] == "")) {
-										//do nothing
-									} else {
-										var nama_file = '<?= base_url() ?>' + res['data']['file_npwp'];
-										var tipe_file = nama_file.slice(-3);
-										var atribut = "";
-										var height = '';
-										var d = new Date();
-										var time = d.getTime();
-										nama_file = nama_file + "?" + time;
-
-										if (tipe_file == "pdf") {
-											atribut = "application/pdf";
-											height = 'height="300px"';
-											var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>Browser anda tidak mendukung plugin PDF. Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-											$('#display_file_npwp').html(html_text);
-										} else {
-											atribut = "image/jpg";
-											var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-											$('#display_file_npwp').html(html_text);
-										}
-
-										$('#link_file_npwp').val(res['data']['file_npwp']);
-									}
-									//file skck
-									if ((res['data']['file_skck'] == null) || (res['data']['file_skck'] == "")) {
-										//do nothing
-									} else {
-										var nama_file = '<?= base_url() ?>' + res['data']['file_skck'];
-										var tipe_file = nama_file.slice(-3);
-										var atribut = "";
-										var height = '';
-										var d = new Date();
-										var time = d.getTime();
-										nama_file = nama_file + "?" + time;
-
-										if (tipe_file == "pdf") {
-											atribut = "application/pdf";
-											height = 'height="300px"';
-											var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>Browser anda tidak mendukung plugin PDF. Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-											$('#display_file_skck').html(html_text);
-										} else {
-											atribut = "image/jpg";
-											var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-											$('#display_file_skck').html(html_text);
-										}
-
-										$('#link_file_skck').val(res['data']['file_skck']);
-									}
-									//file ijazah
-									if ((res['data']['file_ijazah'] == null) || (res['data']['file_ijazah'] == "")) {
-										//do nothing
-									} else {
-										var nama_file = '<?= base_url() ?>' + res['data']['file_ijazah'];
-										var tipe_file = nama_file.slice(-3);
-										var atribut = "";
-										var height = '';
-										var d = new Date();
-										var time = d.getTime();
-										nama_file = nama_file + "?" + time;
-
-										if (tipe_file == "pdf") {
-											atribut = "application/pdf";
-											height = 'height="300px"';
-											var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>Browser anda tidak mendukung plugin PDF. Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-											$('#display_file_ijazah').html(html_text);
-											$('#status_file_ijazah').val("1");
-										} else {
-											atribut = "image/jpg";
-											var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-											$('#display_file_ijazah').html(html_text);
-											$('#status_file_ijazah').val("1");
-										}
-
-										$('#link_file_ijazah').val(res['data']['file_ijazah']);
-									}
-									//file sim
-									if ((res['data']['file_sim'] == null) || (res['data']['file_sim'] == "")) {
-										//do nothing
-									} else {
-										var nama_file = '<?= base_url() ?>' + res['data']['file_sim'];
-										var tipe_file = nama_file.slice(-3);
-										var atribut = "";
-										var height = '';
-										var d = new Date();
-										var time = d.getTime();
-										nama_file = nama_file + "?" + time;
-
-										if (tipe_file == "pdf") {
-											atribut = "application/pdf";
-											height = 'height="300px"';
-											var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>Browser anda tidak mendukung plugin PDF. Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-											$('#display_file_sim').html(html_text);
-										} else {
-											atribut = "image/jpg";
-											var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-											$('#display_file_sim').html(html_text);
-										}
-
-										$('#link_file_sim').val(res['data']['file_sim']);
-									}
-									//file paklaring
-									if ((res['data']['file_paklaring_1'] == null) || (res['data']['file_paklaring_1'] == "")) {
-										//do nothing
-									} else {
-										var nama_file = '<?= base_url() ?>' + res['data']['file_paklaring_1'];
-										var tipe_file = nama_file.slice(-3);
-										var atribut = "";
-										var height = '';
-										var d = new Date();
-										var time = d.getTime();
-										nama_file = nama_file + "?" + time;
-
-										if (tipe_file == "pdf") {
-											atribut = "application/pdf";
-											height = 'height="300px"';
-											var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>Browser anda tidak mendukung plugin PDF. Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-											$('#display_file_paklaring').html(html_text);
-										} else {
-											atribut = "image/jpg";
-											var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-											$('#display_file_paklaring').html(html_text);
-										}
-
-										$('#link_file_sim').val(res['data']['file_paklaring_1']);
-									}
-									//file dokumen pendukung
-									if ((res['data']['file_lainnya'] == null) || (res['data']['file_lainnya'] == "")) {
-										//do nothing
-									} else {
-										var nama_file = '<?= base_url() ?>' + res['data']['file_lainnya'];
-										var tipe_file = nama_file.slice(-3);
-										var atribut = "";
-										var height = '';
-										var d = new Date();
-										var time = d.getTime();
-										nama_file = nama_file + "?" + time;
-
-										if (tipe_file == "pdf") {
-											atribut = "application/pdf";
-											height = 'height="300px"';
-											var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>Browser anda tidak mendukung plugin PDF. Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-											$('#display_file_dokumen_pendukung').html(html_text);
-										} else {
-											atribut = "image/jpg";
-											var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-											$('#display_file_dokumen_pendukung').html(html_text);
-										}
-
-										$('#link_file_dokumen_pendukung').val(res['data']['file_lainnya']);
-									}
-								}
-
-								$('#pesan_nik_ktp').html("<small style='color:#00FF00;'>NIK tidak boleh kosong</small></br><small style='color:#00FF00;'>NIK harus 16 Digit angka</small></br><small style='color:#00FF00;'>Tidak boleh ada karakter lain selain angka</small></br><small class'mt-1' style='color:darkgreen;'>NIK dikunci. <button onclick='reset_nip()' class='btn btn-sm btn-outline-success mt-1'>KLIK DISINI</button> untuk memasukkan NIP ulang</small>");
-							},
-							error: function(xhr, status, error) {
-								alert("Error load data kandidat. Tidak bisa mengambil data kandidat.\nStatus error: " + xhr.status + "\nSilahkan lanjutkan pengisian data");
-								$('#pesan_nik_ktp').html("<small style='color:#00FF00;'>NIK tidak boleh kosong</small></br><small style='color:#00FF00;'>NIK harus 16 Digit angka</small></br><small style='color:#00FF00;'>Tidak boleh ada karakter lain selain angka</small></br><small class'mt-1' style='color:darkgreen;'>NIK dikunci. <button onclick='reset_nip()' class='btn btn-sm btn-outline-success mt-1'>KLIK DISINI</button> untuk memasukkan NIP ulang</small>");
-
-								//isi variable kalau ajax error
-								$("#nama_lengkap").removeAttr('disabled');
-								$("#nama_lengkap").val("");
-								$("#jenis_kelamin").removeAttr('disabled');
-								$("#jenis_kelamin").val("").change();
-								$("#tempat_lahir").removeAttr('disabled');
-								$("#tempat_lahir").val("");
-								$("#tanggal_lahir").removeAttr('disabled');
-								$("#tanggal_lahir").val("");
-								$("#asal_kota").removeAttr('disabled');
-								$("#asal_kota").val("");
-								$("#alamat_domisili").removeAttr('disabled');
-								$("#alamat_domisili").val("");
-								$("#no_hp").removeAttr('disabled');
-								$("#no_hp").val("");
-								$("#nama_kondar").removeAttr('disabled');
-								$("#nama_kondar").val("");
-								$("#hubungan_kondar").removeAttr('disabled');
-								$("#hubungan_kondar").val("").change();
-								$("#nomor_kondar").removeAttr('disabled');
-								$("#nomor_kondar").val("");
-								$("#status_nikah").removeAttr('disabled');
-								$("#status_nikah").val("").change();
-
-								//reset pesan required field
-								var pesan_nama_lengkap = "";
-								var pesan_jenis_kelamin = "";
-								var pesan_tempat_lahir = "";
-								var pesan_tanggal_lahir = "";
-								var pesan_alamat_domisili = "";
-								var pesan_no_hp = "";
-								var pesan_nama_kondar = "";
-								var pesan_hubungan_kondar = "";
-								var pesan_nomor_kondar = "";
-								$('#pesan_nama_lengkap').html(pesan_nama_lengkap);
-								$('#pesan_jenis_kelamin').html(pesan_jenis_kelamin);
-								$('#pesan_tempat_lahir').html(pesan_tempat_lahir);
-								$('#pesan_tanggal_lahir').html(pesan_tanggal_lahir);
-								$('#pesan_alamat_domisili').html(pesan_alamat_domisili);
-								$('#pesan_no_hp').html(pesan_no_hp);
-								$('#pesan_nama_kondar').html(pesan_nama_kondar);
-								$('#pesan_hubungan_kondar').html(pesan_hubungan_kondar);
-								$('#pesan_nomor_kondar').html(pesan_nomor_kondar);
 							}
 						});
 					} else {
@@ -3467,40 +2787,8 @@
 			// alert(nomor_tlp);
 		});
 
-		$("#no_hp").bind("paste", function(e) {
-			e.preventDefault();
-			var pastedData = e.originalEvent.clipboardData.getData('text');
-
-			var nomor_tlp_raw = pastedData;
-			var nomor_tlp = nomor_tlp_raw.replaceAll(" ", "");
-			nomor_tlp = nomor_tlp.replaceAll("-", "");
-			nomor_tlp = nomor_tlp.replaceAll(".", "");
-			nomor_tlp = nomor_tlp.replaceAll(",", "");
-			nomor_tlp = nomor_tlp.replaceAll("+62", "0");
-			nomor_tlp = nomor_tlp.replaceAll(/\D/g, "");
-			$("#no_hp").val(nomor_tlp);
-
-			// alert(nomor_tlp);
-		});
-
 		$("#nomor_kondar").on("keyup", function() {
 			var nomor_tlp_kontak_darurat_raw = $("#nomor_kondar").val();
-			var nomor_tlp_kontak_darurat = nomor_tlp_kontak_darurat_raw.replaceAll(" ", "");
-			nomor_tlp_kontak_darurat = nomor_tlp_kontak_darurat.replaceAll("-", "");
-			nomor_tlp_kontak_darurat = nomor_tlp_kontak_darurat.replaceAll(".", "");
-			nomor_tlp_kontak_darurat = nomor_tlp_kontak_darurat.replaceAll(",", "");
-			nomor_tlp_kontak_darurat = nomor_tlp_kontak_darurat.replaceAll("+62", "0");
-			nomor_tlp_kontak_darurat = nomor_tlp_kontak_darurat.replaceAll(/\D/g, "");
-			$("#nomor_kondar").val(nomor_tlp_kontak_darurat);
-
-			// alert(nomor_tlp_kontak_darurat);
-		});
-
-		$("#nomor_kondar").bind("paste", function(e) {
-			e.preventDefault();
-			var pastedData = e.originalEvent.clipboardData.getData('text');
-
-			var nomor_tlp_kontak_darurat_raw = pastedData;
 			var nomor_tlp_kontak_darurat = nomor_tlp_kontak_darurat_raw.replaceAll(" ", "");
 			nomor_tlp_kontak_darurat = nomor_tlp_kontak_darurat.replaceAll("-", "");
 			nomor_tlp_kontak_darurat = nomor_tlp_kontak_darurat.replaceAll(".", "");
@@ -3545,80 +2833,6 @@
 			$("#nomor_kondar").val("");
 			$('#status_nikah').prop('disabled', 'disabled');
 			$("#status_nikah").val("").change();
-
-			//reset pesan required field
-			var pesan_nama_lengkap = "";
-			var pesan_jenis_kelamin = "";
-			var pesan_tempat_lahir = "";
-			var pesan_tanggal_lahir = "";
-			var pesan_alamat_domisili = "";
-			var pesan_no_hp = "";
-			var pesan_nama_kondar = "";
-			var pesan_hubungan_kondar = "";
-			var pesan_nomor_kondar = "";
-			$('#pesan_nama_lengkap').html(pesan_nama_lengkap);
-			$('#pesan_jenis_kelamin').html(pesan_jenis_kelamin);
-			$('#pesan_tempat_lahir').html(pesan_tempat_lahir);
-			$('#pesan_tanggal_lahir').html(pesan_tanggal_lahir);
-			$('#pesan_alamat_domisili').html(pesan_alamat_domisili);
-			$('#pesan_no_hp').html(pesan_no_hp);
-			$('#pesan_nama_kondar').html(pesan_nama_kondar);
-			$('#pesan_hubungan_kondar').html(pesan_hubungan_kondar);
-			$('#pesan_nomor_kondar').html(pesan_nomor_kondar);
-
-			//reset variabel pengalaman
-			$("#pengalaman_kerja").val("");
-			$("#kontak_person_sebelumnya").val("");
-			var pesan_pengalaman_kerja = "";
-			var pesan_kontak_person_sebelumnya = "";
-			$('#pesan_pengalaman_kerja').html(pesan_pengalaman_kerja);
-			$('#pesan_kontak_person_sebelumnya').html(pesan_kontak_person_sebelumnya);
-
-			//reset variabel dokumen
-			$("#pesan_pas_foto").html("");
-			$("#link_file_pasfoto").val("");
-			$("#status_file_pasfoto").val("0");
-			$("#display_file_pas_foto").html("<h2>BELUM UPLOAD FILE</h2>");
-
-			$("#pesan_file_ktp").html("");
-			$("#link_file_ktp").val("");
-			$("#status_file_ktp").val("0");
-			$("#display_file_ktp").html("<h2>BELUM UPLOAD FILE</h2>");
-
-			$("#pesan_file_cv").html("");
-			$("#link_file_cv").val("");
-			$("#status_file_cv").val("0");
-			$("#display_file_cv").html("<h2>BELUM UPLOAD FILE</h2>");
-
-			$("#pesan_file_kk").html("");
-			$("#link_file_kk").val("");
-			$("#display_file_kk").html("<h2>BELUM UPLOAD FILE</h2>");
-
-			$("#pesan_file_npwp").html("");
-			$("#link_file_npwp").val("");
-			$("#display_file_npwp").html("<h2>BELUM UPLOAD FILE</h2>");
-
-			$("#pesan_file_skck").html("");
-			$("#link_file_skck").val("");
-			$("#display_file_skck").html("<h2>BELUM UPLOAD FILE</h2>");
-
-			$("#pesan_file_ijazah").html("");
-			$("#link_file_ijazah").val("");
-			$("#status_file_ijazah").val("0");
-			$("#display_file_ijazah").html("<h2>BELUM UPLOAD FILE</h2>");
-
-			$("#pesan_file_sim").html("");
-			$("#link_file_sim").val("");
-			$("#display_file_sim").html("<h2>BELUM UPLOAD FILE</h2>");
-
-			$("#pesan_file_paklaring").html("");
-			$("#link_file_paklaring").val("");
-			$("#display_file_paklaring").html("<h2>BELUM UPLOAD FILE</h2>");
-
-			$("#pesan_file_dokumen_pendukung").html("");
-			$("#link_file_dokumen_pendukung").val("");
-			$("#display_file_dokumen_pendukung").html("<h2>BELUM UPLOAD FILE</h2>");
-
 			// alert("reset NIP");
 		}
 	</script>
@@ -3650,7 +2864,7 @@
 			var status_nikah = $("#status_nikah").val();
 
 			//inisialisasi pesan
-			// $('#pesan_nik_ktp').html("");
+			$('#pesan_nik_ktp').html("");
 			$('#pesan_nama_lengkap').html("");
 			$('#pesan_jenis_kelamin').html("");
 			$('#pesan_tempat_lahir').html("");
@@ -3674,7 +2888,7 @@
 				nomor_tlp_kontak_darurat == "" || nomor_tlp_kontak_darurat == "0" || nomor_tlp_kontak_darurat == null
 			) {
 				//-------cek apakah ada yang tidak diisi-------
-				// var pesan_nik_ktp = "";
+				var pesan_nik_ktp = "";
 				var pesan_nama_lengkap = "";
 				var pesan_jenis_kelamin = "";
 				var pesan_tempat_lahir = "";
@@ -3724,7 +2938,7 @@
 					pesan_nik_ktp = "<small style='color:#FF0000;'>NIK tidak boleh kosong</br>NIK harus 16 Digit angka</br>Tidak boleh ada karakter lain selain angka</small>";
 					$('#nik_ktp').focus();
 				}
-				// $('#pesan_nik_ktp').html(pesan_nik_ktp);
+				$('#pesan_nik_ktp').html(pesan_nik_ktp);
 				$('#pesan_nama_lengkap').html(pesan_nama_lengkap);
 				$('#pesan_jenis_kelamin').html(pesan_jenis_kelamin);
 				$('#pesan_tempat_lahir').html(pesan_tempat_lahir);
@@ -3759,14 +2973,7 @@
 					method: 'post',
 					data: {
 						[csrfName]: csrfHash,
-
-						project_id: project_id,
-						project_name: project_name,
-						jabatan_id: jabatan_id,
-						jabatan_name: jabatan_name,
-						area: area,
-						sumber_info: sumber_info,
-						interviewer: interviewer,
+						id_kandidat: id_kandidat,
 
 						nik: nik,
 						nama: nama,
@@ -3783,499 +2990,6 @@
 					},
 					beforeSend: function() {},
 					success: function(response) {
-						var res = jQuery.parseJSON(response);
-
-						//append id_kandidat ke objek filepond
-						pond_pasfoto.setOptions({
-							server: {
-								process: {
-									url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
-									method: 'POST',
-									ondata: (formData) => {
-										formData.append('id_kandidat', res);
-										formData.append([csrfName], csrfHash);
-										return formData;
-									},
-									onload: (res) => {
-										// select the right value in the response here and return
-										// return res;
-										var serverResponse = jQuery.parseJSON(res);
-
-										//display file
-										if ((serverResponse['0']['link_file'] == null) || (serverResponse['0']['link_file'] == "")) {
-											//do nothing
-										} else {
-											var nama_file = '<?= base_url() ?>' + serverResponse['0']['link_file'];
-											var tipe_file = nama_file.slice(-3);
-											var atribut = "";
-											var height = '';
-											var d = new Date();
-											var time = d.getTime();
-											nama_file = nama_file + "?" + time;
-
-											if (tipe_file == "pdf") {
-												atribut = "application/pdf";
-												height = 'height="300px"';
-												var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>File sudah berhasil upload.</br>Browser anda tidak mendukung plugin PDF.</br>Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-												$('#display_file_pas_foto').html(html_text);
-											} else {
-												atribut = "image/jpg";
-												var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-												$('#display_file_pas_foto').html(html_text);
-											}
-
-											$('#link_file_pasfoto').val(serverResponse['0']['link_file']);
-
-											pond_pasfoto.removeFile();
-
-											$('#button_next_dokumen').attr("hidden", false);
-										}
-									}
-								}
-							}
-						});
-						pond_ktp.setOptions({
-							server: {
-								process: {
-									url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
-									method: 'POST',
-									ondata: (formData) => {
-										formData.append('id_kandidat', res);
-										formData.append([csrfName], csrfHash);
-										return formData;
-									},
-									onload: (res) => {
-										// select the right value in the response here and return
-										// return res;
-										var serverResponse = jQuery.parseJSON(res);
-
-										//display file
-										if ((serverResponse['0']['link_file'] == null) || (serverResponse['0']['link_file'] == "")) {
-											//do nothing
-										} else {
-											var nama_file = '<?= base_url() ?>' + serverResponse['0']['link_file'];
-											var tipe_file = nama_file.slice(-3);
-											var atribut = "";
-											var height = '';
-											var d = new Date();
-											var time = d.getTime();
-											nama_file = nama_file + "?" + time;
-
-											if (tipe_file == "pdf") {
-												atribut = "application/pdf";
-												height = 'height="300px"';
-												var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>File sudah berhasil upload.</br>Browser anda tidak mendukung plugin PDF.</br>Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-												$('#display_file_ktp').html(html_text);
-												$('#status_file_ktp').val("1");
-											} else {
-												atribut = "image/jpg";
-												var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-												$('#display_file_ktp').html(html_text);
-												$('#status_file_ktp').val("1");
-											}
-
-											$('#link_file_ktp').val(serverResponse['0']['link_file']);
-
-											pond_ktp.removeFile();
-
-											$('#button_next_dokumen').attr("hidden", false);
-										}
-									}
-								}
-							}
-						});
-						pond_cv.setOptions({
-							server: {
-								process: {
-									url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
-									method: 'POST',
-									ondata: (formData) => {
-										formData.append('id_kandidat', res);
-										formData.append([csrfName], csrfHash);
-										return formData;
-									},
-									onload: (res) => {
-										// select the right value in the response here and return
-										// return res;
-										var serverResponse = jQuery.parseJSON(res);
-
-										//display file
-										if ((serverResponse['0']['link_file'] == null) || (serverResponse['0']['link_file'] == "")) {
-											//do nothing
-										} else {
-											var nama_file = '<?= base_url() ?>' + serverResponse['0']['link_file'];
-											var tipe_file = nama_file.slice(-3);
-											var atribut = "";
-											var height = '';
-											var d = new Date();
-											var time = d.getTime();
-											nama_file = nama_file + "?" + time;
-
-											if (tipe_file == "pdf") {
-												atribut = "application/pdf";
-												height = 'height="300px"';
-												var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>File sudah berhasil upload.</br>Browser anda tidak mendukung plugin PDF.</br>Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-												$('#display_file_cv').html(html_text);
-												$('#status_file_cv').val("1");
-											} else {
-												atribut = "image/jpg";
-												var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-												$('#display_file_cv').html(html_text);
-												$('#status_file_cv').val("1");
-											}
-
-											$('#link_file_cv').val(serverResponse['0']['link_file']);
-
-											pond_cv.removeFile();
-
-											$('#button_next_dokumen').attr("hidden", false);
-										}
-									}
-								}
-							}
-						});
-						pond_kk.setOptions({
-							server: {
-								process: {
-									url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
-									method: 'POST',
-									ondata: (formData) => {
-										formData.append('id_kandidat', res);
-										formData.append([csrfName], csrfHash);
-										return formData;
-									},
-									onload: (res) => {
-										// select the right value in the response here and return
-										// return res;
-										var serverResponse = jQuery.parseJSON(res);
-
-										//display file
-										if ((serverResponse['0']['link_file'] == null) || (serverResponse['0']['link_file'] == "")) {
-											//do nothing
-										} else {
-											var nama_file = '<?= base_url() ?>' + serverResponse['0']['link_file'];
-											var tipe_file = nama_file.slice(-3);
-											var atribut = "";
-											var height = '';
-											var d = new Date();
-											var time = d.getTime();
-											nama_file = nama_file + "?" + time;
-
-											if (tipe_file == "pdf") {
-												atribut = "application/pdf";
-												height = 'height="300px"';
-												var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>File sudah berhasil upload.</br>Browser anda tidak mendukung plugin PDF.</br>Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-												$('#display_file_kk').html(html_text);
-											} else {
-												atribut = "image/jpg";
-												var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-												$('#display_file_kk').html(html_text);
-											}
-
-											$('#link_file_kk').val(serverResponse['0']['link_file']);
-
-											pond_kk.removeFile();
-
-											$('#button_next_dokumen').attr("hidden", false);
-										}
-									}
-								}
-							}
-						});
-						pond_npwp.setOptions({
-							server: {
-								process: {
-									url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
-									method: 'POST',
-									ondata: (formData) => {
-										formData.append('id_kandidat', res);
-										formData.append([csrfName], csrfHash);
-										return formData;
-									},
-									onload: (res) => {
-										// select the right value in the response here and return
-										// return res;
-										var serverResponse = jQuery.parseJSON(res);
-
-										//display file
-										if ((serverResponse['0']['link_file'] == null) || (serverResponse['0']['link_file'] == "")) {
-											//do nothing
-										} else {
-											var nama_file = '<?= base_url() ?>' + serverResponse['0']['link_file'];
-											var tipe_file = nama_file.slice(-3);
-											var atribut = "";
-											var height = '';
-											var d = new Date();
-											var time = d.getTime();
-											nama_file = nama_file + "?" + time;
-
-											if (tipe_file == "pdf") {
-												atribut = "application/pdf";
-												height = 'height="300px"';
-												var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>File sudah berhasil upload.</br>Browser anda tidak mendukung plugin PDF.</br>Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-												$('#display_file_npwp').html(html_text);
-											} else {
-												atribut = "image/jpg";
-												var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-												$('#display_file_npwp').html(html_text);
-											}
-
-											$('#link_file_npwp').val(serverResponse['0']['link_file']);
-
-											pond_npwp.removeFile();
-
-											$('#button_next_dokumen').attr("hidden", false);
-										}
-									}
-								}
-							}
-						});
-						pond_skck.setOptions({
-							server: {
-								process: {
-									url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
-									method: 'POST',
-									ondata: (formData) => {
-										formData.append('id_kandidat', res);
-										formData.append([csrfName], csrfHash);
-										return formData;
-									},
-									onload: (res) => {
-										// select the right value in the response here and return
-										// return res;
-										var serverResponse = jQuery.parseJSON(res);
-
-										//display file
-										if ((serverResponse['0']['link_file'] == null) || (serverResponse['0']['link_file'] == "")) {
-											//do nothing
-										} else {
-											var nama_file = '<?= base_url() ?>' + serverResponse['0']['link_file'];
-											var tipe_file = nama_file.slice(-3);
-											var atribut = "";
-											var height = '';
-											var d = new Date();
-											var time = d.getTime();
-											nama_file = nama_file + "?" + time;
-
-											if (tipe_file == "pdf") {
-												atribut = "application/pdf";
-												height = 'height="300px"';
-												var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>File sudah berhasil upload.</br>Browser anda tidak mendukung plugin PDF.</br>Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-												$('#display_file_skck').html(html_text);
-											} else {
-												atribut = "image/jpg";
-												var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-												$('#display_file_skck').html(html_text);
-											}
-
-											$('#link_file_skck').val(serverResponse['0']['link_file']);
-
-											pond_skck.removeFile();
-
-											$('#button_next_dokumen').attr("hidden", false);
-										}
-									}
-								}
-							}
-						});
-						pond_ijazah.setOptions({
-							server: {
-								process: {
-									url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
-									method: 'POST',
-									ondata: (formData) => {
-										formData.append('id_kandidat', res);
-										formData.append([csrfName], csrfHash);
-										return formData;
-									},
-									onload: (res) => {
-										// select the right value in the response here and return
-										// return res;
-										var serverResponse = jQuery.parseJSON(res);
-
-										//display file
-										if ((serverResponse['0']['link_file'] == null) || (serverResponse['0']['link_file'] == "")) {
-											//do nothing
-										} else {
-											var nama_file = '<?= base_url() ?>' + serverResponse['0']['link_file'];
-											var tipe_file = nama_file.slice(-3);
-											var atribut = "";
-											var height = '';
-											var d = new Date();
-											var time = d.getTime();
-											nama_file = nama_file + "?" + time;
-
-											if (tipe_file == "pdf") {
-												atribut = "application/pdf";
-												height = 'height="300px"';
-												var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>File sudah berhasil upload.</br>Browser anda tidak mendukung plugin PDF.</br>Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-												$('#display_file_ijazah').html(html_text);
-												$('#status_file_ijazah').val("1");
-											} else {
-												atribut = "image/jpg";
-												var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-												$('#display_file_ijazah').html(html_text);
-												$('#status_file_ijazah').val("1");
-											}
-
-											$('#link_file_ijazah').val(serverResponse['0']['link_file']);
-
-											pond_ijazah.removeFile();
-
-											$('#button_next_dokumen').attr("hidden", false);
-										}
-									}
-								}
-							}
-						});
-						pond_sim.setOptions({
-							server: {
-								process: {
-									url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
-									method: 'POST',
-									ondata: (formData) => {
-										formData.append('id_kandidat', res);
-										formData.append([csrfName], csrfHash);
-										return formData;
-									},
-									onload: (res) => {
-										// select the right value in the response here and return
-										// return res;
-										var serverResponse = jQuery.parseJSON(res);
-
-										//display file
-										if ((serverResponse['0']['link_file'] == null) || (serverResponse['0']['link_file'] == "")) {
-											//do nothing
-										} else {
-											var nama_file = '<?= base_url() ?>' + serverResponse['0']['link_file'];
-											var tipe_file = nama_file.slice(-3);
-											var atribut = "";
-											var height = '';
-											var d = new Date();
-											var time = d.getTime();
-											nama_file = nama_file + "?" + time;
-
-											if (tipe_file == "pdf") {
-												atribut = "application/pdf";
-												height = 'height="300px"';
-												var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>File sudah berhasil upload.</br>Browser anda tidak mendukung plugin PDF.</br>Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-												$('#display_file_sim').html(html_text);
-											} else {
-												atribut = "image/jpg";
-												var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-												$('#display_file_sim').html(html_text);
-											}
-
-											$('#link_file_sim').val(serverResponse['0']['link_file']);
-
-											pond_sim.removeFile();
-
-											$('#button_next_dokumen').attr("hidden", false);
-										}
-									}
-								}
-							}
-						});
-						pond_paklaring.setOptions({
-							server: {
-								process: {
-									url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
-									method: 'POST',
-									ondata: (formData) => {
-										formData.append('id_kandidat', res);
-										formData.append([csrfName], csrfHash);
-										return formData;
-									},
-									onload: (res) => {
-										// select the right value in the response here and return
-										// return res;
-										var serverResponse = jQuery.parseJSON(res);
-
-										//display file
-										if ((serverResponse['0']['link_file'] == null) || (serverResponse['0']['link_file'] == "")) {
-											//do nothing
-										} else {
-											var nama_file = '<?= base_url() ?>' + serverResponse['0']['link_file'];
-											var tipe_file = nama_file.slice(-3);
-											var atribut = "";
-											var height = '';
-											var d = new Date();
-											var time = d.getTime();
-											nama_file = nama_file + "?" + time;
-
-											if (tipe_file == "pdf") {
-												atribut = "application/pdf";
-												height = 'height="300px"';
-												var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>File sudah berhasil upload.</br>Browser anda tidak mendukung plugin PDF.</br>Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-												$('#display_file_paklaring').html(html_text);
-											} else {
-												atribut = "image/jpg";
-												var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-												$('#display_file_paklaring').html(html_text);
-											}
-
-											$('#link_file_paklaring').val(serverResponse['0']['link_file']);
-
-											pond_paklaring.removeFile();
-
-											$('#button_next_dokumen').attr("hidden", false);
-										}
-									}
-								}
-							}
-						});
-						pond_dokumen_pendukung.setOptions({
-							server: {
-								process: {
-									url: '<?php echo base_url() ?>Registrasi/upload_dokumen',
-									method: 'POST',
-									ondata: (formData) => {
-										formData.append('id_kandidat', res);
-										formData.append([csrfName], csrfHash);
-										return formData;
-									},
-									onload: (res) => {
-										// select the right value in the response here and return
-										// return res;
-										var serverResponse = jQuery.parseJSON(res);
-
-										//display file
-										if ((serverResponse['0']['link_file'] == null) || (serverResponse['0']['link_file'] == "")) {
-											//do nothing
-										} else {
-											var nama_file = '<?= base_url() ?>' + serverResponse['0']['link_file'];
-											var tipe_file = nama_file.slice(-3);
-											var atribut = "";
-											var height = '';
-											var d = new Date();
-											var time = d.getTime();
-											nama_file = nama_file + "?" + time;
-
-											if (tipe_file == "pdf") {
-												atribut = "application/pdf";
-												height = 'height="300px"';
-												var html_text = '<object height="300px" data="' + nama_file + '" type="application/pdf" width="100%"><p>File sudah berhasil upload.</br>Browser anda tidak mendukung plugin PDF.</br>Silahkan <a href="' + nama_file + '">klik disini untuk mendownload file PDF.</a></p></object>';
-												$('#display_file_dokumen_pendukung').html(html_text);
-											} else {
-												atribut = "image/jpg";
-												var html_text = '<a href="' + nama_file + '" target="_blank"><embed ' + height + ' class="col-12" type="' + atribut + '" src="' + nama_file + '"></embed></a>';
-												$('#display_file_dokumen_pendukung').html(html_text);
-											}
-
-											$('#link_file_dokumen_pendukung').val(serverResponse['0']['link_file']);
-
-											pond_dokumen_pendukung.removeFile();
-
-											$('#button_next_dokumen').attr("hidden", false);
-										}
-									}
-								}
-							}
-						});
-
-						$("#id_kandidat").val(res);
-						$("#nomor_registrasi").html(res);
-
 						$('#data-diri-tab').prop('disabled', 'disabled');
 						$("#pengalaman-tab").removeAttr('disabled');
 
@@ -4319,18 +3033,8 @@
 			var pengalaman_kerja = $("#pengalaman_kerja").val();
 			var kontak_person_sebelumnya = $("#kontak_person_sebelumnya").val();
 
-			//inisialisasi pesan
-			$('#pesan_pengalaman_kerja').html("");
-
 			if (pengalaman_kerja == "" || pengalaman_kerja == null) {
-				// alert("Pengalaman kerja harus diisi");
-				//-------cek apakah ada yang tidak diisi-------
-				var pesan_pengalaman_kerja = "";
-				if (pengalaman_kerja == "" || pengalaman_kerja == "0" || pengalaman_kerja == null) {
-					pesan_pengalaman_kerja = "<small style='color:#FF0000;'>Pengalaman kerja tidak boleh kosong</small>";
-					$('#pengalaman_kerja').focus();
-				}
-				$('#pesan_pengalaman_kerja').html(pesan_pengalaman_kerja);
+				alert("Pengalaman kerja harus diisi");
 			} else {
 				// AJAX untuk save data diri
 				$.ajax({
@@ -4385,48 +3089,11 @@
 		function next_dokumen() {
 			var id_kandidat = $("#id_kandidat").val();
 			var ktp = $("#status_file_ktp").val();
-			var file_ktp = $("#file_ktp").val();
 			var cv = $("#status_file_cv").val();
 			var ijazah = $("#status_file_ijazah").val();
 
-			var link_file_pasfoto = $("#link_file_pasfoto").val();
-			var link_file_ktp = $("#link_file_ktp").val();
-			var link_file_cv = $("#link_file_cv").val();
-			var link_file_kk = $("#link_file_kk").val();
-			var link_file_npwp = $("#link_file_npwp").val();
-			var link_file_skck = $("#link_file_skck").val();
-			var link_file_ijazah = $("#link_file_ijazah").val();
-			var link_file_sim = $("#link_file_sim").val();
-			var link_file_paklaring = $("#link_file_paklaring").val();
-			var link_file_dokumen_pendukung = $("#link_file_dokumen_pendukung").val();
-
-			//inisialisasi pesan
-			$('#pesan_file_ktp').html("");
-			$('#pesan_file_cv').html("");
-			$('#pesan_file_ijazah').html("");
-
 			if (ktp == "0" || cv == "0" || ijazah == "0") {
-				// alert("KTP, CV dan Ijazah harus diisi");
-				// alert(file_ktp);
-				//-------cek apakah ada yang tidak diisi-------
-				var pesan_file_ijazah = "";
-				var pesan_file_cv = "";
-				var pesan_file_ktp = "";
-				if (link_file_ijazah == "" || link_file_ijazah == "0" || link_file_ijazah == null) {
-					pesan_file_ijazah = "<small style='color:#FF0000;'>File Ijazah harus diupload</small>";
-					$('#file_ijazah').focus();
-				}
-				if (link_file_cv == "" || link_file_cv == "0" || link_file_cv == null) {
-					pesan_file_cv = "<small style='color:#FF0000;'>File CV harus diupload</small>";
-					$('#file_cv').focus();
-				}
-				if (link_file_ktp == "" || link_file_ktp == "0" || link_file_ktp == null) {
-					pesan_file_ktp = "<small style='color:#FF0000;'>File KTP harus diupload</small>";
-					$('#file_ktp').focus();
-				}
-				$('#pesan_file_ijazah').html(pesan_file_ijazah);
-				$('#pesan_file_cv').html(pesan_file_cv);
-				$('#pesan_file_ktp').html(pesan_file_ktp);
+				alert("KTP, CV dan Ijazah harus diisi");
 			} else {
 				// AJAX untuk Finish isi
 				$.ajax({
@@ -4435,17 +3102,6 @@
 					data: {
 						[csrfName]: csrfHash,
 						id_kandidat: id_kandidat,
-
-						link_file_pasfoto: link_file_pasfoto,
-						link_file_ktp: link_file_ktp,
-						link_file_cv: link_file_cv,
-						link_file_kk: link_file_kk,
-						link_file_npwp: link_file_npwp,
-						link_file_skck: link_file_skck,
-						link_file_ijazah: link_file_ijazah,
-						link_file_sim: link_file_sim,
-						link_file_paklaring: link_file_paklaring,
-						link_file_dokumen_pendukung: link_file_dokumen_pendukung,
 					},
 					beforeSend: function() {},
 					success: function(response) {
@@ -4472,14 +3128,14 @@
 
 	<!-- Event filepond-->
 	<script>
-		// document.addEventListener('FilePond:processfiles', (e) => {
-		// 	// alert("selesai upload file");
-		// 	$('#button_next_dokumen').attr("hidden", false);
-		// 	// console.log('FilePond ready for use', e.detail);
+		document.addEventListener('FilePond:processfiles', (e) => {
+			// alert("selesai upload file");
+			$('#button_next_dokumen').attr("hidden", false);
+			// console.log('FilePond ready for use', e.detail);
 
-		// 	// // get create method reference
-		// 	// const { create } = e.detail;FilePond:processfilestart
-		// });
+			// // get create method reference
+			// const { create } = e.detail;FilePond:processfilestart
+		});
 
 		document.addEventListener('FilePond:processfilestart', (e) => {
 			// alert("mulai upload file");
