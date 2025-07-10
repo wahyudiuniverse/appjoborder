@@ -100,9 +100,11 @@ class Job_order_model extends CI_model
 			$this->db->select('sum(jumlah_vacant) as vacant');
 			$this->db->select('sum(jumlah_fill) as fulfill');
 			$this->db->where('finish_on IS NULL');
+			$this->db->group_start();
 			foreach ($list_job_order as $record) {
 				$this->db->or_where('job_order_id', $record['id']);
 			}
+			$this->db->group_end();
 			$this->db->from('vacant');
 
 			$rekap = $this->db->get()->row_array();
@@ -375,6 +377,53 @@ class Job_order_model extends CI_model
 		return $result;
 	}
 
+	//mengambil data rekap jumlah request, fulfill, all on going vacant
+	public function get_rekap_vacant_on_going_all()
+	{
+		$request = "0";
+		$fulfill = "0";
+		$vacant = "0";
+
+		//hitung rekap jumlah request, fulfill, vacant
+		$this->db->select('sum(jumlah_request) as request');
+		$this->db->select('sum(jumlah_vacant) as vacant');
+		$this->db->select('sum(jumlah_fill) as fulfill');
+		$this->db->where('finish_on IS NULL');
+		$this->db->from('vacant');
+
+		$rekap = $this->db->get()->row_array();
+
+		if (!empty($rekap)) {
+			if ($rekap['request'] == "") {
+				$request = "0";
+			} else {
+				$request = $rekap['request'];
+			}
+			if ($rekap['fulfill'] == "") {
+				$fulfill = "0";
+			} else {
+				$fulfill = $rekap['fulfill'];
+			}
+			if ($rekap['vacant'] == "") {
+				$vacant = "0";
+			} else {
+				$vacant = $rekap['vacant'];
+			}
+		} else {
+			$request = "0";
+			$fulfill = "0";
+			$vacant = "0";
+		}
+
+		$result = array(
+			"request" => $request,
+			"fulfill" => $fulfill,
+			"vacant" => $vacant,
+		);
+
+		return $result;
+	}
+
 	//get data jabatan JO
 	public function get_jabatan_JO($id_jabatan_jo)
 	{
@@ -400,12 +449,28 @@ class Job_order_model extends CI_model
 		$query = $this->db->get()->result();
 
 		if ($query[0]->allcount > 0) {
-			return $query[0]->id;
+			// return $query[0]->id;
+			// get_rekap_vacant
+			$data_vacant = $this->get_rekap_vacant($postData['id_master_jo']);
+			$result = array(
+				"status" => "0",
+				"id" => $query[0]->id,
+				"data_vacant" => $data_vacant,
+			);
+			return $result;
 		} else {
 			$this->db->insert('job_order', $postData);
 			$insert_id = $this->db->insert_id();
 
-			return $insert_id;
+			$data_vacant = $this->get_rekap_vacant($postData['id_master_jo']);
+
+			$result = array(
+				"status" => "1",
+				"id" => $insert_id,
+				"data_vacant" => $data_vacant,
+			);
+			return $result;
+			// return $insert_id;
 		}
 	}
 
@@ -544,18 +609,26 @@ class Job_order_model extends CI_model
 		$query = $this->db->get()->result();
 
 		if ($query[0]->allcount > 0) {
+			$data_vacant = $this->get_rekap_vacant_area($postData['job_order_id']);
+			$data_area = $this->get_jumlah_area($postData['job_order_id']);
 			$result = array(
 				"status" => "0",
 				"id" => $query[0]->id,
+				"data_vacant" => $data_vacant,
+				"data_area" => $data_area,
 			);
 			return $result;
 		} else {
 			$this->db->insert('vacant', $postData);
 			$insert_id = $this->db->insert_id();
 
+			$data_vacant = $this->get_rekap_vacant_area($postData['job_order_id']);
+			$data_area = $this->get_jumlah_area($postData['job_order_id']);
 			$result = array(
 				"status" => "1",
 				"id" => $insert_id,
+				"data_vacant" => $data_vacant,
+				"data_area" => $data_area,
 			);
 			return $result;
 		}
@@ -600,9 +673,9 @@ class Job_order_model extends CI_model
 		if (($filter_status == "all")) {
 			$filterStatus = "";
 		} else if(($filter_status == "on_going")) {
-			$filterStatus = "finish_on IS NULL OR finish_on = ''";
+			$filterStatus = "(finish_on IS NULL OR finish_on = '')";
 		} else {
-			$filterStatus = "finish_on IS NOT NULL OR finish_on != ''";
+			$filterStatus = "(finish_on IS NOT NULL OR finish_on != '')";
 		}
 
 		## Total number of records without filtering
@@ -665,7 +738,7 @@ class Job_order_model extends CI_model
 			}
 
 			//Button
-			$button_view_detail = '<button onclick="open_detail(' . $record->id . ')" class="btn btn-sm btn-outline-success">View Detail</button>';
+			$button_view_detail = '<button onclick="open_detail(' . $record->id . ')" class="btn btn-sm btn-outline-success">history screening</button>';
 
 			$data[] = array(
 				"aksi" => $button_view_detail,

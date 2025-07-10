@@ -16,6 +16,7 @@ class Dashboard extends CI_Controller
 		$this->load->library('form_validation');
 		$this->load->model("Kandidat_model");
 		$this->load->model("Auth_model");
+		$this->load->model("Job_order_model");
 
 		//cek session login
 		if(!$this->Auth_model->check_login()){
@@ -28,6 +29,7 @@ class Dashboard extends CI_Controller
 		$data['jumlah_all_kandidat'] = $this->Kandidat_model->jumlah_kandidat();
 		$data['jumlah_kandidat_hari_ini'] = $this->Kandidat_model->jumlah_kandidat_hari_ini();
 		$data['jumlah_kandidat_bulan_ini'] = $this->Kandidat_model->jumlah_kandidat_bulan_ini();
+		$data['rekap_vacant'] = $this->Job_order_model->get_rekap_vacant_on_going_all();
 
         $data['sub_view'] = $this->load->view('admin/dashboard.php', $data, TRUE);
 		$this->load->view('admin/_partials/skeleton.php', $data);

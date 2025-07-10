@@ -124,6 +124,41 @@ class Job_order extends CI_Controller
 		$this->load->view('admin/_partials/skeleton.php', $data);
 	}
 
+	//mengambil Json data jabatan JO
+	public function get_jabatan_JO()
+	{
+		$postData = $this->input->post();
+
+		//Cek variabel post
+		$datarequest = [
+			'id'        => $postData['id']
+		];
+
+		// get data jabatan JO
+		$data = $this->Job_order_model->get_jabatan_JO($postData['id']);
+
+		if (empty($data)) {
+			$data_empty = array();
+
+			$response = array(
+				'status'	=> "0",
+				'pesan' 	=> "Belum ada data",
+				'data'		=> $data_empty,
+			);
+		} else {
+			$response = array(
+				'status'	=> "1",
+				'pesan' 	=> "Berhasil Fetch Data",
+				'data'		=> $data,
+			);
+		}
+
+		echo json_encode($response);
+		// echo "<pre>";
+		// print_r($response);
+		// echo "</pre>";
+	}
+
 	//list JO jabatan dalam satu project
 	public function list_jabatan_jo()
 	{

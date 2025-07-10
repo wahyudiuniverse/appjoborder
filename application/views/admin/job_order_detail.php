@@ -112,6 +112,55 @@
 </div>
 <!-- END MODAL EDIT JO -->
 
+<!-- START MODAL EDIT KRITERIA JOB ORDER -->
+<div class="modal fade" id="editKriteriaJOModal" tabindex="-1" role="dialog" aria-labelledby="editKriteriaJOModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="editKriteriaJOModalLabel">Edit Detail JO</h5>
+				<button onclick="close_edit_kriteria_JO()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+			<div class="modal-body">
+				<div class="isi-modal-edit-kriteria-JO">
+					<div class="container" id="container_modal_edit_JO">
+						<div class="row">
+							<table class="table table-striped col-md-12">
+								<tbody>
+									<tr>
+										<td style='width:25%'><strong><span id='label_input_sebelum_modal'>Kriteria Sebelum </span></strong></td>
+										<td style='width:75%'>
+											<textarea class="form-control" id="input_sebelum_modal" name="input_sebelum_modal" placeholder="Detail Area. Contoh: Toko ABC" rows="3" disabled></textarea>
+											<span id='pesan_input_sebelum_modal'></span>
+										</td>
+									</tr>
+									<tr>
+										<td style='width:25%'><strong><span id='label_input_sesudah_modal'>Kriteria Sesudah </span></strong></td>
+										<td style='width:75%'>
+											<textarea class="form-control" id="input_sesudah_modal" name="input_sesudah_modal" placeholder="Detail Area. Contoh: Toko ABC" rows="3"></textarea>
+											<span id='pesan_input_sesudah_modal'></span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+
+				<div class="info-modal-edit-kriteria-JO"></div>
+
+			</div>
+			<div class="modal-footer">
+				<button onclick="close_edit_kriteria_JO()" type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
+				<button onclick="save_kriteria_JO()" id='button_save_kriteria_JO' name='button_save_kriteria_JO' type='button' class='btn btn-primary'>Update Data JO</button>
+				<button onclick="delete_kriteria_JO()" id='button_delete_kriteria_JO' name='button_delete_kriteria_JO' type='button' class='btn btn-danger'>Delete Data JO</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- END MODAL EDIT JO -->
+
 <!-- start page title -->
 <div class="row">
 	<div class="col-12">
@@ -185,7 +234,7 @@
 												<button onclick="edit_kriteria('<?php echo $id_jabatan_jo; ?>')" class="btn btn-sm btn-outline-success">Edit Kriteria</button>
 											</th>
 											<td style="width: 70%">
-												<textarea readonly class="form-control" id="kriteria_text_modal" name="kriteria_text_modal" placeholder="Kriteria" rows="3"><?php echo $jabatan_jo['kriteria']; ?></textarea>
+												<textarea disabled class="form-control" id="kriteria_text_modal" name="kriteria_text_modal" placeholder="Kriteria" rows="3"><?php echo $jabatan_jo['kriteria']; ?></textarea>
 											</td>
 										</tr>
 										<tr>
@@ -194,7 +243,7 @@
 												<button onclick="edit_jobdesc('<?php echo $id_jabatan_jo; ?>')" class="btn btn-sm btn-outline-success">Edit Jobdesc</button>
 											</th>
 											<td>
-												<textarea readonly class="form-control" id="jobdesc_text_modal" name="jobdesc_text_modal" placeholder="Jobdesc" rows="3"><?php echo $jabatan_jo['jobdesc']; ?></textarea>
+												<textarea disabled class="form-control" id="jobdesc_text_modal" name="jobdesc_text_modal" placeholder="Jobdesc" rows="3"><?php echo $jabatan_jo['jobdesc']; ?></textarea>
 											</td>
 										</tr>
 										<tr>
@@ -203,7 +252,7 @@
 												<button onclick="edit_benefit('<?php echo $id_jabatan_jo; ?>')" class="btn btn-sm btn-outline-success">Edit Benefit</button>
 											</th>
 											<td>
-												<textarea readonly class="form-control" id="benefit_text_modal" name="benefit_text_modal" placeholder="Benefit" rows="3"><?php echo $jabatan_jo['benefit']; ?></textarea>
+												<textarea disabled class="form-control" id="benefit_text_modal" name="benefit_text_modal" placeholder="Benefit" rows="3"><?php echo $jabatan_jo['benefit']; ?></textarea>
 											</td>
 										</tr>
 									</tbody>
@@ -229,58 +278,6 @@
 			</div>
 
 			<div class="card-body">
-				<!--- SECTION FILTER --->
-				<!-- <div class="row">
-					<div class="col-lg-3">
-						<div class="mb-3">
-							<label
-								class="form-label"
-								for="jabatan_input">Posisi/Jabatan</label>
-							<select name="jabatan_input" id="jabatan_input" class="form-control dropdown-dengan-search">
-								<option value="">Pilih Jabatan/Posisi</option>
-								<?php //if ($all_jabatan == null) {
-								//} else { 
-								?>
-									<?php //foreach ($all_jabatan as $jabatan) : 
-									?>
-										<option value="<?php //echo $jabatan['designation_id']; 
-														?>" style="text-wrap: wrap;">
-											<?php //echo $jabatan['designation_name']; 
-											?>
-										</option>
-									<?php //endforeach; 
-									?>
-								<?php //} 
-								?>
-							</select>
-						</div>
-					</div>
-
-					<div class="col-lg-3">
-						<div class="mb-3">
-							<label
-								class="form-label"
-								for="region_input">
-								Status
-							</label>
-							<select name="region_input" id="region_input" class="form-control dropdown-dengan-search">
-								<option value="0">On going</option>
-								<option value="1">Finish</option>
-							</select>
-						</div>
-					</div>
-
-					<div class="col-lg-6">
-						<div class="mb-3">
-							<label
-								class="form-label"
-								for="filter_kandidat">&nbsp;</label>
-							<button name="filter_kandidat" id="filter_kandidat" class="btn btn-primary btn-block col-12">FILTER</button>
-						</div>
-					</div>
-				</div> -->
-				<!--- END SECTION FILTER --->
-
 				<div class="row">
 					<div class="col-4">
 						<p>
@@ -394,6 +391,11 @@
 		$('.dropdown-JO-search').select2({
 			width: "100%",
 			dropdownParent: $("#container_modal_JO")
+		});
+
+		$('.dropdown-JO-kriteria-search').select2({
+			width: "100%",
+			dropdownParent: $("#container_modal_edit_JO")
 		});
 
 		// Provinsi Change - Area
@@ -908,11 +910,23 @@
 						$('.info-modal-edit-JO').attr("hidden", false);
 						$('.isi-modal-edit-JO').attr("hidden", true);
 						$('.info-modal-edit-JO').html(success_html_text);
+
+						//update jumlah vacant dan jumah area
+						$('#jumlah_area_tabel').html(res['data_area']);
+						$('#jumlah_request_tabel').html(res['data_vacant']['request']);
+						$('#jumlah_actual_tabel').html(res['data_vacant']['fulfill']);
+						$('#jumlah_vacant_tabel').html(res['data_vacant']['vacant']);
 					} else {
 						//tampilkan pesan sukses
 						$('.info-modal-edit-JO').attr("hidden", false);
 						$('.isi-modal-edit-JO').attr("hidden", true);
 						$('.info-modal-edit-JO').html(not_success_html_text);
+
+						//update jumlah vacant dan jumah area
+						$('#jumlah_area_tabel').html(res['data_area']);
+						$('#jumlah_request_tabel').html(res['data_vacant']['request']);
+						$('#jumlah_actual_tabel').html(res['data_vacant']['fulfill']);
+						$('#jumlah_vacant_tabel').html(res['data_vacant']['vacant']);
 					}
 
 					// $('#area').attr("hidden", true);
@@ -1061,29 +1075,218 @@
 		// alert("show modal screening");
 		$('#editJOModal').modal('hide');
 	}
+
+	function close_edit_kriteria_JO() {
+		// alert("show modal screening");
+		$('#editKriteriaJOModal').modal('hide');
+	}
 </script>
 
 <!-- Action Tombol Edit kriteria -->
 <script type="text/javascript">
 	function edit_kriteria(id_jo) {
-		alert("EDIT KRITERIA. ID JO: " + id_jo);
+		// alert("EDIT KRITERIA. ID JO: " + id_jo);
 		// $('#editJOModal').modal('hide');
+		// alert(id);
+
+		// AJAX untuk ambil data kriteria terupdate
+		$.ajax({
+			url: '<?= base_url() ?>admin/Job_order/get_jabatan_JO/',
+			method: 'post',
+			data: {
+				[csrfName]: csrfHash,
+				id: id_jo,
+			},
+			beforeSend: function() {
+				//judul modal
+				$('#editKriteriaJOModalLabel').html("Edit Data Kriteria JO");
+
+				//inisialiasasi variabel modal
+				$('#label_input_sebelum_modal').html("Kriteria Sebelum");
+				$('#input_sebelum_modal').val("");
+				$('#label_input_sesudah_modal').html("Kriteria Output");
+				$('#input_sesudah_modal').val("");
+				$('#input_sebelum_modal').attr("placeholder", "Kriteria Sebelum");
+				$('#input_sesudah_modal').attr("placeholder", "Masukkan Kriteria Baru");
+
+				//inisialisasi pesan
+				$('#pesan_input_sebelum_modal').html("");
+				$('#pesan_input_sesudah_modal').html("");
+
+				//show modal
+				$('.info-modal-edit-kriteria-JO').attr("hidden", false);
+				$('.isi-modal-edit-kriteria-JO').attr("hidden", true);
+				$('.info-modal-edit-kriteria-JO').html(loading_html_text);
+				$('#button_save_kriteria_JO').attr("hidden", true);
+				$('#button_delete_kriteria_JO').attr("hidden", true);
+				$('#editKriteriaJOModal').modal('show');
+			},
+			success: function(response) {
+
+				var res = jQuery.parseJSON(response);
+
+				if (res['status'] == "1") {
+					$('#input_sebelum_modal').val(res['data']['kriteria']);
+
+					$('.isi-modal-edit-kriteria-JO').attr("hidden", false);
+					$('.info-modal-edit-kriteria-JO').attr("hidden", true);
+					$('#button_save_kriteria_JO').attr("hidden", false);
+				} else {
+					html_text = res['pesan'];
+					$('.info-modal-edit-kriteria-JO').html(html_text);
+					$('.isi-modal-edit-kriteria-JO').attr("hidden", true);
+					$('.info-modal-edit-kriteria-JO').attr("hidden", false);
+					$('#button_save_kriteria_JO').attr("hidden", true);
+				}
+			},
+			error: function(xhr, status, error) {
+				html_text = "<strong><span style='color:#FF0000;'>ERROR.</span> Silahkan foto pesan error di bawah dan kirimkan ke whatsapp IT Care di nomor: 085174123434</strong>";
+				html_text = html_text + "<iframe srcdoc='" + xhr.responseText + "' style='zoom:1' frameborder='0' height='250' width='99.6%'></iframe>";
+				// html_text = "Gagal fetch data. Kode error: " + xhr.status;
+				$('.info-modal-edit-kriteria-JO').html(html_text); //coba pake iframe
+				$('.isi-modal-edit-kriteria-JO').attr("hidden", true);
+				$('.info-modal-edit-kriteria-JO').attr("hidden", false);
+				$('#button_save_kriteria_JO').attr("hidden", true);
+			}
+		});
 	}
 </script>
 
 <!-- Action Tombol Edit jobdesc -->
 <script type="text/javascript">
 	function edit_jobdesc(id_jo) {
-		alert("EDIT JOBDESC. ID JO: " + id_jo);
+		// alert("EDIT JOBDESC. ID JO: " + id_jo);
 		// $('#editJOModal').modal('hide');
+
+		// AJAX untuk ambil data jobdesc terupdate
+		$.ajax({
+			url: '<?= base_url() ?>admin/Job_order/get_jabatan_JO/',
+			method: 'post',
+			data: {
+				[csrfName]: csrfHash,
+				id: id_jo,
+			},
+			beforeSend: function() {
+				//judul modal
+				$('#editKriteriaJOModalLabel').html("Edit Data Jobdesc JO");
+
+				//inisialiasasi variabel modal
+				$('#label_input_sebelum_modal').html("Jobdesc Sebelum");
+				$('#input_sebelum_modal').val("");
+				$('#label_input_sesudah_modal').html("Jobdesc Output");
+				$('#input_sesudah_modal').val("");
+				$('#input_sebelum_modal').attr("placeholder", "Jobdesc Sebelum");
+				$('#input_sesudah_modal').attr("placeholder", "Masukkan Jobdesc Baru");
+
+				//inisialisasi pesan
+				$('#pesan_input_sebelum_modal').html("");
+				$('#pesan_input_sesudah_modal').html("");
+
+				//show modal
+				$('.info-modal-edit-kriteria-JO').attr("hidden", false);
+				$('.isi-modal-edit-kriteria-JO').attr("hidden", true);
+				$('.info-modal-edit-kriteria-JO').html(loading_html_text);
+				$('#button_save_kriteria_JO').attr("hidden", true);
+				$('#button_delete_kriteria_JO').attr("hidden", true);
+				$('#editKriteriaJOModal').modal('show');
+			},
+			success: function(response) {
+
+				var res = jQuery.parseJSON(response);
+
+				if (res['status'] == "1") {
+					$('#input_sebelum_modal').val(res['data']['jobdesc']);
+
+					$('.isi-modal-edit-kriteria-JO').attr("hidden", false);
+					$('.info-modal-edit-kriteria-JO').attr("hidden", true);
+					$('#button_save_kriteria_JO').attr("hidden", false);
+				} else {
+					html_text = res['pesan'];
+					$('.info-modal-edit-kriteria-JO').html(html_text);
+					$('.isi-modal-edit-kriteria-JO').attr("hidden", true);
+					$('.info-modal-edit-kriteria-JO').attr("hidden", false);
+					$('#button_save_kriteria_JO').attr("hidden", true);
+				}
+			},
+			error: function(xhr, status, error) {
+				html_text = "<strong><span style='color:#FF0000;'>ERROR.</span> Silahkan foto pesan error di bawah dan kirimkan ke whatsapp IT Care di nomor: 085174123434</strong>";
+				html_text = html_text + "<iframe srcdoc='" + xhr.responseText + "' style='zoom:1' frameborder='0' height='250' width='99.6%'></iframe>";
+				// html_text = "Gagal fetch data. Kode error: " + xhr.status;
+				$('.info-modal-edit-kriteria-JO').html(html_text); //coba pake iframe
+				$('.isi-modal-edit-kriteria-JO').attr("hidden", true);
+				$('.info-modal-edit-kriteria-JO').attr("hidden", false);
+				$('#button_save_kriteria_JO').attr("hidden", true);
+			}
+		});
 	}
 </script>
 
 <!-- Action Tombol Edit benefit -->
 <script type="text/javascript">
 	function edit_benefit(id_jo) {
-		alert("EDIT BENEFIT. ID JO: " + id_jo);
+		// alert("EDIT BENEFIT. ID JO: " + id_jo);
 		// $('#editJOModal').modal('hide');
+
+		// AJAX untuk ambil data benefit terupdate
+		$.ajax({
+			url: '<?= base_url() ?>admin/Job_order/get_jabatan_JO/',
+			method: 'post',
+			data: {
+				[csrfName]: csrfHash,
+				id: id_jo,
+			},
+			beforeSend: function() {
+				//judul modal
+				$('#editKriteriaJOModalLabel').html("Edit Data Benefit JO");
+
+				//inisialiasasi variabel modal
+				$('#label_input_sebelum_modal').html("Benefit Sebelum");
+				$('#input_sebelum_modal').val("");
+				$('#label_input_sesudah_modal').html("Benefit Output");
+				$('#input_sesudah_modal').val("");
+				$('#input_sebelum_modal').attr("placeholder", "Benefit Sebelum");
+				$('#input_sesudah_modal').attr("placeholder", "Masukkan Benefit Baru");
+
+				//inisialisasi pesan
+				$('#pesan_input_sebelum_modal').html("");
+				$('#pesan_input_sesudah_modal').html("");
+
+				//show modal
+				$('.info-modal-edit-kriteria-JO').attr("hidden", false);
+				$('.isi-modal-edit-kriteria-JO').attr("hidden", true);
+				$('.info-modal-edit-kriteria-JO').html(loading_html_text);
+				$('#button_save_kriteria_JO').attr("hidden", true);
+				$('#button_delete_kriteria_JO').attr("hidden", true);
+				$('#editKriteriaJOModal').modal('show');
+			},
+			success: function(response) {
+
+				var res = jQuery.parseJSON(response);
+
+				if (res['status'] == "1") {
+					$('#input_sebelum_modal').val(res['data']['benefit']);
+
+					$('.isi-modal-edit-kriteria-JO').attr("hidden", false);
+					$('.info-modal-edit-kriteria-JO').attr("hidden", true);
+					$('#button_save_kriteria_JO').attr("hidden", false);
+				} else {
+					html_text = res['pesan'];
+					$('.info-modal-edit-kriteria-JO').html(html_text);
+					$('.isi-modal-edit-kriteria-JO').attr("hidden", true);
+					$('.info-modal-edit-kriteria-JO').attr("hidden", false);
+					$('#button_save_kriteria_JO').attr("hidden", true);
+				}
+			},
+			error: function(xhr, status, error) {
+				html_text = "<strong><span style='color:#FF0000;'>ERROR.</span> Silahkan foto pesan error di bawah dan kirimkan ke whatsapp IT Care di nomor: 085174123434</strong>";
+				html_text = html_text + "<iframe srcdoc='" + xhr.responseText + "' style='zoom:1' frameborder='0' height='250' width='99.6%'></iframe>";
+				// html_text = "Gagal fetch data. Kode error: " + xhr.status;
+				$('.info-modal-edit-kriteria-JO').html(html_text); //coba pake iframe
+				$('.isi-modal-edit-kriteria-JO').attr("hidden", true);
+				$('.info-modal-edit-kriteria-JO').attr("hidden", false);
+				$('#button_save_kriteria_JO').attr("hidden", true);
+			}
+		});
 	}
 </script>
 

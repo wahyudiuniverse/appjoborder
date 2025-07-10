@@ -278,6 +278,12 @@
 	success_delete_html_text = success_delete_html_text + '<h2 style="color: #00FFA3;">BERHASIL HAPUS DATA</h2>';
 	success_delete_html_text = success_delete_html_text + '</div>';
 
+	var not_success_image = "<?php echo base_url('assets/icon/silang_merah.png'); ?>";
+	var not_success_html_text = '<div class="col-12 col-md-12 col-auto text-center align-self-center">';
+	not_success_html_text = not_success_html_text + '<img src="' + not_success_image + '" alt="" width="100px">';
+	not_success_html_text = not_success_html_text + '<h2 style="color: #00FFA3;">SUDAH ADA AREA TERESEBUT DENGAN STATUS VACANT AKTIF</h2>';
+	not_success_html_text = not_success_html_text + '</div>';
+
 	// execute kalau page sudah ke load 
 	$(document).ready(function() {
 		//inisialisasi select2 untuk searchable dropdown
